@@ -1,0 +1,831 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3549B004BDCC4195F3707782 /* libPods-MoxiAPP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7541113CE931050E0F1B5619 /* libPods-MoxiAPP.a */; };
+		5706494B1E4C605B00181159 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5706494A1E4C605B00181159 /* main.m */; };
+		5706494E1E4C605B00181159 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5706494D1E4C605B00181159 /* AppDelegate.m */; };
+		570649541E4C605B00181159 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 570649521E4C605B00181159 /* Main.storyboard */; };
+		570649561E4C605B00181159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 570649551E4C605B00181159 /* Assets.xcassets */; };
+		570649591E4C605B00181159 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 570649571E4C605B00181159 /* LaunchScreen.storyboard */; };
+		570649641E4C605B00181159 /* MoxiAPPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649631E4C605B00181159 /* MoxiAPPTests.m */; };
+		5706496F1E4C605B00181159 /* MoxiAPPUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5706496E1E4C605B00181159 /* MoxiAPPUITests.m */; };
+		5706498E1E4C64E100181159 /* AdvertisementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5706497F1E4C64E100181159 /* AdvertisementView.m */; };
+		5706498F1E4C64E100181159 /* NSObject+AdvertisementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649811E4C64E100181159 /* NSObject+AdvertisementView.m */; };
+		570649901E4C64E100181159 /* NSObject+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649841E4C64E100181159 /* NSObject+Common.m */; };
+		570649911E4C64E100181159 /* BaseNetworkAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5706498A1E4C64E100181159 /* BaseNetworkAPI.m */; };
+		570649921E4C64E100181159 /* HYBNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 5706498D1E4C64E100181159 /* HYBNetworking.m */; };
+		570649A51E4C743400181159 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5706499A1E4C743400181159 /* RECommonFunctions.m */; };
+		570649A61E4C743400181159 /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5706499C1E4C743400181159 /* REFrostedContainerViewController.m */; };
+		570649A71E4C743400181159 /* REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5706499E1E4C743400181159 /* REFrostedViewController.m */; };
+		570649A81E4C743400181159 /* UIImage+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649A01E4C743400181159 /* UIImage+REFrostedViewController.m */; };
+		570649A91E4C743400181159 /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649A21E4C743400181159 /* UIView+REFrostedViewController.m */; };
+		570649AA1E4C743400181159 /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649A41E4C743400181159 /* UIViewController+REFrostedViewController.m */; };
+		570649AD1E4C772D00181159 /* HiThirdPartService.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649AC1E4C772D00181159 /* HiThirdPartService.m */; };
+		570649B01E4C776C00181159 /* HiInitData.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649AF1E4C776C00181159 /* HiInitData.m */; };
+		570649B41E4C789000181159 /* BaseNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649B31E4C789000181159 /* BaseNaviViewController.m */; };
+		570649B71E4C78A200181159 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649B61E4C78A200181159 /* BaseViewController.m */; };
+		570649BA1E4C78D100181159 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649B91E4C78D100181159 /* HomeViewController.m */; };
+		570649BE1E4C79A400181159 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649BD1E4C79A400181159 /* LeftMenuViewController.m */; };
+		570649C01E4C7F3300181159 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570649BF1E4C7F3300181159 /* QuartzCore.framework */; };
+		570649C21E4C7F3D00181159 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570649C11E4C7F3D00181159 /* Accelerate.framework */; };
+		570649C41E4C7F4700181159 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570649C31E4C7F4700181159 /* CoreGraphics.framework */; };
+		570649C61E4C7F5100181159 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570649C51E4C7F5100181159 /* Foundation.framework */; };
+		570649C81E4C7F5800181159 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570649C71E4C7F5800181159 /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		570649601E4C605B00181159 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5706493E1E4C605B00181159 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 570649451E4C605B00181159;
+			remoteInfo = MoxiAPP;
+		};
+		5706496B1E4C605B00181159 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5706493E1E4C605B00181159 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 570649451E4C605B00181159;
+			remoteInfo = MoxiAPP;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2BF57FA1683E7F7D9C4F4DF9 /* Pods-MoxiAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoxiAPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoxiAPP/Pods-MoxiAPP.release.xcconfig"; sourceTree = "<group>"; };
+		570649461E4C605B00181159 /* MoxiAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoxiAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5706494A1E4C605B00181159 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5706494C1E4C605B00181159 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5706494D1E4C605B00181159 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		570649531E4C605B00181159 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		570649551E4C605B00181159 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		570649581E4C605B00181159 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5706495A1E4C605B00181159 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		5706495F1E4C605B00181159 /* MoxiAPPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoxiAPPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		570649631E4C605B00181159 /* MoxiAPPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoxiAPPTests.m; sourceTree = "<group>"; };
+		570649651E4C605B00181159 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5706496A1E4C605B00181159 /* MoxiAPPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoxiAPPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5706496E1E4C605B00181159 /* MoxiAPPUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoxiAPPUITests.m; sourceTree = "<group>"; };
+		570649701E4C605B00181159 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5706497E1E4C64E100181159 /* AdvertisementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementView.h; sourceTree = "<group>"; };
+		5706497F1E4C64E100181159 /* AdvertisementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisementView.m; sourceTree = "<group>"; };
+		570649801E4C64E100181159 /* NSObject+AdvertisementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AdvertisementView.h"; sourceTree = "<group>"; };
+		570649811E4C64E100181159 /* NSObject+AdvertisementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AdvertisementView.m"; sourceTree = "<group>"; };
+		570649831E4C64E100181159 /* NSObject+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Common.h"; sourceTree = "<group>"; };
+		570649841E4C64E100181159 /* NSObject+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Common.m"; sourceTree = "<group>"; };
+		570649861E4C64E100181159 /* Configer.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Configer.pch; sourceTree = "<group>"; };
+		570649871E4C64E100181159 /* Definations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definations.h; sourceTree = "<group>"; };
+		570649891E4C64E100181159 /* BaseNetworkAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNetworkAPI.h; sourceTree = "<group>"; };
+		5706498A1E4C64E100181159 /* BaseNetworkAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNetworkAPI.m; sourceTree = "<group>"; };
+		5706498C1E4C64E100181159 /* HYBNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBNetworking.h; sourceTree = "<group>"; };
+		5706498D1E4C64E100181159 /* HYBNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBNetworking.m; sourceTree = "<group>"; };
+		570649991E4C743400181159 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		5706499A1E4C743400181159 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		5706499B1E4C743400181159 /* REFrostedContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedContainerViewController.h; sourceTree = "<group>"; };
+		5706499C1E4C743400181159 /* REFrostedContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedContainerViewController.m; sourceTree = "<group>"; };
+		5706499D1E4C743400181159 /* REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedViewController.h; sourceTree = "<group>"; };
+		5706499E1E4C743400181159 /* REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedViewController.m; sourceTree = "<group>"; };
+		5706499F1E4C743400181159 /* UIImage+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+REFrostedViewController.h"; sourceTree = "<group>"; };
+		570649A01E4C743400181159 /* UIImage+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+REFrostedViewController.m"; sourceTree = "<group>"; };
+		570649A11E4C743400181159 /* UIView+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+REFrostedViewController.h"; sourceTree = "<group>"; };
+		570649A21E4C743400181159 /* UIView+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+REFrostedViewController.m"; sourceTree = "<group>"; };
+		570649A31E4C743400181159 /* UIViewController+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+REFrostedViewController.h"; sourceTree = "<group>"; };
+		570649A41E4C743400181159 /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
+		570649AB1E4C772D00181159 /* HiThirdPartService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HiThirdPartService.h; path = Data/HiThirdPartService.h; sourceTree = "<group>"; };
+		570649AC1E4C772D00181159 /* HiThirdPartService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HiThirdPartService.m; path = Data/HiThirdPartService.m; sourceTree = "<group>"; };
+		570649AE1E4C776C00181159 /* HiInitData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HiInitData.h; path = Data/HiInitData.h; sourceTree = "<group>"; };
+		570649AF1E4C776C00181159 /* HiInitData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HiInitData.m; path = Data/HiInitData.m; sourceTree = "<group>"; };
+		570649B21E4C789000181159 /* BaseNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseNaviViewController.h; path = AllViewController/BaseNaviViewController.h; sourceTree = "<group>"; };
+		570649B31E4C789000181159 /* BaseNaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseNaviViewController.m; path = AllViewController/BaseNaviViewController.m; sourceTree = "<group>"; };
+		570649B51E4C78A200181159 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = AllViewController/BaseViewController.h; sourceTree = "<group>"; };
+		570649B61E4C78A200181159 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = AllViewController/BaseViewController.m; sourceTree = "<group>"; };
+		570649B81E4C78D100181159 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = HomeController/HomeViewController.h; sourceTree = "<group>"; };
+		570649B91E4C78D100181159 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = HomeController/HomeViewController.m; sourceTree = "<group>"; };
+		570649BC1E4C79A400181159 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LeftMenuViewController.h; path = HomeController/LeftMenuViewController.h; sourceTree = "<group>"; };
+		570649BD1E4C79A400181159 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LeftMenuViewController.m; path = HomeController/LeftMenuViewController.m; sourceTree = "<group>"; };
+		570649BF1E4C7F3300181159 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		570649C11E4C7F3D00181159 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		570649C31E4C7F4700181159 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		570649C51E4C7F5100181159 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		570649C71E4C7F5800181159 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		62E9D7CC928697D1FD787355 /* Pods-MoxiAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoxiAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoxiAPP/Pods-MoxiAPP.debug.xcconfig"; sourceTree = "<group>"; };
+		7541113CE931050E0F1B5619 /* libPods-MoxiAPP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoxiAPP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		570649431E4C605B00181159 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				570649C81E4C7F5800181159 /* UIKit.framework in Frameworks */,
+				570649C61E4C7F5100181159 /* Foundation.framework in Frameworks */,
+				570649C41E4C7F4700181159 /* CoreGraphics.framework in Frameworks */,
+				570649C21E4C7F3D00181159 /* Accelerate.framework in Frameworks */,
+				570649C01E4C7F3300181159 /* QuartzCore.framework in Frameworks */,
+				3549B004BDCC4195F3707782 /* libPods-MoxiAPP.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5706495C1E4C605B00181159 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		570649671E4C605B00181159 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		058DD4AED7F2DF0843C32F89 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				62E9D7CC928697D1FD787355 /* Pods-MoxiAPP.debug.xcconfig */,
+				2BF57FA1683E7F7D9C4F4DF9 /* Pods-MoxiAPP.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5706493D1E4C605B00181159 = {
+			isa = PBXGroup;
+			children = (
+				570649481E4C605B00181159 /* MoxiAPP */,
+				570649621E4C605B00181159 /* MoxiAPPTests */,
+				5706496D1E4C605B00181159 /* MoxiAPPUITests */,
+				570649471E4C605B00181159 /* Products */,
+				058DD4AED7F2DF0843C32F89 /* Pods */,
+				ED94B3D5A6E8F8427EFF52AC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		570649471E4C605B00181159 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				570649461E4C605B00181159 /* MoxiAPP.app */,
+				5706495F1E4C605B00181159 /* MoxiAPPTests.xctest */,
+				5706496A1E4C605B00181159 /* MoxiAPPUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		570649481E4C605B00181159 /* MoxiAPP */ = {
+			isa = PBXGroup;
+			children = (
+				570649B11E4C785100181159 /* BaseViewController */,
+				570649971E4C743400181159 /* Vender */,
+				570649951E4C669700181159 /* Resource */,
+				5706497C1E4C64E100181159 /* Handler */,
+				570649931E4C650500181159 /* Other */,
+				570649491E4C605B00181159 /* Supporting Files */,
+				570649BB1E4C78DC00181159 /* HomeController */,
+			);
+			path = MoxiAPP;
+			sourceTree = "<group>";
+		};
+		570649491E4C605B00181159 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5706494A1E4C605B00181159 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		570649621E4C605B00181159 /* MoxiAPPTests */ = {
+			isa = PBXGroup;
+			children = (
+				570649631E4C605B00181159 /* MoxiAPPTests.m */,
+				570649651E4C605B00181159 /* Info.plist */,
+			);
+			path = MoxiAPPTests;
+			sourceTree = "<group>";
+		};
+		5706496D1E4C605B00181159 /* MoxiAPPUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5706496E1E4C605B00181159 /* MoxiAPPUITests.m */,
+				570649701E4C605B00181159 /* Info.plist */,
+			);
+			path = MoxiAPPUITests;
+			sourceTree = "<group>";
+		};
+		5706497C1E4C64E100181159 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				5706497D1E4C64E100181159 /* Advertisment */,
+				570649821E4C64E100181159 /* Category */,
+				570649851E4C64E100181159 /* Configer */,
+				570649881E4C64E100181159 /* NetWork */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		5706497D1E4C64E100181159 /* Advertisment */ = {
+			isa = PBXGroup;
+			children = (
+				5706497E1E4C64E100181159 /* AdvertisementView.h */,
+				5706497F1E4C64E100181159 /* AdvertisementView.m */,
+				570649801E4C64E100181159 /* NSObject+AdvertisementView.h */,
+				570649811E4C64E100181159 /* NSObject+AdvertisementView.m */,
+			);
+			path = Advertisment;
+			sourceTree = "<group>";
+		};
+		570649821E4C64E100181159 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				570649831E4C64E100181159 /* NSObject+Common.h */,
+				570649841E4C64E100181159 /* NSObject+Common.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		570649851E4C64E100181159 /* Configer */ = {
+			isa = PBXGroup;
+			children = (
+				570649861E4C64E100181159 /* Configer.pch */,
+				570649871E4C64E100181159 /* Definations.h */,
+			);
+			path = Configer;
+			sourceTree = "<group>";
+		};
+		570649881E4C64E100181159 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				570649891E4C64E100181159 /* BaseNetworkAPI.h */,
+				5706498A1E4C64E100181159 /* BaseNetworkAPI.m */,
+				5706498B1E4C64E100181159 /* HYBNetworking */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		5706498B1E4C64E100181159 /* HYBNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				5706498C1E4C64E100181159 /* HYBNetworking.h */,
+				5706498D1E4C64E100181159 /* HYBNetworking.m */,
+			);
+			path = HYBNetworking;
+			sourceTree = "<group>";
+		};
+		570649931E4C650500181159 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				5706494C1E4C605B00181159 /* AppDelegate.h */,
+				5706494D1E4C605B00181159 /* AppDelegate.m */,
+				570649AB1E4C772D00181159 /* HiThirdPartService.h */,
+				570649AC1E4C772D00181159 /* HiThirdPartService.m */,
+				570649AE1E4C776C00181159 /* HiInitData.h */,
+				570649AF1E4C776C00181159 /* HiInitData.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		570649951E4C669700181159 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				570649521E4C605B00181159 /* Main.storyboard */,
+				570649551E4C605B00181159 /* Assets.xcassets */,
+				570649571E4C605B00181159 /* LaunchScreen.storyboard */,
+				5706495A1E4C605B00181159 /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		570649971E4C743400181159 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				570649981E4C743400181159 /* REFrostedViewController */,
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		570649981E4C743400181159 /* REFrostedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				570649991E4C743400181159 /* RECommonFunctions.h */,
+				5706499A1E4C743400181159 /* RECommonFunctions.m */,
+				5706499B1E4C743400181159 /* REFrostedContainerViewController.h */,
+				5706499C1E4C743400181159 /* REFrostedContainerViewController.m */,
+				5706499D1E4C743400181159 /* REFrostedViewController.h */,
+				5706499E1E4C743400181159 /* REFrostedViewController.m */,
+				5706499F1E4C743400181159 /* UIImage+REFrostedViewController.h */,
+				570649A01E4C743400181159 /* UIImage+REFrostedViewController.m */,
+				570649A11E4C743400181159 /* UIView+REFrostedViewController.h */,
+				570649A21E4C743400181159 /* UIView+REFrostedViewController.m */,
+				570649A31E4C743400181159 /* UIViewController+REFrostedViewController.h */,
+				570649A41E4C743400181159 /* UIViewController+REFrostedViewController.m */,
+			);
+			path = REFrostedViewController;
+			sourceTree = "<group>";
+		};
+		570649B11E4C785100181159 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				570649B21E4C789000181159 /* BaseNaviViewController.h */,
+				570649B31E4C789000181159 /* BaseNaviViewController.m */,
+				570649B51E4C78A200181159 /* BaseViewController.h */,
+				570649B61E4C78A200181159 /* BaseViewController.m */,
+			);
+			name = BaseViewController;
+			sourceTree = "<group>";
+		};
+		570649BB1E4C78DC00181159 /* HomeController */ = {
+			isa = PBXGroup;
+			children = (
+				570649B81E4C78D100181159 /* HomeViewController.h */,
+				570649B91E4C78D100181159 /* HomeViewController.m */,
+				570649BC1E4C79A400181159 /* LeftMenuViewController.h */,
+				570649BD1E4C79A400181159 /* LeftMenuViewController.m */,
+			);
+			name = HomeController;
+			sourceTree = "<group>";
+		};
+		ED94B3D5A6E8F8427EFF52AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				570649C71E4C7F5800181159 /* UIKit.framework */,
+				570649C51E4C7F5100181159 /* Foundation.framework */,
+				570649C31E4C7F4700181159 /* CoreGraphics.framework */,
+				570649C11E4C7F3D00181159 /* Accelerate.framework */,
+				570649BF1E4C7F3300181159 /* QuartzCore.framework */,
+				7541113CE931050E0F1B5619 /* libPods-MoxiAPP.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		570649451E4C605B00181159 /* MoxiAPP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 570649731E4C605B00181159 /* Build configuration list for PBXNativeTarget "MoxiAPP" */;
+			buildPhases = (
+				33B1626CD9CD52523592EF00 /* [CP] Check Pods Manifest.lock */,
+				570649421E4C605B00181159 /* Sources */,
+				570649431E4C605B00181159 /* Frameworks */,
+				570649441E4C605B00181159 /* Resources */,
+				3BA4F03FAAA2A7692A191923 /* [CP] Embed Pods Frameworks */,
+				D2B555B9BB9083B2D7E0DB6C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoxiAPP;
+			productName = MoxiAPP;
+			productReference = 570649461E4C605B00181159 /* MoxiAPP.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5706495E1E4C605B00181159 /* MoxiAPPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 570649761E4C605B00181159 /* Build configuration list for PBXNativeTarget "MoxiAPPTests" */;
+			buildPhases = (
+				5706495B1E4C605B00181159 /* Sources */,
+				5706495C1E4C605B00181159 /* Frameworks */,
+				5706495D1E4C605B00181159 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				570649611E4C605B00181159 /* PBXTargetDependency */,
+			);
+			name = MoxiAPPTests;
+			productName = MoxiAPPTests;
+			productReference = 5706495F1E4C605B00181159 /* MoxiAPPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		570649691E4C605B00181159 /* MoxiAPPUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 570649791E4C605B00181159 /* Build configuration list for PBXNativeTarget "MoxiAPPUITests" */;
+			buildPhases = (
+				570649661E4C605B00181159 /* Sources */,
+				570649671E4C605B00181159 /* Frameworks */,
+				570649681E4C605B00181159 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5706496C1E4C605B00181159 /* PBXTargetDependency */,
+			);
+			name = MoxiAPPUITests;
+			productName = MoxiAPPUITests;
+			productReference = 5706496A1E4C605B00181159 /* MoxiAPPUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5706493E1E4C605B00181159 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = HaviLee;
+				TargetAttributes = {
+					570649451E4C605B00181159 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = CF99UB3L46;
+						ProvisioningStyle = Automatic;
+					};
+					5706495E1E4C605B00181159 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 570649451E4C605B00181159;
+					};
+					570649691E4C605B00181159 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 570649451E4C605B00181159;
+					};
+				};
+			};
+			buildConfigurationList = 570649411E4C605B00181159 /* Build configuration list for PBXProject "MoxiAPP" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5706493D1E4C605B00181159;
+			productRefGroup = 570649471E4C605B00181159 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				570649451E4C605B00181159 /* MoxiAPP */,
+				5706495E1E4C605B00181159 /* MoxiAPPTests */,
+				570649691E4C605B00181159 /* MoxiAPPUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		570649441E4C605B00181159 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				570649591E4C605B00181159 /* LaunchScreen.storyboard in Resources */,
+				570649561E4C605B00181159 /* Assets.xcassets in Resources */,
+				570649541E4C605B00181159 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5706495D1E4C605B00181159 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		570649681E4C605B00181159 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		33B1626CD9CD52523592EF00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		3BA4F03FAAA2A7692A191923 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoxiAPP/Pods-MoxiAPP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2B555B9BB9083B2D7E0DB6C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoxiAPP/Pods-MoxiAPP-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		570649421E4C605B00181159 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5706498E1E4C64E100181159 /* AdvertisementView.m in Sources */,
+				570649AD1E4C772D00181159 /* HiThirdPartService.m in Sources */,
+				570649A51E4C743400181159 /* RECommonFunctions.m in Sources */,
+				5706494E1E4C605B00181159 /* AppDelegate.m in Sources */,
+				5706498F1E4C64E100181159 /* NSObject+AdvertisementView.m in Sources */,
+				570649BA1E4C78D100181159 /* HomeViewController.m in Sources */,
+				570649A91E4C743400181159 /* UIView+REFrostedViewController.m in Sources */,
+				570649A71E4C743400181159 /* REFrostedViewController.m in Sources */,
+				570649B71E4C78A200181159 /* BaseViewController.m in Sources */,
+				570649A61E4C743400181159 /* REFrostedContainerViewController.m in Sources */,
+				570649A81E4C743400181159 /* UIImage+REFrostedViewController.m in Sources */,
+				570649901E4C64E100181159 /* NSObject+Common.m in Sources */,
+				570649921E4C64E100181159 /* HYBNetworking.m in Sources */,
+				570649B41E4C789000181159 /* BaseNaviViewController.m in Sources */,
+				5706494B1E4C605B00181159 /* main.m in Sources */,
+				570649B01E4C776C00181159 /* HiInitData.m in Sources */,
+				570649AA1E4C743400181159 /* UIViewController+REFrostedViewController.m in Sources */,
+				570649911E4C64E100181159 /* BaseNetworkAPI.m in Sources */,
+				570649BE1E4C79A400181159 /* LeftMenuViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5706495B1E4C605B00181159 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				570649641E4C605B00181159 /* MoxiAPPTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		570649661E4C605B00181159 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5706496F1E4C605B00181159 /* MoxiAPPUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		570649611E4C605B00181159 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 570649451E4C605B00181159 /* MoxiAPP */;
+			targetProxy = 570649601E4C605B00181159 /* PBXContainerItemProxy */;
+		};
+		5706496C1E4C605B00181159 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 570649451E4C605B00181159 /* MoxiAPP */;
+			targetProxy = 5706496B1E4C605B00181159 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		570649521E4C605B00181159 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				570649531E4C605B00181159 /* Base */,
+			);
+			name = Main.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		570649571E4C605B00181159 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				570649581E4C605B00181159 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		570649711E4C605B00181159 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		570649721E4C605B00181159 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		570649741E4C605B00181159 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62E9D7CC928697D1FD787355 /* Pods-MoxiAPP.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CF99UB3L46;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MoxiAPP/Handler/Configer/Configer.pch";
+				INFOPLIST_FILE = MoxiAPP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ihotkeys.ihotkeys;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		570649751E4C605B00181159 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BF57FA1683E7F7D9C4F4DF9 /* Pods-MoxiAPP.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CF99UB3L46;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MoxiAPP/Handler/Configer/Configer.pch";
+				INFOPLIST_FILE = MoxiAPP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ihotkeys.ihotkeys;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		570649771E4C605B00181159 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MoxiAPPTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = havi.MoxiAPPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoxiAPP.app/MoxiAPP";
+			};
+			name = Debug;
+		};
+		570649781E4C605B00181159 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = MoxiAPPTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = havi.MoxiAPPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoxiAPP.app/MoxiAPP";
+			};
+			name = Release;
+		};
+		5706497A1E4C605B00181159 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MoxiAPPUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = havi.MoxiAPPUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MoxiAPP;
+			};
+			name = Debug;
+		};
+		5706497B1E4C605B00181159 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = MoxiAPPUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = havi.MoxiAPPUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = MoxiAPP;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		570649411E4C605B00181159 /* Build configuration list for PBXProject "MoxiAPP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				570649711E4C605B00181159 /* Debug */,
+				570649721E4C605B00181159 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		570649731E4C605B00181159 /* Build configuration list for PBXNativeTarget "MoxiAPP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				570649741E4C605B00181159 /* Debug */,
+				570649751E4C605B00181159 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		570649761E4C605B00181159 /* Build configuration list for PBXNativeTarget "MoxiAPPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				570649771E4C605B00181159 /* Debug */,
+				570649781E4C605B00181159 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		570649791E4C605B00181159 /* Build configuration list for PBXNativeTarget "MoxiAPPUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5706497A1E4C605B00181159 /* Debug */,
+				5706497B1E4C605B00181159 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5706493E1E4C605B00181159 /* Project object */;
+}
