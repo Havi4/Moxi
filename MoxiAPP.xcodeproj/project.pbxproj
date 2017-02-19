@@ -37,6 +37,9 @@
 		570649C41E4C7F4700181159 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570649C31E4C7F4700181159 /* CoreGraphics.framework */; };
 		570649C61E4C7F5100181159 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570649C51E4C7F5100181159 /* Foundation.framework */; };
 		570649C81E4C7F5800181159 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570649C71E4C7F5800181159 /* UIKit.framework */; };
+		570649CB1E57DC0200181159 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649CA1E57DC0200181159 /* LoginViewController.m */; };
+		570649CF1E57EB4400181159 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649CE1E57EB4400181159 /* UIImage+Tint.m */; };
+		570649DA1E583EBC00181159 /* JDDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649D91E583EBC00181159 /* JDDropView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,13 @@
 		570649C31E4C7F4700181159 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		570649C51E4C7F5100181159 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		570649C71E4C7F5800181159 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		570649C91E57DC0200181159 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = AllViewController/LoginViewController.h; sourceTree = "<group>"; };
+		570649CA1E57DC0200181159 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = AllViewController/LoginViewController.m; sourceTree = "<group>"; };
+		570649CD1E57EB4400181159 /* UIImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Tint.h"; sourceTree = "<group>"; };
+		570649CE1E57EB4400181159 /* UIImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Tint.m"; sourceTree = "<group>"; };
+		570649D71E583EBC00181159 /* commonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commonDefine.h; sourceTree = "<group>"; };
+		570649D81E583EBC00181159 /* JDDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDDropView.h; sourceTree = "<group>"; };
+		570649D91E583EBC00181159 /* JDDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDDropView.m; sourceTree = "<group>"; };
 		62E9D7CC928697D1FD787355 /* Pods-MoxiAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoxiAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoxiAPP/Pods-MoxiAPP.debug.xcconfig"; sourceTree = "<group>"; };
 		7541113CE931050E0F1B5619 /* libPods-MoxiAPP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoxiAPP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -188,6 +198,7 @@
 				5706497C1E4C64E100181159 /* Handler */,
 				570649931E4C650500181159 /* Other */,
 				570649491E4C605B00181159 /* Supporting Files */,
+				570649CC1E57DC1B00181159 /* Login */,
 				570649BB1E4C78DC00181159 /* HomeController */,
 			);
 			path = MoxiAPP;
@@ -246,6 +257,8 @@
 			children = (
 				570649831E4C64E100181159 /* NSObject+Common.h */,
 				570649841E4C64E100181159 /* NSObject+Common.m */,
+				570649CD1E57EB4400181159 /* UIImage+Tint.h */,
+				570649CE1E57EB4400181159 /* UIImage+Tint.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -305,6 +318,7 @@
 		570649971E4C743400181159 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				570649D01E583A9900181159 /* DropdownMenu */,
 				570649981E4C743400181159 /* REFrostedViewController */,
 			);
 			path = Vender;
@@ -349,6 +363,25 @@
 				570649BD1E4C79A400181159 /* LeftMenuViewController.m */,
 			);
 			name = HomeController;
+			sourceTree = "<group>";
+		};
+		570649CC1E57DC1B00181159 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				570649C91E57DC0200181159 /* LoginViewController.h */,
+				570649CA1E57DC0200181159 /* LoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		570649D01E583A9900181159 /* DropdownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				570649D71E583EBC00181159 /* commonDefine.h */,
+				570649D81E583EBC00181159 /* JDDropView.h */,
+				570649D91E583EBC00181159 /* JDDropView.m */,
+			);
+			path = DropdownMenu;
 			sourceTree = "<group>";
 		};
 		ED94B3D5A6E8F8427EFF52AC /* Frameworks */ = {
@@ -553,16 +586,19 @@
 				570649AD1E4C772D00181159 /* HiThirdPartService.m in Sources */,
 				570649A51E4C743400181159 /* RECommonFunctions.m in Sources */,
 				5706494E1E4C605B00181159 /* AppDelegate.m in Sources */,
+				570649CB1E57DC0200181159 /* LoginViewController.m in Sources */,
 				5706498F1E4C64E100181159 /* NSObject+AdvertisementView.m in Sources */,
 				570649BA1E4C78D100181159 /* HomeViewController.m in Sources */,
 				570649A91E4C743400181159 /* UIView+REFrostedViewController.m in Sources */,
 				570649A71E4C743400181159 /* REFrostedViewController.m in Sources */,
 				570649B71E4C78A200181159 /* BaseViewController.m in Sources */,
 				570649A61E4C743400181159 /* REFrostedContainerViewController.m in Sources */,
+				570649DA1E583EBC00181159 /* JDDropView.m in Sources */,
 				570649A81E4C743400181159 /* UIImage+REFrostedViewController.m in Sources */,
 				570649901E4C64E100181159 /* NSObject+Common.m in Sources */,
 				570649921E4C64E100181159 /* HYBNetworking.m in Sources */,
 				570649B41E4C789000181159 /* BaseNaviViewController.m in Sources */,
+				570649CF1E57EB4400181159 /* UIImage+Tint.m in Sources */,
 				5706494B1E4C605B00181159 /* main.m in Sources */,
 				570649B01E4C776C00181159 /* HiInitData.m in Sources */,
 				570649AA1E4C743400181159 /* UIViewController+REFrostedViewController.m in Sources */,
@@ -720,6 +756,7 @@
 				DEVELOPMENT_TEAM = CF99UB3L46;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoxiAPP/Handler/Configer/Configer.pch";
 				INFOPLIST_FILE = MoxiAPP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihotkeys.ihotkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -734,6 +771,7 @@
 				DEVELOPMENT_TEAM = CF99UB3L46;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoxiAPP/Handler/Configer/Configer.pch";
 				INFOPLIST_FILE = MoxiAPP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihotkeys.ihotkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -16,5 +16,7 @@
 #import "NSObject+Common.h"
 #import "UIViewController+REFrostedViewController.h"
 #import "BaseNaviViewController.h"
+#import <Masonry/Masonry.h>
+#import "UIImage+Tint.h"
 
 #endif /* Configer_pch */

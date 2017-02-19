@@ -51,10 +51,11 @@
 #define kHomeOrderBarColor       [UIColor colorWithRed:0.945 green:0.784 blue:0.478 alpha:1.00]
 #define kCarOrderBarColor        [UIColor colorWithRed:0.475 green:0.659 blue:0.565 alpha:1.00]
 #define kFocusTextColor          [UIColor colorWithRed:0.890 green:0.502 blue:0.400 alpha:1.00]
-#define kLightTextColor          [UIColor colorWithRed:0.957 green:0.906 blue:0.729 alpha:1.00]
+#define kBarLightTextColor       [UIColor colorWithRed:0.957 green:0.906 blue:0.729 alpha:1.00]
+#define kSepetorColor            [UIColor colorWithRed:0.953 green:0.953 blue:0.953 alpha:1.00]
 
 #define kTextNormalWordFont [UIFont systemFontOfSize:17]
-#define kTextTitleWordFont [UIFont systemFontOfSize:19]
+#define kTextTitleWordFont [UIFont systemFontOfSize:17]
 
 #define kButtonViewWidth [UIScreen mainScreen].bounds.size.width - 40
 #define kScreen_Bounds [UIScreen mainScreen].bounds

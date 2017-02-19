@@ -12,6 +12,7 @@
 #import "BaseNaviViewController.h"
 #import "HomeViewController.h"
 #import "LeftMenuViewController.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,6 +27,19 @@
 
         // Create content and menu controllers
         //
+    LoginViewController *login = [[LoginViewController alloc]init];
+    login.loginDone = ^(NSDictionary *userdata){
+        [self setRootViewController];
+    };
+    self.window.rootViewController = login;
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    return YES;
+}
+
+- (void)setRootViewController
+{
     BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
     LeftMenuViewController *menuController = [[LeftMenuViewController alloc] init];
 
@@ -39,12 +53,7 @@
         // Make it a root controller
         //
     self.window.rootViewController = frostedViewController;
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    
-    return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
