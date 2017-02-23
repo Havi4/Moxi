@@ -33,6 +33,7 @@
     };
     self.window.rootViewController = login;
     self.window.backgroundColor = [UIColor whiteColor];
+    [self setUpNavigationBarAppearance];
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -53,6 +54,37 @@
         // Make it a root controller
         //
     self.window.rootViewController = frostedViewController;
+}
+
+/**
+ *  设置navigationBar样式
+ */
+- (void)setUpNavigationBarAppearance {
+    UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
+
+    UIImage *backgroundImage = nil;
+    NSDictionary *textAttributes = nil;
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
+        backgroundImage = [UIImage imageNamed:@"background_image"];
+
+        textAttributes = @{
+                           NSFontAttributeName : [UIFont systemFontOfSize:17],
+                           NSForegroundColorAttributeName : kBarLightTextColor,
+                           };
+    } else {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
+        backgroundImage = [UIImage imageNamed:@"navigationbar_background"];
+        textAttributes = @{
+                           UITextAttributeFont : [UIFont boldSystemFontOfSize:18],
+                           UITextAttributeTextColor : [UIColor blackColor],
+                           UITextAttributeTextShadowColor : [UIColor clearColor],
+                           UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetZero],
+                           };
+#endif
+    }
+    [navigationBarAppearance setBackgroundImage:backgroundImage
+                                  forBarMetrics:UIBarMetricsDefault];
+    [navigationBarAppearance setTitleTextAttributes:textAttributes];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

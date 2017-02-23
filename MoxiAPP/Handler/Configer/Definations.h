@@ -53,6 +53,7 @@
 #define kFocusTextColor          [UIColor colorWithRed:0.890 green:0.502 blue:0.400 alpha:1.00]
 #define kBarLightTextColor       [UIColor colorWithRed:0.957 green:0.906 blue:0.729 alpha:1.00]
 #define kSepetorColor            [UIColor colorWithRed:0.953 green:0.953 blue:0.953 alpha:1.00]
+#define kBackgroundViewColor     [UIColor colorWithRed:0.976 green:0.976 blue:0.976 alpha:1.00]
 
 #define kTextNormalWordFont [UIFont systemFontOfSize:17]
 #define kTextTitleWordFont [UIFont systemFontOfSize:17]

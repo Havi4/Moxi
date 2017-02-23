@@ -9,6 +9,10 @@
 #import "LeftMenuViewController.h"
 #import "HomeViewController.h"
 #import "BaseNaviViewController.h"
+#import "CheckOrderViewController.h"
+#import "ChangeWXViewController.h"
+#import "ContactViewController.h"
+#import "AboutViewController.h"
 #import "UIViewController+REFrostedViewController.h"
 
 @interface LeftMenuViewController ()
@@ -21,35 +25,58 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
+    self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width-100, self.view.frame.size.height-49);
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.opaque = NO;
-    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = kBackgroundViewColor;
+    self.tableView.separatorColor = kFocusTextColor;
+    self.tableView.scrollEnabled = NO;
     self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 184.0f)];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 215.0f)];
+        view.image = [UIImage imageNamed:@"left_icon_back"];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 15, 60, 60)];
+        [view addSubview:imageView];
+
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(view.mas_centerY);
+            make.left.equalTo(@15);
+            make.height.equalTo(@60);
+            make.width.equalTo(@60);
+        }];
         imageView.image = [UIImage imageNamed:@"avatar.jpg"];
         imageView.layer.masksToBounds = YES;
-        imageView.layer.cornerRadius = 50.0;
+        imageView.layer.cornerRadius = 30.0;
         imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        imageView.layer.borderWidth = 3.0f;
+        imageView.layer.borderWidth = 1.0f;
         imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
         imageView.layer.shouldRasterize = YES;
         imageView.clipsToBounds = YES;
 
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
         label.text = @"Roman Efimov";
-        label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
+        label.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
         label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
+        label.textColor = [UIColor whiteColor];
         [label sizeToFit];
-        label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-
-        [view addSubview:imageView];
         [view addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(imageView.mas_right).offset(5);
+            make.centerY.equalTo(view.mas_centerY);
+        }];
         view;
     });
+    UIButton *logoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    logoutButton.frame = CGRectMake((self.view.frame.size.width-100-150)/2+30, self.view.frame.size.height, 150, 49);
+    [self.view addSubview:logoutButton];
+    [logoutButton setImage:[UIImage imageNamed:@"login_out"] forState:UIControlStateNormal];
+    logoutButton.titleLabel.font = [UIFont systemFontOfSize:16];
+//    [logoutButton setImageEdgeInsets:UIEdgeInsetsMake(0, 20, 0, logoutButton.titleLabel.intrinsicContentSize.width)];
+//
+//    [logoutButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -logoutButton.currentImage.size.width, 0, -50)];
+    [logoutButton setTitle:@"解绑微信并退出" forState:UIControlStateNormal];
+    [logoutButton setTitleColor:kFocusTextColor forState:UIControlStateNormal];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 #pragma mark -
@@ -58,8 +85,8 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+    cell.textLabel.textColor = kFocusTextColor;
+    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:16];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
@@ -68,7 +95,7 @@
         return nil;
 
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 34)];
-    view.backgroundColor = [UIColor colorWithRed:167/255.0f green:167/255.0f blue:167/255.0f alpha:0.6f];
+    view.backgroundColor = kBackgroundViewColor;
 
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 0, 0)];
     label.text = @"Friends Online";
@@ -92,12 +119,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 0 && indexPath.row == 0) {
+    if (indexPath.row == 0) {
         HomeViewController *homeViewController = [[HomeViewController alloc] init];
         BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:homeViewController];
         self.frostedViewController.contentViewController = navigationController;
-    } else {
-        HomeViewController *secondViewController = [[HomeViewController alloc] init];
+    } else if(indexPath.row == 1) {
+        CheckOrderViewController *secondViewController = [[CheckOrderViewController alloc] init];
+        BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:secondViewController];
+        self.frostedViewController.contentViewController = navigationController;
+    }else if(indexPath.row == 2) {
+        ChangeWXViewController *secondViewController = [[ChangeWXViewController alloc] init];
+        BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:secondViewController];
+        self.frostedViewController.contentViewController = navigationController;
+    }else if(indexPath.row == 3) {
+        ContactViewController *secondViewController = [[ContactViewController alloc] init];
+        BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:secondViewController];
+        self.frostedViewController.contentViewController = navigationController;
+    }else if(indexPath.row == 4) {
+        AboutViewController *secondViewController = [[AboutViewController alloc] init];
         BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:secondViewController];
         self.frostedViewController.contentViewController = navigationController;
     }
@@ -115,12 +154,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -133,14 +172,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    if (indexPath.section == 0) {
-        NSArray *titles = @[@"Home", @"Profile", @"Chats"];
-        cell.textLabel.text = titles[indexPath.row];
-    } else {
-        NSArray *titles = @[@"John Appleseed", @"John Doe", @"Test User"];
-        cell.textLabel.text = titles[indexPath.row];
+    NSArray *titles = @[@"首页",@"查看我的发布", @"修改联系微信", @"联系客服",@"关于MOXI"];
+    cell.textLabel.text = titles[indexPath.row];
+    cell.textLabel.textColor = kBarLightTextColor;
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsMake(0, 10, 0, self.view.frame.size.width-50)];
     }
-
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
     return cell;
 }
 

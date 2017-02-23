@@ -40,6 +40,10 @@
 		570649CB1E57DC0200181159 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649CA1E57DC0200181159 /* LoginViewController.m */; };
 		570649CF1E57EB4400181159 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649CE1E57EB4400181159 /* UIImage+Tint.m */; };
 		570649DA1E583EBC00181159 /* JDDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649D91E583EBC00181159 /* JDDropView.m */; };
+		577A85EF1E5EEA2A00834E61 /* CheckOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85EE1E5EEA2A00834E61 /* CheckOrderViewController.m */; };
+		577A85F21E5EEA4D00834E61 /* ChangeWXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85F11E5EEA4D00834E61 /* ChangeWXViewController.m */; };
+		577A85F51E5EEA7B00834E61 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85F41E5EEA7B00834E61 /* ContactViewController.m */; };
+		577A85F81E5EEA8C00834E61 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85F71E5EEA8C00834E61 /* AboutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +127,14 @@
 		570649D71E583EBC00181159 /* commonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commonDefine.h; sourceTree = "<group>"; };
 		570649D81E583EBC00181159 /* JDDropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDDropView.h; sourceTree = "<group>"; };
 		570649D91E583EBC00181159 /* JDDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDDropView.m; sourceTree = "<group>"; };
+		577A85ED1E5EEA2A00834E61 /* CheckOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckOrderViewController.h; path = AllViewController/CheckOrderViewController.h; sourceTree = "<group>"; };
+		577A85EE1E5EEA2A00834E61 /* CheckOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckOrderViewController.m; path = AllViewController/CheckOrderViewController.m; sourceTree = "<group>"; };
+		577A85F01E5EEA4D00834E61 /* ChangeWXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangeWXViewController.h; path = AllViewController/ChangeWXViewController.h; sourceTree = "<group>"; };
+		577A85F11E5EEA4D00834E61 /* ChangeWXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChangeWXViewController.m; path = AllViewController/ChangeWXViewController.m; sourceTree = "<group>"; };
+		577A85F31E5EEA7B00834E61 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ContactViewController.h; path = AllViewController/ContactViewController.h; sourceTree = "<group>"; };
+		577A85F41E5EEA7B00834E61 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ContactViewController.m; path = AllViewController/ContactViewController.m; sourceTree = "<group>"; };
+		577A85F61E5EEA8C00834E61 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = AllViewController/AboutViewController.h; sourceTree = "<group>"; };
+		577A85F71E5EEA8C00834E61 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = AllViewController/AboutViewController.m; sourceTree = "<group>"; };
 		62E9D7CC928697D1FD787355 /* Pods-MoxiAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoxiAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoxiAPP/Pods-MoxiAPP.debug.xcconfig"; sourceTree = "<group>"; };
 		7541113CE931050E0F1B5619 /* libPods-MoxiAPP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoxiAPP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -200,6 +212,10 @@
 				570649491E4C605B00181159 /* Supporting Files */,
 				570649CC1E57DC1B00181159 /* Login */,
 				570649BB1E4C78DC00181159 /* HomeController */,
+				577A85EC1E5EE97300834E61 /* CheckMyOrder */,
+				577A85FB1E5EEACF00834E61 /* ChangeWX */,
+				577A85FA1E5EEAC200834E61 /* Contact */,
+				577A85F91E5EEAB400834E61 /* About */,
 			);
 			path = MoxiAPP;
 			sourceTree = "<group>";
@@ -382,6 +398,42 @@
 				570649D91E583EBC00181159 /* JDDropView.m */,
 			);
 			path = DropdownMenu;
+			sourceTree = "<group>";
+		};
+		577A85EC1E5EE97300834E61 /* CheckMyOrder */ = {
+			isa = PBXGroup;
+			children = (
+				577A85ED1E5EEA2A00834E61 /* CheckOrderViewController.h */,
+				577A85EE1E5EEA2A00834E61 /* CheckOrderViewController.m */,
+			);
+			name = CheckMyOrder;
+			sourceTree = "<group>";
+		};
+		577A85F91E5EEAB400834E61 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				577A85F61E5EEA8C00834E61 /* AboutViewController.h */,
+				577A85F71E5EEA8C00834E61 /* AboutViewController.m */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		577A85FA1E5EEAC200834E61 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				577A85F31E5EEA7B00834E61 /* ContactViewController.h */,
+				577A85F41E5EEA7B00834E61 /* ContactViewController.m */,
+			);
+			name = Contact;
+			sourceTree = "<group>";
+		};
+		577A85FB1E5EEACF00834E61 /* ChangeWX */ = {
+			isa = PBXGroup;
+			children = (
+				577A85F01E5EEA4D00834E61 /* ChangeWXViewController.h */,
+				577A85F11E5EEA4D00834E61 /* ChangeWXViewController.m */,
+			);
+			name = ChangeWX;
 			sourceTree = "<group>";
 		};
 		ED94B3D5A6E8F8427EFF52AC /* Frameworks */ = {
@@ -594,6 +646,7 @@
 				570649B71E4C78A200181159 /* BaseViewController.m in Sources */,
 				570649A61E4C743400181159 /* REFrostedContainerViewController.m in Sources */,
 				570649DA1E583EBC00181159 /* JDDropView.m in Sources */,
+				577A85EF1E5EEA2A00834E61 /* CheckOrderViewController.m in Sources */,
 				570649A81E4C743400181159 /* UIImage+REFrostedViewController.m in Sources */,
 				570649901E4C64E100181159 /* NSObject+Common.m in Sources */,
 				570649921E4C64E100181159 /* HYBNetworking.m in Sources */,
@@ -601,9 +654,12 @@
 				570649CF1E57EB4400181159 /* UIImage+Tint.m in Sources */,
 				5706494B1E4C605B00181159 /* main.m in Sources */,
 				570649B01E4C776C00181159 /* HiInitData.m in Sources */,
+				577A85F51E5EEA7B00834E61 /* ContactViewController.m in Sources */,
 				570649AA1E4C743400181159 /* UIViewController+REFrostedViewController.m in Sources */,
 				570649911E4C64E100181159 /* BaseNetworkAPI.m in Sources */,
 				570649BE1E4C79A400181159 /* LeftMenuViewController.m in Sources */,
+				577A85F81E5EEA8C00834E61 /* AboutViewController.m in Sources */,
+				577A85F21E5EEA4D00834E61 /* ChangeWXViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
