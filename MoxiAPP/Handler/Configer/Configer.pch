@@ -19,5 +19,6 @@
 #import <Masonry/Masonry.h>
 #import "UIImage+Tint.h"
 #import "NirKxMenu.h"
+#import "CYLTabBarControllerConfig.h"
 
 #endif /* Configer_pch */

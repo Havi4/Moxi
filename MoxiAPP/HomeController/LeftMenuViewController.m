@@ -14,6 +14,7 @@
 #import "ContactViewController.h"
 #import "AboutViewController.h"
 #import "UIViewController+REFrostedViewController.h"
+#import "AppDelegate.h"
 
 @interface LeftMenuViewController ()
 
@@ -120,22 +121,17 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
-        HomeViewController *homeViewController = [[HomeViewController alloc] init];
-        BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:homeViewController];
-        self.frostedViewController.contentViewController = navigationController;
+        AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        self.frostedViewController.contentViewController = app.tabBarControllerConfig.tabBarController;
     } else if(indexPath.row == 1) {
-        CheckOrderViewController *secondViewController = [[CheckOrderViewController alloc] init];
-        BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:secondViewController];
-        self.frostedViewController.contentViewController = navigationController;
-    }else if(indexPath.row == 2) {
         ChangeWXViewController *secondViewController = [[ChangeWXViewController alloc] init];
         BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:secondViewController];
         self.frostedViewController.contentViewController = navigationController;
-    }else if(indexPath.row == 3) {
+    }else if(indexPath.row == 2) {
         ContactViewController *secondViewController = [[ContactViewController alloc] init];
         BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:secondViewController];
         self.frostedViewController.contentViewController = navigationController;
-    }else if(indexPath.row == 4) {
+    }else if(indexPath.row == 3) {
         AboutViewController *secondViewController = [[AboutViewController alloc] init];
         BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:secondViewController];
         self.frostedViewController.contentViewController = navigationController;
@@ -172,7 +168,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    NSArray *titles = @[@"首页",@"查看我的发布", @"修改联系微信", @"联系客服",@"关于MOXI"];
+    NSArray *titles = @[@"首页", @"修改联系微信", @"联系客服",@"关于MOXI"];
     cell.textLabel.text = titles[indexPath.row];
     cell.textLabel.textColor = kBarLightTextColor;
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {

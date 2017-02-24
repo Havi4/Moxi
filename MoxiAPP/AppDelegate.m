@@ -41,12 +41,12 @@
 
 - (void)setRootViewController
 {
-    BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
     LeftMenuViewController *menuController = [[LeftMenuViewController alloc] init];
 
         // Create frosted view controller
         //
-    REFrostedViewController *frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:navigationController menuViewController:menuController];
+    self.tabBarControllerConfig = [[CYLTabBarControllerConfig alloc] init];
+    REFrostedViewController *frostedViewController = [[REFrostedViewController alloc] initWithContentViewController:_tabBarControllerConfig.tabBarController menuViewController:menuController];
     frostedViewController.direction = REFrostedViewControllerDirectionLeft;
     frostedViewController.liveBlurBackgroundStyle = REFrostedViewControllerLiveBackgroundStyleLight;
     frostedViewController.delegate = self;

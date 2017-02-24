@@ -12,7 +12,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate,REFrostedViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) CYLTabBarControllerConfig *tabBarControllerConfig;
 
 @end
 
