@@ -17,11 +17,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-     self.view.backgroundColor = [UIColor blueColor];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"bar_user_icon"] imageByTintColor:kBarLightTextColor]
+     self.view.backgroundColor = [UIColor purpleColor];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"back_navi_icon"] imageByTintColor:kBarLightTextColor]
                                                                              style:UIBarButtonItemStylePlain
-                                                                            target:(BaseNaviViewController *)self.navigationController
+                                                                            target:self
                                                                             action:@selector(showMenu)];
+    self.navigationItem.title = @"修改联系微信";
+    [self.navigationController.navigationBar setTitleTextAttributes:
+        @{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:17],NSForegroundColorAttributeName:kBarLightTextColor}];
+}
+
+- (void)showMenu
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

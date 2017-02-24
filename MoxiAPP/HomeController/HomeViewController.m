@@ -56,7 +56,7 @@
     [_locationChange setTitle:@"大板" forState:UIControlStateNormal];
     [_locationChange setTitleColor:kBarLightTextColor forState:UIControlStateNormal];
     [_locationChange setTarget:self action:@selector(showAllLoaction) forControlEvents:UIControlEventTouchUpInside];
-    _locationChange.titleLabel.font = [UIFont systemFontOfSize:17];
+    _locationChange.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
     [_locationChange setImageEdgeInsets:UIEdgeInsetsMake(0, 5, 0, _locationChange.titleLabel.intrinsicContentSize.width)];
     [_locationChange setTitleEdgeInsets:UIEdgeInsetsMake(0, -_locationChange.currentImage.size.width, 0, -25)];
     self.navigationItem.titleView = _locationChange;

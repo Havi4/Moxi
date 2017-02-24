@@ -16,7 +16,6 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     [[UINavigationBar appearance] setBarTintColor:kNaviBarBackColor];
     [[UINavigationBar appearance] setTintColor:kBarLightTextColor];
-//    setBackgroundImage:[UIImageimageNamed:@"navigationImage.png"]forBarMetrics:UIBarMetricsDefault]
 }
 
 @end

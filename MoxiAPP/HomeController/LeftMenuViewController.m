@@ -120,6 +120,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    /*
     if (indexPath.row == 0) {
         AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
         self.frostedViewController.contentViewController = app.tabBarControllerConfig.tabBarController;
@@ -136,8 +137,22 @@
         BaseNaviViewController *navigationController = [[BaseNaviViewController alloc] initWithRootViewController:secondViewController];
         self.frostedViewController.contentViewController = navigationController;
     }
-
+     */
+     UIViewController *con = nil;
+    if(indexPath.row == 0) {
+        ChangeWXViewController *secondViewController = [[ChangeWXViewController alloc] init];
+        con = secondViewController;
+    }else if(indexPath.row == 1) {
+        ContactViewController *secondViewController = [[ContactViewController alloc] init];
+        con = secondViewController;
+    }else if(indexPath.row == 2) {
+        AboutViewController *secondViewController = [[AboutViewController alloc] init];
+        con = secondViewController;
+    }
     [self.frostedViewController hideMenuViewController];
+    UITabBarController *tab = (UITabBarController *)self.frostedViewController.contentViewController;
+    UINavigationController *navi = (UINavigationController *)tab.selectedViewController;
+    [navi pushViewController:con animated:YES];
 }
 
 #pragma mark -
@@ -155,7 +170,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 4;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -168,7 +183,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    NSArray *titles = @[@"首页", @"修改联系微信", @"联系客服",@"关于MOXI"];
+    NSArray *titles = @[@"修改联系微信", @"联系客服",@"关于MOXI"];
     cell.textLabel.text = titles[indexPath.row];
     cell.textLabel.textColor = kBarLightTextColor;
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
