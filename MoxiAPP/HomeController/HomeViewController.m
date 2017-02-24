@@ -16,6 +16,7 @@
 @property (nonatomic, assign) BOOL isShowDropView;
 @property (nonatomic, strong) JDDropView *dropDwonView;
 @property (nonatomic, strong) UIButton *locationChange;
+@property (nonatomic, assign) BOOL isShowTag;
 
 @end
 
@@ -29,6 +30,7 @@
 - (void)setSubViews
 {
         // Do any additional setup after loading the view.
+    self.isShowTag = NO;
     self.view.backgroundColor = [UIColor redColor];
     self.isShowDropView = NO;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"bar_user_icon"] imageByTintColor:kBarLightTextColor]
@@ -44,7 +46,7 @@
     UIBarButtonItem *addOrderItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"order_pulish_icon"] imageByTintColor:kBarLightTextColor]
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:self
-                                                                            action:@selector(addNewOrder)];
+                                                                            action:@selector(addNewOrder:)];
 
     self.navigationItem.rightBarButtonItems = @[addOrderItem,self.changeLocationItem];
 
@@ -79,9 +81,26 @@
     }
 }
 
-- (void)addNewOrder
+- (void)addNewOrder:(UIBarButtonItem *)sender
 {
     DeBugLog(@"addneworder");
+    for (UIView *view in self.view.subviews) {
+        if ([view isKindOfClass:[KxMenuOverlay class]]) {
+            [KxMenu dismissMenu];
+            return;
+        }
+    }
+    NSArray *itemArr = @[
+                         [KxMenuItem menuItem:@"发布民宿订单" image:nil target:self action:@selector(showMinsuOrder)],
+                         [KxMenuItem menuItem:@"发布用车订单" image:nil target:self action:@selector(showCarOrder)]
+                         ];
+    OptionalConfiguration option = {9,7,7,8.5,6.5,YES,NO,YES,NO,{0.376, 0.255, 0.227},{1,1,1}};
+
+    [KxMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width-50, 6, 50, 60) menuItems:itemArr withOptions:option];
+//    if (![KxMenu isShow]) {
+//    }else{
+//        [KxMenu dismissMenu];
+//    }
 }
 
 - (void)showAllLoaction

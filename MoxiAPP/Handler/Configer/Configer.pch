@@ -18,5 +18,6 @@
 #import "BaseNaviViewController.h"
 #import <Masonry/Masonry.h>
 #import "UIImage+Tint.h"
+#import "NirKxMenu.h"
 
 #endif /* Configer_pch */

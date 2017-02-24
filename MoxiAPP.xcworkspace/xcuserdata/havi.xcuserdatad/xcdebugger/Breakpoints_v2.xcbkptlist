@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoxiAPP/Data/HiThirdPartService.m"
-            timestampString = "509078101.32361"
+            filePath = "MoxiAPP/HomeController/HomeViewController.m"
+            timestampString = "509556938.926681"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "+load"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-addNewOrder:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

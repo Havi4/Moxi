@@ -75,7 +75,7 @@
 //
 //    [logoutButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -logoutButton.currentImage.size.width, 0, -50)];
     [logoutButton setTitle:@"解绑微信并退出" forState:UIControlStateNormal];
-    [logoutButton setTitleColor:kFocusTextColor forState:UIControlStateNormal];
+    [logoutButton setTitleColor:[UIColor colorWithRed:0.376 green:0.255 blue:0.227 alpha:1.00] forState:UIControlStateNormal];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
