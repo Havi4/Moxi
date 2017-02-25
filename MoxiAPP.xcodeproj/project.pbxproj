@@ -54,6 +54,9 @@
 		57E148E41E60359200EB3B35 /* CYLPlusButtonSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148D71E60359200EB3B35 /* CYLPlusButtonSubclass.m */; };
 		57E148E51E60359200EB3B35 /* UITableView+CYLTableViewPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148DB1E60359200EB3B35 /* UITableView+CYLTableViewPlaceHolder.m */; };
 		57E148E61E60359200EB3B35 /* WeChatStylePlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148DD1E60359200EB3B35 /* WeChatStylePlaceHolder.m */; };
+		57E148E91E607EA000EB3B35 /* HouseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148E81E607EA000EB3B35 /* HouseTableViewCell.m */; };
+		57E148EC1E607ED500EB3B35 /* CarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148EB1E607ED500EB3B35 /* CarTableViewCell.m */; };
+		57E148EF1E6119F700EB3B35 /* TopLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148EE1E6119F700EB3B35 /* TopLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +171,12 @@
 		57E148DB1E60359200EB3B35 /* UITableView+CYLTableViewPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CYLTableViewPlaceHolder.m"; sourceTree = "<group>"; };
 		57E148DC1E60359200EB3B35 /* WeChatStylePlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeChatStylePlaceHolder.h; sourceTree = "<group>"; };
 		57E148DD1E60359200EB3B35 /* WeChatStylePlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeChatStylePlaceHolder.m; sourceTree = "<group>"; };
+		57E148E71E607EA000EB3B35 /* HouseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HouseTableViewCell.h; path = AllViewController/HouseTableViewCell.h; sourceTree = "<group>"; };
+		57E148E81E607EA000EB3B35 /* HouseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HouseTableViewCell.m; path = AllViewController/HouseTableViewCell.m; sourceTree = "<group>"; };
+		57E148EA1E607ED500EB3B35 /* CarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarTableViewCell.h; path = AllViewController/CarTableViewCell.h; sourceTree = "<group>"; };
+		57E148EB1E607ED500EB3B35 /* CarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarTableViewCell.m; path = AllViewController/CarTableViewCell.m; sourceTree = "<group>"; };
+		57E148ED1E6119F700EB3B35 /* TopLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopLabel.h; sourceTree = "<group>"; };
+		57E148EE1E6119F700EB3B35 /* TopLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopLabel.m; sourceTree = "<group>"; };
 		62E9D7CC928697D1FD787355 /* Pods-MoxiAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoxiAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoxiAPP/Pods-MoxiAPP.debug.xcconfig"; sourceTree = "<group>"; };
 		7541113CE931050E0F1B5619 /* libPods-MoxiAPP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoxiAPP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -308,6 +317,8 @@
 				570649841E4C64E100181159 /* NSObject+Common.m */,
 				570649CD1E57EB4400181159 /* UIImage+Tint.h */,
 				570649CE1E57EB4400181159 /* UIImage+Tint.m */,
+				57E148ED1E6119F700EB3B35 /* TopLabel.h */,
+				57E148EE1E6119F700EB3B35 /* TopLabel.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -441,6 +452,10 @@
 			children = (
 				577A85ED1E5EEA2A00834E61 /* CheckOrderViewController.h */,
 				577A85EE1E5EEA2A00834E61 /* CheckOrderViewController.m */,
+				57E148E71E607EA000EB3B35 /* HouseTableViewCell.h */,
+				57E148E81E607EA000EB3B35 /* HouseTableViewCell.m */,
+				57E148EA1E607ED500EB3B35 /* CarTableViewCell.h */,
+				57E148EB1E607ED500EB3B35 /* CarTableViewCell.m */,
 			);
 			name = CheckMyOrder;
 			sourceTree = "<group>";
@@ -721,6 +736,7 @@
 				570649A51E4C743400181159 /* RECommonFunctions.m in Sources */,
 				5706494E1E4C605B00181159 /* AppDelegate.m in Sources */,
 				570649CB1E57DC0200181159 /* LoginViewController.m in Sources */,
+				57E148EF1E6119F700EB3B35 /* TopLabel.m in Sources */,
 				5706498F1E4C64E100181159 /* NSObject+AdvertisementView.m in Sources */,
 				570649BA1E4C78D100181159 /* HomeViewController.m in Sources */,
 				570649A91E4C743400181159 /* UIView+REFrostedViewController.m in Sources */,
@@ -732,7 +748,9 @@
 				570649DA1E583EBC00181159 /* JDDropView.m in Sources */,
 				577A85EF1E5EEA2A00834E61 /* CheckOrderViewController.m in Sources */,
 				57E148E51E60359200EB3B35 /* UITableView+CYLTableViewPlaceHolder.m in Sources */,
+				57E148E91E607EA000EB3B35 /* HouseTableViewCell.m in Sources */,
 				570649A81E4C743400181159 /* UIImage+REFrostedViewController.m in Sources */,
+				57E148EC1E607ED500EB3B35 /* CarTableViewCell.m in Sources */,
 				570649901E4C64E100181159 /* NSObject+Common.m in Sources */,
 				570649921E4C64E100181159 /* HYBNetworking.m in Sources */,
 				577A85FF1E5F289D00834E61 /* NirKxMenu.m in Sources */,

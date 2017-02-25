@@ -8,8 +8,10 @@
 
 #import "HomeViewController.h"
 #import "JDDropView.h"
+#import "HouseTableViewCell.h"
+#import "CarTableViewCell.h"
 
-@interface HomeViewController ()<DropViewDataSource,DropViewDelegate>
+@interface HomeViewController ()<DropViewDataSource,DropViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UIBarButtonItem *changeLocationItem;
 @property (nonatomic, copy) NSArray  *dataA2;
@@ -17,6 +19,8 @@
 @property (nonatomic, strong) JDDropView *dropDwonView;
 @property (nonatomic, strong) UIButton *locationChange;
 @property (nonatomic, assign) BOOL isShowTag;
+@property (nonatomic, strong) UITableView *orderView;
+@property (nonatomic, strong) NSArray *dic;
 
 @end
 
@@ -25,13 +29,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setSubViews];
+    self.dic = @[
+                     @{
+                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊"
+                     },
+                     @{
+                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊"
+                         },
+                     @{
+                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；"
+                         },
+                     @{
+                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；"
+                         },
+                     @{
+                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快"
+                         },
+                     @{
+                         @"text":@"拉快速减肥熬"
+                         }
+    ];
 }
 
 - (void)setSubViews
 {
         // Do any additional setup after loading the view.
     self.isShowTag = NO;
-    self.view.backgroundColor = [UIColor redColor];
     self.isShowDropView = NO;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"bar_user_icon"] imageByTintColor:kBarLightTextColor]
                                                                              style:UIBarButtonItemStylePlain
@@ -66,6 +89,13 @@
     imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:imageView];
+
+    _orderView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-49-64) style:UITableViewStylePlain];
+    _orderView.backgroundColor = kBackgroundViewColor;
+    _orderView.delegate = self;
+    _orderView.dataSource = self;
+    _orderView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:_orderView];
 }
 
 - (void)changLocation
@@ -131,6 +161,43 @@
         [self.view addSubview:_dropDwonView];
     }
     return _dropDwonView;
+}
+
+#pragma mark tableview
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dic.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HouseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[HouseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
+    cell.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat height = [self heightForText:[[self.dic objectAtIndex:indexPath.row] objectForKey:@"text"]];
+    NSLog(@"高度是%f",height);
+    if (height<35) {
+        return 308;
+    }else{
+        return 308 + height - 10;
+    }
+}
+
+- (CGFloat)heightForText:(NSString *)text
+{
+        //设置计算文本时字体的大小,以什么标准来计算
+    NSDictionary *attrbute = @{NSFontAttributeName:[UIFont systemFontOfSize:16]};
+    CGFloat width = self.view.frame.size.width-100;
+    return [text boundingRectWithSize:CGSizeMake(width, 0) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attrbute context:nil].size.height;
 }
 
 #pragma mark dropview delegate
