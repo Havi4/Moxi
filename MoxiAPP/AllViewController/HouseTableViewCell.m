@@ -364,8 +364,4 @@
 
 }
 
-- (void)layoutViewContrains
-{
-
-}
 @end

@@ -31,22 +31,38 @@
     [self setSubViews];
     self.dic = @[
                      @{
-                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊"
+                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡",
+                         @"text1":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡"
                      },
+                     @{//1
+                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机",
+                         @"text1":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解"
+                         },
+
+                         
                      @{
-                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊"
+                         @"text":@"拉快速减肥熬枯受淡了；",
+                          @"text1":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；"
+                         },
+                     @{//3
+                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；",
+                         @"text1":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了"
                          },
                      @{
-                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；"
+                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快",
+                         @"text1":@"拉快速"
+                         },
+                     @{//5
+                         @"text":@"拉快速减肥熬",
+                         @"text1":@"拉快速减肥熬"
                          },
                      @{
-                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；"
+                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快",
+                         @"text1":@"拉快速减肥熬枯受淡解放路AK打"
                          },
                      @{
-                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快"
-                         },
-                     @{
-                         @"text":@"拉快速减肥熬"
+                         @"text":@"拉快速减肥熬",
+                         @"text1":@"拉快速减肥熬SD了解对方"
                          }
     ];
 }
@@ -172,24 +188,54 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HouseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    CarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"carcell"];
     if (!cell) {
-        cell = [[HouseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell = [[CarTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"carcell"];
     }
     [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
     cell.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+//    if (indexPath.row % 2) {
+//    }else{
+//
+//        HouseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+//        if (!cell) {
+//            cell = [[HouseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+//        }
+//        [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
+//        cell.backgroundColor = [UIColor clearColor];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        return cell;
+//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat height = [self heightForText:[[self.dic objectAtIndex:indexPath.row] objectForKey:@"text"]];
-    NSLog(@"高度是%f",height);
-    if (height<35) {
-        return 308;
+    CGFloat height = [self heightForText1:[[self.dic objectAtIndex:indexPath.row] objectForKey:@"text"]];
+    CGFloat height2 = [self heightForText1:[[self.dic objectAtIndex:indexPath.row] objectForKey:@"text1"]];
+    NSLog(@"高度shi %f index: %ld",height + height2,(long)indexPath.row);
+    return 285 + height2 +height;
+
+    /*
+    if (indexPath.row % 2) {
+
+
+
     }else{
-        return 308 + height - 10;
+        CGFloat height = [self heightForText:[[self.dic objectAtIndex:indexPath.row] objectForKey:@"text"]];
+        if (height<35) {
+            return 308;
+        }else{
+            return 308 + height - 10;
+        }
     }
+     */
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)heightForText:(NSString *)text
@@ -197,6 +243,14 @@
         //设置计算文本时字体的大小,以什么标准来计算
     NSDictionary *attrbute = @{NSFontAttributeName:[UIFont systemFontOfSize:16]};
     CGFloat width = self.view.frame.size.width-100;
+    return [text boundingRectWithSize:CGSizeMake(width, 0) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attrbute context:nil].size.height;
+}
+
+- (CGFloat)heightForText1:(NSString *)text
+{
+        //设置计算文本时字体的大小,以什么标准来计算
+    NSDictionary *attrbute = @{NSFontAttributeName:[UIFont systemFontOfSize:16]};
+    CGFloat width = self.view.frame.size.width-120;
     return [text boundingRectWithSize:CGSizeMake(width, 0) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attrbute context:nil].size.height;
 }
 

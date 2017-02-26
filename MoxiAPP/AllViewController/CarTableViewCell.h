@@ -10,4 +10,6 @@
 
 @interface CarTableViewCell : UITableViewCell
 
+- (void)cellConfigWithItem:(id)item andIndex:(NSIndexPath *)indexPath;
+
 @end
