@@ -12,6 +12,8 @@
 #import "CarTableViewCell.h"
 #import "CarOrderViewController.h"
 #import "HourseViewController.h"
+#import "MJRefreshNormalHeader.h"
+#import "MJRefreshAutoNormalFooter.h"
 
 @interface HomeViewController ()<DropViewDataSource,DropViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -22,7 +24,7 @@
 @property (nonatomic, strong) UIButton *locationChange;
 @property (nonatomic, assign) BOOL isShowTag;
 @property (nonatomic, strong) UITableView *orderView;
-@property (nonatomic, strong) NSArray *dic;
+@property (nonatomic, strong) NSMutableArray *dic;
 
 @end
 
@@ -31,42 +33,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setSubViews];
-    self.dic = @[
-                     @{
-                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡",
-                         @"text1":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡"
-                     },
-                     @{//1
-                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机",
-                         @"text1":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解"
-                         },
-
-                         
-                     @{
-                         @"text":@"拉快速减肥熬枯受淡了；",
-                          @"text1":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；"
-                         },
-                     @{//3
-                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了；",
-                         @"text1":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快速减肥熬枯受淡解放路AK打飞机了"
-                         },
-                     @{
-                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快",
-                         @"text1":@"拉快速"
-                         },
-                     @{//5
-                         @"text":@"拉快速减肥熬",
-                         @"text1":@"拉快速减肥熬"
-                         },
-                     @{
-                         @"text":@"拉快速减肥熬枯受淡解放路AK打飞机了；啊拉快",
-                         @"text1":@"拉快速减肥熬枯受淡解放路AK打"
-                         },
-                     @{
-                         @"text":@"拉快速减肥熬",
-                         @"text1":@"拉快速减肥熬SD了解对方"
-                         }
-    ];
 }
 
 - (void)setSubViews
@@ -74,6 +40,7 @@
         // Do any additional setup after loading the view.
     self.isShowTag = NO;
     self.isShowDropView = NO;
+    self.dic = @[].mutableCopy;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"bar_user_icon"] imageByTintColor:kBarLightTextColor]
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:(BaseNaviViewController *)self.navigationController
@@ -97,7 +64,7 @@
     [_locationChange setTitle:@"大板" forState:UIControlStateNormal];
     [_locationChange setTitleColor:kBarLightTextColor forState:UIControlStateNormal];
     [_locationChange setTarget:self action:@selector(showAllLoaction) forControlEvents:UIControlEventTouchUpInside];
-    _locationChange.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
+    _locationChange.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
     [_locationChange setImageEdgeInsets:UIEdgeInsetsMake(0, 5, 0, _locationChange.titleLabel.intrinsicContentSize.width)];
     [_locationChange setTitleEdgeInsets:UIEdgeInsetsMake(0, -_locationChange.currentImage.size.width, 0, -25)];
     self.navigationItem.titleView = _locationChange;
@@ -114,6 +81,43 @@
     _orderView.dataSource = self;
     _orderView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_orderView];
+
+    self.orderView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            //Call this Block When enter the refresh status automatically
+        [self loadNewData];
+    }];
+        // Set the callback（Once you enter the refresh status，then call the action of target，that is call [self loadNewData]）
+    self.orderView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
+
+        // Enter the refresh status immediately
+    [self.orderView.mj_header beginRefreshing];
+    self.orderView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            //Call this Block When enter the refresh status automatically
+        [self loadAllData];
+    }];
+
+}
+
+- (void)loadAllData
+{
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"testData" ofType:@"plist"];
+    [self.dic addObjectsFromArray:[NSArray arrayWithContentsOfFile:path]];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.orderView.mj_footer endRefreshing];
+        [self.orderView reloadData];
+    });
+}
+
+- (void)loadNewData
+{
+//    [[HIPregressHUD shartMBHUD]showLoadingWith:@"加载中" inView:self.view];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"testData" ofType:@"plist"];
+    self.dic = [NSMutableArray arrayWithArray:[NSArray arrayWithContentsOfFile:path]];
+    DeBugLog(@"字典%@",self.dic);
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.orderView.mj_header endRefreshing];
+        [self.orderView reloadData];
+    });
 }
 
 - (void)changLocation
@@ -202,74 +206,96 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"carcell"];
-    if (!cell) {
-        cell = [[CarTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"carcell"];
-    }
-    [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
-    cell.backgroundColor = [UIColor clearColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (indexPath.row % 2) {
-        cell.hideModelDoneView = YES;
-        cell.tapDoneDelete = ^(NSIndexPath *indexPath){
-            [self deleteOrder:indexPath];
-        };
-        cell.copyWx = ^(NSIndexPath *indexPath){
-            [self copyWx:indexPath];
-        };
+    NSDictionary *dic = [self.dic objectAtIndex:indexPath.row];
+    if ([[dic objectForKey:@"orderType"] intValue]==0) {//车
 
-        cell.callMoxi = ^(NSIndexPath *indexPath){
-            [self callMoxi:indexPath];
-        };
+        CarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"carcell"];
+        if (!cell) {
+            cell = [[CarTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"carcell"];
+        }
+        [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if ([[dic objectForKey:@"isDone"] intValue]==0) {//未完成
+            cell.hideModelDoneView = YES;
+            cell.copyWx = ^(NSIndexPath *indexPath){
+                [self copyWx:indexPath];
+            };
+            cell.moreNext = ^(NSIndexPath *indexPath){
+                [self showMore:indexPath];
+            };
+
+            cell.callMoxi = ^(NSIndexPath *indexPath){
+                [self callMoxi:indexPath];
+            };
+        }else{
+            cell.hideModelDoneView = NO;
+            cell.copyWx = ^(NSIndexPath *indexPath){
+                [self copyWx:indexPath];
+            };
+
+            cell.callMoxi = ^(NSIndexPath *indexPath){
+                [self callMoxi:indexPath];
+            };
+            cell.tapDoneDelete = ^(NSIndexPath *indexPath){
+                [self deleteOrder:indexPath];
+            };
+
+        }
+        return cell;
     }else{
-        cell.hideModelDoneView = NO;
-        cell.copyWx = ^(NSIndexPath *indexPath){
-            [self copyWx:indexPath];
-        };
+        HouseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        if (!cell) {
+            cell = [[HouseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        }
+        [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if ([[dic objectForKey:@"isDone"] intValue]==0) {//未完成
+            cell.hideModelDoneView = YES;
+            cell.copyWx = ^(NSIndexPath *indexPath){
+                [self copyWx:indexPath];
+            };
+            cell.moreNext = ^(NSIndexPath *indexPath){
+                [self showMore:indexPath];
+            };
 
-        cell.callMoxi = ^(NSIndexPath *indexPath){
-            [self callMoxi:indexPath];
-        };
+            cell.callMoxi = ^(NSIndexPath *indexPath){
+                [self callMoxi:indexPath];
+            };
+        }else{
+            cell.hideModelDoneView = NO;
+            cell.copyWx = ^(NSIndexPath *indexPath){
+                [self copyWx:indexPath];
+            };
 
+            cell.callMoxi = ^(NSIndexPath *indexPath){
+                [self callMoxi:indexPath];
+            };
+            cell.tapDoneDelete = ^(NSIndexPath *indexPath){
+                [self deleteOrder:indexPath];
+            };
+            
+        }
+        return cell;
     }
-    cell.moreNext = ^(NSIndexPath *indexPath){
-        [self showMore:indexPath];
-    };
-    return cell;
-//    if (indexPath.row % 2) {
-//    }else{
-//
-//        HouseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-//        if (!cell) {
-//            cell = [[HouseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-//        }
-//        [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
-//        cell.backgroundColor = [UIColor clearColor];
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        return cell;
-//    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat height = [self heightForText1:[[self.dic objectAtIndex:indexPath.row] objectForKey:@"text"]];
-    CGFloat height2 = [self heightForText1:[[self.dic objectAtIndex:indexPath.row] objectForKey:@"text1"]];
-    return 285 + height2 +height;
-
-    /*
-    if (indexPath.row % 2) {
-
-
-
+    NSDictionary *dic = [self.dic objectAtIndex:indexPath.row];
+    if ([[dic objectForKey:@"orderType"] intValue]==0) {//车
+        CGFloat height = [self heightForText1:[dic objectForKey:@"startPlace"]];
+        CGFloat height2 = [self heightForText1:[dic objectForKey:@"endPlace"]];
+        return 285 + height2 +height;
     }else{
-        CGFloat height = [self heightForText:[[self.dic objectAtIndex:indexPath.row] objectForKey:@"text"]];
+        CGFloat height = [self heightForText:[dic objectForKey:@"text"]];
         if (height<35) {
             return 308;
         }else{
             return 308 + height - 10;
         }
     }
-     */
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -296,6 +322,24 @@
 - (void)deleteOrder:(NSIndexPath *)indexPath
 {
     DeBugLog(@"删除的订单是%ld",(long)indexPath.row);
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *done = [UIAlertAction actionWithTitle:@"不再显示该订单" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+    }];
+    [done setValue:kFocusTextColor forKey:@"titleTextColor"];
+    [alertView addAction:done];
+    UIAlertAction *cancel1 = [UIAlertAction actionWithTitle:@"不再显示所有已完成订单" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+    }];
+    [cancel1 setValue:kFocusTextColor forKey:@"titleTextColor"];
+    [alertView addAction:cancel1];
+
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+
+    }];
+    [cancel setValue:kFocusTextColor forKey:@"titleTextColor"];
+    [alertView addAction:cancel];
+    [self presentViewController:alertView animated:YES completion:nil];
 }
 
 - (void)callMoxi:(NSIndexPath *)indexPath
@@ -306,11 +350,68 @@
 - (void)copyWx:(NSIndexPath *)indexPath
 {
     DeBugLog(@"copy订单是%ld",(long)indexPath.row);
+    UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string=@"测试";
+    [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号已复制到剪切板" inView:self.view];
 }
 
 - (void)showMore:(NSIndexPath *)indexPath
 {
     DeBugLog(@"展示是%ld",(long)indexPath.row);
+    NSDictionary *dic = [self.dic objectAtIndex:indexPath.row];
+    if ([[dic objectForKey:@"isMine"] intValue]==0) {//自己的
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *done = [UIAlertAction actionWithTitle:@"复制订单内容" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        }];
+        [done setValue:kFocusTextColor forKey:@"titleTextColor"];
+        [alertView addAction:done];
+        UIAlertAction *cancel1 = [UIAlertAction actionWithTitle:@"订单已完成" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        }];
+        [cancel1 setValue:kFocusTextColor forKey:@"titleTextColor"];
+        [alertView addAction:cancel1];
+
+        UIAlertAction *cancel2 = [UIAlertAction actionWithTitle:@"删除订单" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        }];
+        [cancel2 setValue:kFocusTextColor forKey:@"titleTextColor"];
+        [alertView addAction:cancel2];
+
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+
+        }];
+        [cancel setValue:kFocusTextColor forKey:@"titleTextColor"];
+        [alertView addAction:cancel];
+        [self presentViewController:alertView animated:YES completion:nil];
+
+    }else{
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertAction *done = [UIAlertAction actionWithTitle:@"复制订单内容" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        }];
+        [done setValue:kFocusTextColor forKey:@"titleTextColor"];
+        [alertView addAction:done];
+        UIAlertAction *cancel1 = [UIAlertAction actionWithTitle:@"标记订单为置顶" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        }];
+        [cancel1 setValue:kFocusTextColor forKey:@"titleTextColor"];
+        [alertView addAction:cancel1];
+
+        UIAlertAction *cancel2 = [UIAlertAction actionWithTitle:@"不再显示该订单" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        }];
+        [cancel2 setValue:kFocusTextColor forKey:@"titleTextColor"];
+        [alertView addAction:cancel2];
+
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+
+        }];
+        [cancel setValue:kFocusTextColor forKey:@"titleTextColor"];
+        [alertView addAction:cancel];
+        [self presentViewController:alertView animated:YES completion:nil];
+
+    }
 }
 
 #pragma mark dropview delegate

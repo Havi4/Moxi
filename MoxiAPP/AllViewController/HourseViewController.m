@@ -82,6 +82,7 @@
     _orderTableView.dataSource = self;
     _orderTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _orderTableView.backgroundColor = [UIColor clearColor];
+    _orderTableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:_orderTableView];
     [self.view addSubview:self.commitButton];
     [_commitButton mas_makeConstraints:^(MASConstraintMaker *make) {

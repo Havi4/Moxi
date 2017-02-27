@@ -366,9 +366,16 @@
 {
     NSDictionary *dic = item;
     self.tapIndex = indexPath;
-    self.startLabelShow.text = [dic objectForKey:@"text"];
-    self.endLabelShow.text = [dic objectForKey:@"text1"];
-    
+    if (!item) {
+        return;
+    }
+    self.titleLabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
+    self.moneyShowLabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"money"]];
+    self.startLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"startPlace"]];
+    self.endLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"endPlace"]];;
+    self.dateLabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"date"]];
+    self.timelabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]];
+    self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"num"]];
 }
 
 - (void)deleteOrder:(UIButton *)button
