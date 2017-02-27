@@ -9,6 +9,10 @@
 #import "HourseViewController.h"
 #import "UnderlineTextField.h"
 #import "DVSwitch.h"
+#import "ActionSheetStringPicker.h"
+#import "ActionSheetLocalePicker.h"
+#import "ActionSheetDatePicker.h"
+
 #define MAX_PLACE_NUMS     101
 #define MAX_TITLE_NUMS     16
 
@@ -203,7 +207,7 @@
     if (!_regionValue) {
         _regionValue = [UIButton buttonWithType:UIButtonTypeCustom];
         [_regionValue setTitle:@"大阪" forState:UIControlStateNormal];
-        [_regionValue addTarget:self action:@selector(peoplePlus:) forControlEvents:UIControlEventTouchUpInside];
+        [_regionValue addTarget:self action:@selector(slectRegion:) forControlEvents:UIControlEventTouchUpInside];
         _regionValue.titleLabel.font = [UIFont systemFontOfSize:20];
     }
     return _regionValue;
@@ -412,22 +416,91 @@
 - (void)showCarTakeDate:(UIButton *)button
 {
     DeBugLog(@"显示日期");
+    ActionSheetDatePicker *actionSheetPicker = [[ActionSheetDatePicker alloc] initWithTitle:@"选择日期" datePickerMode:UIDatePickerModeDate selectedDate:[NSDate date]
+                                                                                minimumDate:[NSDate date]
+                                                                                maximumDate:[[NSDate date] dateByAddingYears:1]
+                                                                                     target:self action:@selector(dateWasSelected:element:) origin:button];
+    UIButton *okButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [okButton setTitle:@"完成" forState:UIControlStateNormal];
+    okButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [okButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [okButton setFrame:CGRectMake(0, 0, 50, 32)];
+    [actionSheetPicker setDoneButton:[[UIBarButtonItem alloc] initWithCustomView:okButton]];
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+    cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+    [cancelButton setFrame:CGRectMake(0, 0, 50, 32)];
+    [actionSheetPicker setCancelButton:[[UIBarButtonItem alloc] initWithCustomView:cancelButton]];
+    
+    [actionSheetPicker showActionSheetPicker];
+}
+
+- (void)dateWasSelected:(NSDate *)selectedDate element:(id)element {
+    DeBugLog(@"选中的时间是%@",selectedDate);
+    if (!selectedDate) {
+        return;
+    }
+    self.carTakeDateLabel.hidden = NO;
+    NSString *date = [[NSString stringWithFormat:@"%@",[selectedDate dateByAddingHours:8]] substringWithRange:NSMakeRange(5, 5)];
+
+    [self.carTakeDate setTitle:[NSString stringWithFormat:@"%@月%@日",[date substringWithRange:NSMakeRange(0, 2)],[date substringWithRange:NSMakeRange(3, 2)]] forState:UIControlStateNormal];
 }
 
 - (void)showCarTakeTime:(UIButton *)button
 {
     DeBugLog(@"显示时间");
+    ActionSheetDatePicker *datePicker = [[ActionSheetDatePicker alloc] initWithTitle:@"选择时间" datePickerMode:UIDatePickerModeDate selectedDate:[NSDate date]
+                                                                         minimumDate:[NSDate date]
+                                                                         maximumDate:[[NSDate date] dateByAddingDays:30]
+                                                                              target:self action:@selector(timeWasSelected:element:) origin:button];
+    datePicker.minuteInterval = 1;
+    UIButton *okButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [okButton setTitle:@"完成" forState:UIControlStateNormal];
+    okButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [okButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [okButton setFrame:CGRectMake(0, 0, 50, 32)];
+    [datePicker setDoneButton:[[UIBarButtonItem alloc] initWithCustomView:okButton]];
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+    cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+    [cancelButton setFrame:CGRectMake(0, 0, 50, 32)];
+    [datePicker setCancelButton:[[UIBarButtonItem alloc] initWithCustomView:cancelButton]];
+
+    [datePicker showActionSheetPicker];
+}
+
+- (void)timeWasSelected:(NSDate *)selectedTime element:(id)element {
+    DeBugLog(@"时间是%@",selectedTime);
+    if (!selectedTime) {
+        return;
+    }
+    self.carTakeTimeLabel.hidden = NO;
+    NSString *date = [[NSString stringWithFormat:@"%@",[selectedTime dateByAddingHours:8]] substringWithRange:NSMakeRange(5, 5)];
+
+    [self.carTakeTime setTitle:[NSString stringWithFormat:@"%@月%@日",[date substringWithRange:NSMakeRange(0, 2)],[date substringWithRange:NSMakeRange(3, 2)]] forState:UIControlStateNormal];
 }
 
 - (void)peopleMinus:(UIButton *)button
 {
     DeBugLog(@"减少人数");
-
+    int num = [self.peopleNum.text intValue];
+    num = num - 1;
+    if (num < 0) {
+        num = 0;
+    }
+    self.peopleNum.text = [NSString stringWithFormat:@"%d",num];
 }
 
 - (void)peoplePlus:(UIButton *)button
 {
     DeBugLog(@"增加人数");
+    int num = [self.peopleNum.text intValue];
+    num = num + 1;
+    self.peopleNum.text = [NSString stringWithFormat:@"%d",num];
 
 }
 
@@ -439,6 +512,68 @@
 - (void)commitOrder:(UIButton *)button
 {
     DeBugLog(@"commit all infomation");
+    if ([self.carTakeDate.titleLabel.text isEqualToString:@"入住时间"]) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"请输入住时间" inView:self.view];
+        return;
+    }else if ([self.carTakeTime.titleLabel.text isEqualToString:@"退房时间"]) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"请输入退房时间" inView:self.view];
+        return;
+    }else if([self.peopleNum.text intValue] == 0) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"请输入房客人数" inView:self.view];
+        return;
+    }else if(self.regionValue.titleLabel.text.length == 0) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"请输入地区" inView:self.view];
+        return;
+    }else if(self.moneyValue.text.length == 0) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"请输入预算金额" inView:self.view];
+        return;
+    }else if(self.carTitleText.text.length == 0) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"请输入标题" inView:self.view];
+        return;
+    }else if(self.startPlaceValue.text.length == 0) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"请输入要求" inView:self.view];
+        return;
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"订单一旦建立将无法修改" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *done = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+    }];
+    [alert addAction:done];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+
+    }];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+}
+
+- (void)slectRegion:(UIButton *)button
+{
+    NSArray *colors = @[@"东京",@"大阪",@"京都",@"名古屋",@"北海道",@"其它"];
+
+    ActionStringDoneBlock done = ^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        [self.regionValue setTitle:selectedValue forState:UIControlStateNormal];
+    };
+
+    ActionStringCancelBlock cancel = ^(ActionSheetStringPicker *picker){
+
+    };
+    ActionSheetStringPicker *picker = [[ActionSheetStringPicker alloc]initWithTitle:@"选择地区" rows:colors initialSelection:0 doneBlock:done cancelBlock:cancel origin:button];
+    UIButton *okButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [okButton setTitle:@"完成" forState:UIControlStateNormal];
+    okButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [okButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [okButton setFrame:CGRectMake(0, 0, 50, 32)];
+    [picker setDoneButton:[[UIBarButtonItem alloc] initWithCustomView:okButton]];
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+    cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
+    [cancelButton setFrame:CGRectMake(0, 0, 50, 32)];
+    [picker setCancelButton:[[UIBarButtonItem alloc] initWithCustomView:cancelButton]];
+    [picker showActionSheetPicker];
 }
 
 #pragma mark delegate
@@ -502,15 +637,16 @@
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(cell.mas_centerX);
         make.centerY.equalTo(cell.mas_centerY).offset(-5);
-        make.width.equalTo(@40);
+        make.width.equalTo(@20);
+        make.height.equalTo(@20);
     }];
 
     [cell addSubview:self.carTakeTime];
     [cell addSubview:self.carTakeDate];
     [cell addSubview:self.carTakeDateLabel];
     [cell addSubview:self.carTakeTimeLabel];
-        //    self.carTakeTimeLabel.hidden = YES;
-        //    self.carTakeDateLabel.hidden = YES;
+            self.carTakeTimeLabel.hidden = YES;
+            self.carTakeDateLabel.hidden = YES;
     [_carTakeDate mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(lineView.mas_centerY);
         make.right.equalTo(lineView.mas_left).offset(-10);
@@ -669,6 +805,7 @@
     }];
 
 }
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
