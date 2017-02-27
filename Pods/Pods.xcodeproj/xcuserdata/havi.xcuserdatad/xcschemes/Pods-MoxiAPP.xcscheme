@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '2CD19827E7CC4650CA364BE994D565A7'
+               BlueprintIdentifier = 'FCD2DA3F1DEE4AA6A0FAAC426ABAA3D2'
                BlueprintName = 'Pods-MoxiAPP'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-MoxiAPP.a'>

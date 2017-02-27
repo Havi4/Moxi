@@ -54,6 +54,7 @@
 #define kBarLightTextColor       [UIColor colorWithRed:0.957 green:0.906 blue:0.729 alpha:1.00]
 #define kSepetorColor            [UIColor colorWithRed:0.953 green:0.953 blue:0.953 alpha:1.00]
 #define kBackgroundViewColor     [UIColor colorWithRed:0.976 green:0.976 blue:0.976 alpha:1.00]
+#define kLeftCellTitleColor      [UIColor colorWithRed:0.969 green:0.886 blue:0.788 alpha:1.00]
 
     //等于
 #define SYSTEM_VERSION_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)

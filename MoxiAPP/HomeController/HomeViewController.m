@@ -10,6 +10,8 @@
 #import "JDDropView.h"
 #import "HouseTableViewCell.h"
 #import "CarTableViewCell.h"
+#import "CarOrderViewController.h"
+#import "HourseViewController.h"
 
 @interface HomeViewController ()<DropViewDataSource,DropViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -140,13 +142,25 @@
                          [KxMenuItem menuItem:@"发布民宿订单" image:nil target:self action:@selector(showMinsuOrder)],
                          [KxMenuItem menuItem:@"发布用车订单" image:nil target:self action:@selector(showCarOrder)]
                          ];
-    OptionalConfiguration option = {9,7,7,8.5,6.5,YES,NO,YES,NO,{0.376, 0.255, 0.227},{1,1,1}};
+    OptionalConfiguration option = {9,7,7,15,6.5,YES,NO,YES,NO,{0.376, 0.255, 0.227},{1,1,1}};
 
     [KxMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width-50, 6, 50, 60) menuItems:itemArr withOptions:option];
-//    if (![KxMenu isShow]) {
-//    }else{
-//        [KxMenu dismissMenu];
-//    }
+}
+
+- (void)showMinsuOrder
+{
+    HourseViewController *hourse = [[HourseViewController alloc]init];
+    [self presentViewController:hourse animated:YES completion:^{
+
+    }];
+}
+
+- (void)showCarOrder
+{
+    CarOrderViewController *carOrder = [[CarOrderViewController alloc]init];
+    [self presentViewController:carOrder animated:YES completion:^{
+
+    }];
 }
 
 - (void)showAllLoaction
@@ -195,6 +209,32 @@
     [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (indexPath.row % 2) {
+        cell.hideModelDoneView = YES;
+        cell.tapDoneDelete = ^(NSIndexPath *indexPath){
+            [self deleteOrder:indexPath];
+        };
+        cell.copyWx = ^(NSIndexPath *indexPath){
+            [self copyWx:indexPath];
+        };
+
+        cell.callMoxi = ^(NSIndexPath *indexPath){
+            [self callMoxi:indexPath];
+        };
+    }else{
+        cell.hideModelDoneView = NO;
+        cell.copyWx = ^(NSIndexPath *indexPath){
+            [self copyWx:indexPath];
+        };
+
+        cell.callMoxi = ^(NSIndexPath *indexPath){
+            [self callMoxi:indexPath];
+        };
+
+    }
+    cell.moreNext = ^(NSIndexPath *indexPath){
+        [self showMore:indexPath];
+    };
     return cell;
 //    if (indexPath.row % 2) {
 //    }else{
@@ -214,7 +254,6 @@
 {
     CGFloat height = [self heightForText1:[[self.dic objectAtIndex:indexPath.row] objectForKey:@"text"]];
     CGFloat height2 = [self heightForText1:[[self.dic objectAtIndex:indexPath.row] objectForKey:@"text1"]];
-    NSLog(@"高度shi %f index: %ld",height + height2,(long)indexPath.row);
     return 285 + height2 +height;
 
     /*
@@ -252,6 +291,26 @@
     NSDictionary *attrbute = @{NSFontAttributeName:[UIFont systemFontOfSize:16]};
     CGFloat width = self.view.frame.size.width-120;
     return [text boundingRectWithSize:CGSizeMake(width, 0) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attrbute context:nil].size.height;
+}
+
+- (void)deleteOrder:(NSIndexPath *)indexPath
+{
+    DeBugLog(@"删除的订单是%ld",(long)indexPath.row);
+}
+
+- (void)callMoxi:(NSIndexPath *)indexPath
+{
+    DeBugLog(@"直连是%ld",(long)indexPath.row);
+}
+
+- (void)copyWx:(NSIndexPath *)indexPath
+{
+    DeBugLog(@"copy订单是%ld",(long)indexPath.row);
+}
+
+- (void)showMore:(NSIndexPath *)indexPath
+{
+    DeBugLog(@"展示是%ld",(long)indexPath.row);
 }
 
 #pragma mark dropview delegate

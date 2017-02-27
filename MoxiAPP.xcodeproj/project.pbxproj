@@ -45,6 +45,7 @@
 		577A85F51E5EEA7B00834E61 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85F41E5EEA7B00834E61 /* ContactViewController.m */; };
 		577A85F81E5EEA8C00834E61 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85F71E5EEA8C00834E61 /* AboutViewController.m */; };
 		577A85FF1E5F289D00834E61 /* NirKxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85FE1E5F289D00834E61 /* NirKxMenu.m */; };
+		579394331E63110500FBDDEA /* DVSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 579394321E63110500FBDDEA /* DVSwitch.m */; };
 		57E148DE1E60359200EB3B35 /* CYLPlusButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148CA1E60359200EB3B35 /* CYLPlusButton.m */; };
 		57E148DF1E60359200EB3B35 /* CYLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148CC1E60359200EB3B35 /* CYLTabBar.m */; };
 		57E148E01E60359200EB3B35 /* CYLTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148CE1E60359200EB3B35 /* CYLTabBarController.m */; };
@@ -57,6 +58,11 @@
 		57E148E91E607EA000EB3B35 /* HouseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148E81E607EA000EB3B35 /* HouseTableViewCell.m */; };
 		57E148EC1E607ED500EB3B35 /* CarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148EB1E607ED500EB3B35 /* CarTableViewCell.m */; };
 		57E148EF1E6119F700EB3B35 /* TopLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148EE1E6119F700EB3B35 /* TopLabel.m */; };
+		57E148F21E62B79E00EB3B35 /* CarOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148F11E62B79E00EB3B35 /* CarOrderViewController.m */; };
+		57E148F51E62B7B000EB3B35 /* HourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148F41E62B7B000EB3B35 /* HourseViewController.m */; };
+		57E148F81E630A2600EB3B35 /* UnderlineTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E148F71E630A2600EB3B35 /* UnderlineTextField.m */; };
+		57F0D64C1E63BE7C00600C16 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F0D64B1E63BE7C00600C16 /* MBProgressHUD.m */; };
+		57F0D64F1E63BFAB00600C16 /* HIPregressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F0D64E1E63BFAB00600C16 /* HIPregressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +156,8 @@
 		577A85F71E5EEA8C00834E61 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = AllViewController/AboutViewController.m; sourceTree = "<group>"; };
 		577A85FD1E5F289D00834E61 /* NirKxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NirKxMenu.h; sourceTree = "<group>"; };
 		577A85FE1E5F289D00834E61 /* NirKxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NirKxMenu.m; sourceTree = "<group>"; };
+		579394311E63110500FBDDEA /* DVSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVSwitch.h; sourceTree = "<group>"; };
+		579394321E63110500FBDDEA /* DVSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVSwitch.m; sourceTree = "<group>"; };
 		57E148C81E60359200EB3B35 /* CYLConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYLConstants.h; sourceTree = "<group>"; };
 		57E148C91E60359200EB3B35 /* CYLPlusButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYLPlusButton.h; sourceTree = "<group>"; };
 		57E148CA1E60359200EB3B35 /* CYLPlusButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYLPlusButton.m; sourceTree = "<group>"; };
@@ -177,6 +185,16 @@
 		57E148EB1E607ED500EB3B35 /* CarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarTableViewCell.m; path = AllViewController/CarTableViewCell.m; sourceTree = "<group>"; };
 		57E148ED1E6119F700EB3B35 /* TopLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopLabel.h; sourceTree = "<group>"; };
 		57E148EE1E6119F700EB3B35 /* TopLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopLabel.m; sourceTree = "<group>"; };
+		57E148F01E62B79E00EB3B35 /* CarOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarOrderViewController.h; path = AllViewController/CarOrderViewController.h; sourceTree = "<group>"; };
+		57E148F11E62B79E00EB3B35 /* CarOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarOrderViewController.m; path = AllViewController/CarOrderViewController.m; sourceTree = "<group>"; };
+		57E148F31E62B7B000EB3B35 /* HourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HourseViewController.h; path = AllViewController/HourseViewController.h; sourceTree = "<group>"; };
+		57E148F41E62B7B000EB3B35 /* HourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HourseViewController.m; path = AllViewController/HourseViewController.m; sourceTree = "<group>"; };
+		57E148F61E630A2600EB3B35 /* UnderlineTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnderlineTextField.h; sourceTree = "<group>"; };
+		57E148F71E630A2600EB3B35 /* UnderlineTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnderlineTextField.m; sourceTree = "<group>"; };
+		57F0D64A1E63BE7C00600C16 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		57F0D64B1E63BE7C00600C16 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		57F0D64D1E63BFAB00600C16 /* HIPregressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIPregressHUD.h; sourceTree = "<group>"; };
+		57F0D64E1E63BFAB00600C16 /* HIPregressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIPregressHUD.m; sourceTree = "<group>"; };
 		62E9D7CC928697D1FD787355 /* Pods-MoxiAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoxiAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoxiAPP/Pods-MoxiAPP.debug.xcconfig"; sourceTree = "<group>"; };
 		7541113CE931050E0F1B5619 /* libPods-MoxiAPP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoxiAPP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -319,6 +337,10 @@
 				570649CE1E57EB4400181159 /* UIImage+Tint.m */,
 				57E148ED1E6119F700EB3B35 /* TopLabel.h */,
 				57E148EE1E6119F700EB3B35 /* TopLabel.m */,
+				57E148F61E630A2600EB3B35 /* UnderlineTextField.h */,
+				57E148F71E630A2600EB3B35 /* UnderlineTextField.m */,
+				57F0D64D1E63BFAB00600C16 /* HIPregressHUD.h */,
+				57F0D64E1E63BFAB00600C16 /* HIPregressHUD.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -378,6 +400,8 @@
 		570649971E4C743400181159 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				57F0D6491E63BE7C00600C16 /* ProgressHud */,
+				579394301E63110500FBDDEA /* Switch */,
 				57E148C71E60359200EB3B35 /* CYLTabBarController */,
 				57E148D51E60359200EB3B35 /* CYLTableViewPlaceHolder */,
 				577A85FC1E5F289D00834E61 /* KxMenu */,
@@ -424,6 +448,10 @@
 				570649B91E4C78D100181159 /* HomeViewController.m */,
 				570649BC1E4C79A400181159 /* LeftMenuViewController.h */,
 				570649BD1E4C79A400181159 /* LeftMenuViewController.m */,
+				57E148F01E62B79E00EB3B35 /* CarOrderViewController.h */,
+				57E148F11E62B79E00EB3B35 /* CarOrderViewController.m */,
+				57E148F31E62B7B000EB3B35 /* HourseViewController.h */,
+				57E148F41E62B7B000EB3B35 /* HourseViewController.m */,
 			);
 			name = HomeController;
 			sourceTree = "<group>";
@@ -496,6 +524,15 @@
 			path = KxMenu;
 			sourceTree = "<group>";
 		};
+		579394301E63110500FBDDEA /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+				579394311E63110500FBDDEA /* DVSwitch.h */,
+				579394321E63110500FBDDEA /* DVSwitch.m */,
+			);
+			path = Switch;
+			sourceTree = "<group>";
+		};
 		57E148C71E60359200EB3B35 /* CYLTabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,6 +566,15 @@
 				57E148DD1E60359200EB3B35 /* WeChatStylePlaceHolder.m */,
 			);
 			path = CYLTableViewPlaceHolder;
+			sourceTree = "<group>";
+		};
+		57F0D6491E63BE7C00600C16 /* ProgressHud */ = {
+			isa = PBXGroup;
+			children = (
+				57F0D64A1E63BE7C00600C16 /* MBProgressHUD.h */,
+				57F0D64B1E63BE7C00600C16 /* MBProgressHUD.m */,
+			);
+			path = ProgressHud;
 			sourceTree = "<group>";
 		};
 		ED94B3D5A6E8F8427EFF52AC /* Frameworks */ = {
@@ -729,10 +775,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579394331E63110500FBDDEA /* DVSwitch.m in Sources */,
 				5706498E1E4C64E100181159 /* AdvertisementView.m in Sources */,
 				570649AD1E4C772D00181159 /* HiThirdPartService.m in Sources */,
 				57E148E21E60359200EB3B35 /* CYNavigationViewController.m in Sources */,
 				57E148E61E60359200EB3B35 /* WeChatStylePlaceHolder.m in Sources */,
+				57E148F81E630A2600EB3B35 /* UnderlineTextField.m in Sources */,
 				570649A51E4C743400181159 /* RECommonFunctions.m in Sources */,
 				5706494E1E4C605B00181159 /* AppDelegate.m in Sources */,
 				570649CB1E57DC0200181159 /* LoginViewController.m in Sources */,
@@ -742,6 +790,7 @@
 				570649A91E4C743400181159 /* UIView+REFrostedViewController.m in Sources */,
 				57E148DF1E60359200EB3B35 /* CYLTabBar.m in Sources */,
 				57E148E41E60359200EB3B35 /* CYLPlusButtonSubclass.m in Sources */,
+				57F0D64C1E63BE7C00600C16 /* MBProgressHUD.m in Sources */,
 				570649A71E4C743400181159 /* REFrostedViewController.m in Sources */,
 				570649B71E4C78A200181159 /* BaseViewController.m in Sources */,
 				570649A61E4C743400181159 /* REFrostedContainerViewController.m in Sources */,
@@ -756,15 +805,18 @@
 				577A85FF1E5F289D00834E61 /* NirKxMenu.m in Sources */,
 				57E148E31E60359200EB3B35 /* UIViewController+CYLTabBarControllerExtention.m in Sources */,
 				570649B41E4C789000181159 /* BaseNaviViewController.m in Sources */,
+				57F0D64F1E63BFAB00600C16 /* HIPregressHUD.m in Sources */,
 				570649CF1E57EB4400181159 /* UIImage+Tint.m in Sources */,
 				5706494B1E4C605B00181159 /* main.m in Sources */,
 				570649B01E4C776C00181159 /* HiInitData.m in Sources */,
 				577A85F51E5EEA7B00834E61 /* ContactViewController.m in Sources */,
 				57E148E11E60359200EB3B35 /* CYLTabBarControllerConfig.m in Sources */,
 				570649AA1E4C743400181159 /* UIViewController+REFrostedViewController.m in Sources */,
+				57E148F51E62B7B000EB3B35 /* HourseViewController.m in Sources */,
 				570649911E4C64E100181159 /* BaseNetworkAPI.m in Sources */,
 				570649BE1E4C79A400181159 /* LeftMenuViewController.m in Sources */,
 				57E148E01E60359200EB3B35 /* CYLTabBarController.m in Sources */,
+				57E148F21E62B79E00EB3B35 /* CarOrderViewController.m in Sources */,
 				577A85F81E5EEA8C00834E61 /* AboutViewController.m in Sources */,
 				57E148DE1E60359200EB3B35 /* CYLPlusButton.m in Sources */,
 				577A85F21E5EEA4D00834E61 /* ChangeWXViewController.m in Sources */,

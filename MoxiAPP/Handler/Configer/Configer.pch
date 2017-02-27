@@ -20,5 +20,7 @@
 #import "UIImage+Tint.h"
 #import "NirKxMenu.h"
 #import "CYLTabBarControllerConfig.h"
+#import "MBProgressHUD.h"
+#import "HIPregressHUD.h"
 
 #endif /* Configer_pch */

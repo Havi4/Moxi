@@ -31,6 +31,9 @@
 @property (nonatomic, strong) UILabel *hunter;
 @property (nonatomic, strong) UIButton *contactButton;
 @property (nonatomic, strong) UIButton *sopyButton;
+@property (nonatomic, strong) UIView *modelDoneView;
+@property (nonatomic, strong) NSIndexPath *tapIndex;
+
 @end
 
 @implementation CarTableViewCell
@@ -39,6 +42,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+
         _backView = [[UIView alloc]init];
         _backView.layer.cornerRadius = 5;
         _backView.layer.masksToBounds = YES;
@@ -49,6 +53,7 @@
         }];
 
         _titleBackView = [[UIImageView alloc]init];
+        _titleBackView.userInteractionEnabled = YES;
         _titleBackView.image = [UIImage imageNamed:@"car_order_title"];
         [_backView addSubview:_titleBackView];
         [_titleBackView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -73,6 +78,7 @@
         }];
 
         [_moreButton setImage:[[UIImage imageNamed:@"more_icon"] imageByTintColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+        [_moreButton addTarget:self action:@selector(showMoreNext:) forControlEvents:UIControlEventTouchUpInside];
         [_moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(_titleBackView.mas_right);
             make.centerY.equalTo(_titleBackView.mas_centerY);
@@ -296,7 +302,7 @@
         _contactButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_contactButton setTitle:@"MOXI直连" forState:UIControlStateNormal];
         _contactButton.titleLabel.font = [UIFont systemFontOfSize:16];
-
+        [_contactButton addTarget:self action:@selector(callMoxi:) forControlEvents:UIControlEventTouchUpInside];
         [_contactButton setTitleColor:kFocusTextColor forState:UIControlStateNormal];
         [_backView addSubview:_contactButton];
         [_contactButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -310,7 +316,7 @@
         _sopyButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_sopyButton setTitle:@"复制微信号" forState:UIControlStateNormal];
         _sopyButton.titleLabel.font = [UIFont systemFontOfSize:16];
-
+        [_sopyButton addTarget:self action:@selector(copyWX:) forControlEvents:UIControlEventTouchUpInside];
         [_sopyButton setTitleColor:kCarOrderBarColor forState:UIControlStateNormal];
         [_backView addSubview:_sopyButton];
         [_sopyButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -320,7 +326,37 @@
             make.bottom.equalTo(_backView.mas_bottom);
             make.height.equalTo(@40);
         }];
-        
+
+        _modelDoneView = [[UIView alloc]init];
+        _modelDoneView.layer.cornerRadius = 5;
+        _modelDoneView.layer.masksToBounds = YES;
+        _modelDoneView.hidden = YES;
+        _modelDoneView.backgroundColor = [UIColor colorWithRed:0.118 green:0.145 blue:0.204 alpha:0.5];
+        [self addSubview:_modelDoneView];
+        [_modelDoneView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(self).insets(UIEdgeInsetsMake(7.5, 15, 7.5, 15));
+        }];
+
+        UILabel *doneLabel = [[UILabel alloc]init];
+        [_modelDoneView addSubview:doneLabel];
+        doneLabel.textColor = [UIColor colorWithRed:0.922 green:0.922 blue:0.922 alpha:1.00];
+        doneLabel.text = @"订单已完成";
+        doneLabel.font = [UIFont systemFontOfSize:30];
+        [doneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(_modelDoneView.mas_centerX);
+            make.centerY.equalTo(_modelDoneView.mas_centerY);
+        }];
+
+        UIButton *buttonDelete = [UIButton buttonWithType:UIButtonTypeCustom];
+        [buttonDelete setImage:[UIImage imageNamed:@"delete_done_order"] forState:UIControlStateNormal];
+        [buttonDelete addTarget:self action:@selector(deleteOrder:) forControlEvents:UIControlEventTouchUpInside];
+        [_modelDoneView addSubview:buttonDelete];
+        [buttonDelete mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(@40);
+            make.width.equalTo(@40);
+            make.top.equalTo(_modelDoneView.mas_top).offset(5);
+            make.right.equalTo(_modelDoneView.mas_right).offset(-5);
+        }];
         
     }
     return self;
@@ -329,10 +365,48 @@
 - (void)cellConfigWithItem:(id)item andIndex:(NSIndexPath *)indexPath
 {
     NSDictionary *dic = item;
+    self.tapIndex = indexPath;
     self.startLabelShow.text = [dic objectForKey:@"text"];
     self.endLabelShow.text = [dic objectForKey:@"text1"];
     
 }
 
+- (void)deleteOrder:(UIButton *)button
+{
+    if (self.tapDoneDelete) {
+        self.tapDoneDelete(self.tapIndex);
+    }
+}
+
+
+- (void)copyWX:(UIButton *)button
+{
+    if (self.copyWx) {
+        self.copyWx(self.tapIndex);
+    }
+}
+
+- (void)callMoxi:(UIButton *)button
+{
+    if (self.callMoxi) {
+        self.callMoxi(self.tapIndex);
+    }
+}
+
+- (void)showMoreNext:(UIButton *)button
+{
+    if (self.moreNext) {
+        self.moreNext(self.tapIndex);
+    }
+}
+
+- (void)setHideModelDoneView:(BOOL)hideModelDoneView
+{
+    if (hideModelDoneView) {
+        self.modelDoneView.hidden = YES;
+    }else{
+        self.modelDoneView.hidden = NO;
+    }
+}
 
 @end
