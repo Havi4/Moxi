@@ -39,8 +39,13 @@
  */
 - (CYLTabBarController *)tabBarController {
     if (_tabBarController == nil) {
-        CYLTabBarController *tabBarController = [CYLTabBarController tabBarControllerWithViewControllers:self.viewControllers
-                                                                                   tabBarItemsAttributes:self.tabBarItemsAttributesForController];
+        CYLTabBarController *tabBarController = [[CYLTabBarController alloc]init];
+        tabBarController.tabBarItemsAttributes = self.tabBarItemsAttributesForController;
+//        CYLTabBarController *tabBarController = [CYLTabBarController tabBarControllerWithViewControllers:self.viewControllers
+//                                                                                      tabBarItemsAttributes:self.tabBarItemsAttributesForController];
+        tabBarController.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
+        tabBarController.titlePositionAdjustment = UIOffsetMake(0, MAXFLOAT);
+        tabBarController.viewControllers = self.viewControllers;
         [self customizeTabBarAppearance:tabBarController];
         _tabBarController = tabBarController;
     }
@@ -91,7 +96,7 @@
     // Customize UITabBar height
     // 自定义 TabBar 高度
      tabBarController.tabBarHeight = 49.f;
-    
+
     // set the text color for unselected state
     // 普通状态下的文字属性
     NSMutableDictionary *normalAttrs = [NSMutableDictionary dictionary];
