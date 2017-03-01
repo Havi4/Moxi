@@ -33,7 +33,7 @@
     self.wxTextfield = [[UITextField alloc]init];
     _wxTextfield.borderStyle = UITextBorderStyleNone;
     _wxTextfield.backgroundColor = [UIColor whiteColor];
-    _wxTextfield.clearButtonMode = UITextFieldViewModeAlways;
+    _wxTextfield.clearButtonMode = UITextFieldViewModeNever;
     _wxTextfield.font = [UIFont systemFontOfSize:20];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 15, 50)];
     _wxTextfield.leftViewMode = UITextFieldViewModeAlways;
@@ -41,9 +41,22 @@
     [self.view addSubview:self.wxTextfield];
     [_wxTextfield mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left);
-        make.right.equalTo(self.view.mas_right);
-        make.top.equalTo(self.view.mas_top).offset(74);
+        make.top.equalTo(self.view.mas_top).offset(20);
         make.height.equalTo(@50);
+    }];
+
+    UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [clearButton setImage:[[UIImage imageNamed:@"clear"] imageByTintColor:[UIColor colorWithRed:0.847 green:0.847 blue:0.847 alpha:1.00]] forState:UIControlStateNormal];
+    [clearButton addTarget:self action:@selector(clearAll) forControlEvents:UIControlEventTouchUpInside];
+    clearButton.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:clearButton];
+
+    [clearButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(_wxTextfield.mas_centerY);
+        make.height.equalTo(@50);
+        make.width.equalTo(@50);
+        make.right.equalTo(self.view.mas_right);
+        make.left.equalTo(_wxTextfield.mas_right);
     }];
 
     UIImageView *line1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"septor_line"]];
@@ -61,6 +74,11 @@
         make.right.equalTo(self.view.mas_right);
         make.top.equalTo(self.wxTextfield.mas_bottom).offset(0);
     }];
+}
+
+- (void)clearAll
+{
+    _wxTextfield.text = @"";
 }
 
 - (void)saveWxId

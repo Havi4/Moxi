@@ -42,6 +42,8 @@
 		570649DA1E583EBC00181159 /* JDDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649D91E583EBC00181159 /* JDDropView.m */; };
 		57745F5B1E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F581E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m */; };
 		57745F5C1E665FD90001D0CC /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F5A1E665FD90001D0CC /* UIView+SDAutoLayout.m */; };
+		57745F611E66C3CC0001D0CC /* MyCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F5E1E66C3CC0001D0CC /* MyCarTableViewCell.m */; };
+		57745F621E66C3CC0001D0CC /* MyHouseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F601E66C3CC0001D0CC /* MyHouseTableViewCell.m */; };
 		577A85EF1E5EEA2A00834E61 /* CheckOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85EE1E5EEA2A00834E61 /* CheckOrderViewController.m */; };
 		577A85F21E5EEA4D00834E61 /* ChangeWXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85F11E5EEA4D00834E61 /* ChangeWXViewController.m */; };
 		577A85F51E5EEA7B00834E61 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85F41E5EEA7B00834E61 /* ContactViewController.m */; };
@@ -184,6 +186,10 @@
 		57745F581E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
 		57745F591E665FD90001D0CC /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
 		57745F5A1E665FD90001D0CC /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
+		57745F5D1E66C3CC0001D0CC /* MyCarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyCarTableViewCell.h; path = AllViewController/MyCarTableViewCell.h; sourceTree = "<group>"; };
+		57745F5E1E66C3CC0001D0CC /* MyCarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCarTableViewCell.m; path = AllViewController/MyCarTableViewCell.m; sourceTree = "<group>"; };
+		57745F5F1E66C3CC0001D0CC /* MyHouseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyHouseTableViewCell.h; path = AllViewController/MyHouseTableViewCell.h; sourceTree = "<group>"; };
+		57745F601E66C3CC0001D0CC /* MyHouseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyHouseTableViewCell.m; path = AllViewController/MyHouseTableViewCell.m; sourceTree = "<group>"; };
 		577A85ED1E5EEA2A00834E61 /* CheckOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckOrderViewController.h; path = AllViewController/CheckOrderViewController.h; sourceTree = "<group>"; };
 		577A85EE1E5EEA2A00834E61 /* CheckOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckOrderViewController.m; path = AllViewController/CheckOrderViewController.m; sourceTree = "<group>"; };
 		577A85F01E5EEA4D00834E61 /* ChangeWXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangeWXViewController.h; path = AllViewController/ChangeWXViewController.h; sourceTree = "<group>"; };
@@ -603,6 +609,10 @@
 				57E148E81E607EA000EB3B35 /* HouseTableViewCell.m */,
 				57E148EA1E607ED500EB3B35 /* CarTableViewCell.h */,
 				57E148EB1E607ED500EB3B35 /* CarTableViewCell.m */,
+				57745F5D1E66C3CC0001D0CC /* MyCarTableViewCell.h */,
+				57745F5E1E66C3CC0001D0CC /* MyCarTableViewCell.m */,
+				57745F5F1E66C3CC0001D0CC /* MyHouseTableViewCell.h */,
+				57745F601E66C3CC0001D0CC /* MyHouseTableViewCell.m */,
 			);
 			name = CheckMyOrder;
 			sourceTree = "<group>";
@@ -901,7 +911,8 @@
 				TargetAttributes = {
 					570649451E4C605B00181159 = {
 						CreatedOnToolsVersion = 8.2.1;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = CF99UB3L46;
+						ProvisioningStyle = Automatic;
 					};
 					5706495E1E4C605B00181159 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1019,6 +1030,7 @@
 			files = (
 				579394331E63110500FBDDEA /* DVSwitch.m in Sources */,
 				5706498E1E4C64E100181159 /* AdvertisementView.m in Sources */,
+				57745F621E66C3CC0001D0CC /* MyHouseTableViewCell.m in Sources */,
 				570649AD1E4C772D00181159 /* HiThirdPartService.m in Sources */,
 				57F0D6661E63ED6F00600C16 /* ActionSheetCustomPicker.m in Sources */,
 				57E148E21E60359200EB3B35 /* CYNavigationViewController.m in Sources */,
@@ -1084,6 +1096,7 @@
 				57F0D6F11E641EFC00600C16 /* MJRefreshBackStateFooter.m in Sources */,
 				57745F5B1E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				57F0D66B1E63ED7000600C16 /* ActionSheetStringPicker.m in Sources */,
+				57745F611E66C3CC0001D0CC /* MyCarTableViewCell.m in Sources */,
 				570649BE1E4C79A400181159 /* LeftMenuViewController.m in Sources */,
 				57E148E01E60359200EB3B35 /* CYLTabBarController.m in Sources */,
 				57F0D66A1E63ED6F00600C16 /* ActionSheetMultipleStringPicker.m in Sources */,
@@ -1242,7 +1255,8 @@
 			baseConfigurationReference = 62E9D7CC928697D1FD787355 /* Pods-MoxiAPP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = CF99UB3L46;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoxiAPP/Handler/Configer/Configer.pch";
 				INFOPLIST_FILE = MoxiAPP/Info.plist;
@@ -1258,7 +1272,7 @@
 			baseConfigurationReference = 2BF57FA1683E7F7D9C4F4DF9 /* Pods-MoxiAPP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CF99UB3L46;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoxiAPP/Handler/Configer/Configer.pch";
@@ -1267,8 +1281,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihotkeys.ihotkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "968d2e1d-93ae-41e0-bc89-d6318ebd9d88";
-				PROVISIONING_PROFILE_SPECIFIER = ihotkeys_distribute;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

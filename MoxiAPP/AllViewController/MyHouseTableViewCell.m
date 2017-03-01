@@ -6,9 +6,9 @@
 //  Copyright © 2017年 HaviLee. All rights reserved.
 //
 
-#import "HouseTableViewCell.h"
+#import "MyHouseTableViewCell.h"
 #import "TopLabel.h"
-@interface HouseTableViewCell ()
+@interface MyHouseTableViewCell ()
 @property (nonatomic, strong) UIView *backView;
 @property (nonatomic, strong) UIImageView *titleBackView;
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -35,7 +35,7 @@
 @property (nonatomic, strong) NSIndexPath *tapIndex;
 @end
 
-@implementation HouseTableViewCell
+@implementation MyHouseTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -310,30 +310,37 @@
             make.height.equalTo(@46);
         }];
 
-//        UIView *line4 = [[UIView alloc]init];
-//        line4.backgroundColor = kSepetorColor;
-//        [self.contentView addSubview:line4];
-//        line4.sd_layout
-//        .topSpaceToView(_hunterLabel,0)
-//        .leftSpaceToView(self.contentView,25)
-//        .rightSpaceToView(self.contentView,25)
-//        .heightIs(1);
+        UIView *line4 = [[UIView alloc]init];
+        line4.backgroundColor = kSepetorColor;
+        [self.contentView addSubview:line4];
+        line4.sd_layout
+        .topSpaceToView(_hunterLabel,0)
+        .leftSpaceToView(self.contentView,25)
+        .rightSpaceToView(self.contentView,25)
+        .heightIs(1);
 
+        UIView *line5 = [[UIView alloc]init];
+        line5.backgroundColor = kSepetorColor;
+        [self.contentView addSubview:line5];
+        line5.sd_layout
+        .centerXEqualToView(self.contentView)
+        .topSpaceToView(line4,5)
+        .bottomSpaceToView(self.contentView,12.5)
+        .widthIs(1);
 
+        _contactButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_contactButton setTitle:@"MOXI直连" forState:UIControlStateNormal];
+        _contactButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        [_contactButton addTarget:self action:@selector(callMoxi:) forControlEvents:UIControlEventTouchUpInside];
 
-//        _contactButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_contactButton setTitle:@"MOXI直连" forState:UIControlStateNormal];
-//        _contactButton.titleLabel.font = [UIFont systemFontOfSize:16];
-//        [_contactButton addTarget:self action:@selector(callMoxi:) forControlEvents:UIControlEventTouchUpInside];
-//
-//        [_contactButton setTitleColor:kFocusTextColor forState:UIControlStateNormal];
-//        [self.contentView addSubview:_contactButton];
-//
-//        _contactButton.sd_layout
-//        .leftSpaceToView(self.contentView,25)
-//        .topSpaceToView(line4,0)
-//        .heightIs(40)
-//        .rightSpaceToView(line5,5);
+        [_contactButton setTitleColor:kFocusTextColor forState:UIControlStateNormal];
+        [self.contentView addSubview:_contactButton];
+
+        _contactButton.sd_layout
+        .leftSpaceToView(self.contentView,25)
+        .topSpaceToView(line4,0)
+        .heightIs(40)
+        .rightSpaceToView(line5,5);
 //
         _sopyButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_sopyButton setTitle:@"复制微信号" forState:UIControlStateNormal];
@@ -343,19 +350,11 @@
         [_sopyButton setTitleColor:kCarOrderBarColor forState:UIControlStateNormal];
         [self.contentView addSubview:_sopyButton];
         _sopyButton.sd_layout
+        .leftSpaceToView(line5,5)
+        .topSpaceToView(line4,0)
         .rightSpaceToView(self.contentView,25)
-        .topSpaceToView(line3,0)
-        .heightIs(40)
-        .widthIs(100);
+        .heightIs(40);
 
-        UIView *line4 = [[UIView alloc]init];
-        line4.backgroundColor = kSepetorColor;
-        [self.contentView addSubview:line4];
-        line4.sd_layout
-        .rightSpaceToView(_sopyButton,5)
-        .topSpaceToView(line3,5)
-        .bottomSpaceToView(self.contentView,12.5)
-        .widthIs(1);
 
         _modelDoneView = [[UIView alloc]init];
         _modelDoneView.layer.cornerRadius = 5;
@@ -388,7 +387,7 @@
             make.right.equalTo(_modelDoneView.mas_right).offset(-5);
         }];
 
-        [self setupAutoHeightWithBottomView:_sopyButton bottomMargin:10];
+        [self setupAutoHeightWithBottomView:_contactButton bottomMargin:10];
     }
     return self;
 }

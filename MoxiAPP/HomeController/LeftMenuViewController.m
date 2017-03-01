@@ -41,15 +41,15 @@
 
         [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(view.mas_centerY);
-            make.left.equalTo(@15);
+            make.left.equalTo(@20);
             make.height.equalTo(@60);
             make.width.equalTo(@60);
         }];
         imageView.image = [UIImage imageNamed:@"avatar.jpg"];
         imageView.layer.masksToBounds = YES;
         imageView.layer.cornerRadius = 30.0;
-        imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        imageView.layer.borderWidth = 1.0f;
+        imageView.layer.borderColor = [UIColor colorWithRed:0.957 green:0.906 blue:0.729 alpha:1.00].CGColor;
+        imageView.layer.borderWidth = 2.0f;
         imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
         imageView.layer.shouldRasterize = YES;
         imageView.clipsToBounds = YES;
@@ -58,7 +58,7 @@
         label.text = @"Roman Efimov";
         label.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
         label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor whiteColor];
+        label.textColor = [UIColor colorWithRed:0.953 green:0.953 blue:0.953 alpha:1.00];
         [label sizeToFit];
         [view addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -72,9 +72,9 @@
     [self.view addSubview:logoutButton];
     [logoutButton setImage:[UIImage imageNamed:@"login_out"] forState:UIControlStateNormal];
     logoutButton.titleLabel.font = [UIFont systemFontOfSize:16];
-//    [logoutButton setImageEdgeInsets:UIEdgeInsetsMake(0, 20, 0, logoutButton.titleLabel.intrinsicContentSize.width)];
-//
-//    [logoutButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -logoutButton.currentImage.size.width, 0, -50)];
+    [logoutButton setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, logoutButton.titleLabel.intrinsicContentSize.width)];
+
+    [logoutButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -logoutButton.currentImage.size.width, 0, -50)];
     [logoutButton setTitle:@"解绑微信并退出" forState:UIControlStateNormal];
     [logoutButton setTitleColor:[UIColor colorWithRed:0.376 green:0.255 blue:0.227 alpha:1.00] forState:UIControlStateNormal];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -183,11 +183,11 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
 
-    NSArray *titles = @[@"修改联系微信", @"联系客服",@"关于MOXI"];
+    NSArray *titles = @[@"  修改联系微信", @"  联系客服",@"  关于MOXI"];
     cell.textLabel.text = titles[indexPath.row];
     cell.textLabel.textColor = kBarLightTextColor;
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsMake(0, 10, 0, self.view.frame.size.width-50)];
+        [cell setSeparatorInset:UIEdgeInsetsMake(0, 20, 0, self.view.frame.size.width-50)];
     }
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];

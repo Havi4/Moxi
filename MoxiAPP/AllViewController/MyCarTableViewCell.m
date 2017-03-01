@@ -6,10 +6,10 @@
 //  Copyright © 2017年 HaviLee. All rights reserved.
 //
 
-#import "CarTableViewCell.h"
+#import "MyCarTableViewCell.h"
 #import "TopLabel.h"
 
-@interface CarTableViewCell ()
+@interface MyCarTableViewCell ()
 @property (nonatomic, strong) UIView *backView;
 @property (nonatomic, strong) UIImageView *titleBackView;
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -36,7 +36,7 @@
 
 @end
 
-@implementation CarTableViewCell
+@implementation MyCarTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -280,31 +280,39 @@
             make.height.equalTo(@46);
         }];
 
-//        UIView *line4 = [[UIView alloc]init];
-//        line4.backgroundColor = kSepetorColor;
-//        [_backView addSubview:line4];
-//        [line4 mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(_hunterLabel.mas_bottom).offset(0);
-//            make.left.equalTo(_backView.mas_left).offset(0);
-//            make.right.equalTo(_backView.mas_right).offset(-0);
-//            make.height.equalTo(@1);
-//        }];
+        UIView *line4 = [[UIView alloc]init];
+        line4.backgroundColor = kSepetorColor;
+        [_backView addSubview:line4];
+        [line4 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_hunterLabel.mas_bottom).offset(0);
+            make.left.equalTo(_backView.mas_left).offset(0);
+            make.right.equalTo(_backView.mas_right).offset(-0);
+            make.height.equalTo(@1);
+        }];
 
+        UIView *line5 = [[UIView alloc]init];
+        line5.backgroundColor = kSepetorColor;
+        [_backView addSubview:line5];
+        [line5 mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(line4.mas_bottom).offset(5);
+            make.bottom.equalTo(_backView.mas_bottom).offset(-5);
+            make.centerX.equalTo(_backView.mas_centerX);
+            make.width.equalTo(@1);
+        }];
 
-
-//        _contactButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_contactButton setTitle:@"MOXI直连" forState:UIControlStateNormal];
-//        _contactButton.titleLabel.font = [UIFont systemFontOfSize:16];
-//        [_contactButton addTarget:self action:@selector(callMoxi:) forControlEvents:UIControlEventTouchUpInside];
-//        [_contactButton setTitleColor:kFocusTextColor forState:UIControlStateNormal];
-//        [_backView addSubview:_contactButton];
-//        [_contactButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(_backView.mas_left).offset(10);
-//            make.right.equalTo(line5.mas_left).offset(-10);
-//            make.top.equalTo(line4.mas_bottom);
-//            make.bottom.equalTo(_backView.mas_bottom);
-//            make.height.equalTo(@40);
-//        }];
+        _contactButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_contactButton setTitle:@"MOXI直连" forState:UIControlStateNormal];
+        _contactButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        [_contactButton addTarget:self action:@selector(callMoxi:) forControlEvents:UIControlEventTouchUpInside];
+        [_contactButton setTitleColor:kFocusTextColor forState:UIControlStateNormal];
+        [_backView addSubview:_contactButton];
+        [_contactButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_backView.mas_left).offset(10);
+            make.right.equalTo(line5.mas_left).offset(-10);
+            make.top.equalTo(line4.mas_bottom);
+            make.bottom.equalTo(_backView.mas_bottom);
+            make.height.equalTo(@40);
+        }];
 
         _sopyButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_sopyButton setTitle:@"复制微信号" forState:UIControlStateNormal];
@@ -313,21 +321,11 @@
         [_sopyButton setTitleColor:kCarOrderBarColor forState:UIControlStateNormal];
         [_backView addSubview:_sopyButton];
         [_sopyButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(line5.mas_left).offset(10);
             make.right.equalTo(_backView.mas_right).offset(-10);
-            make.top.equalTo(line3.mas_bottom);
+            make.top.equalTo(line4.mas_bottom);
             make.bottom.equalTo(_backView.mas_bottom);
             make.height.equalTo(@40);
-            make.width.equalTo(@100);
-        }];
-
-        UIView *line5 = [[UIView alloc]init];
-        line5.backgroundColor = kSepetorColor;
-        [_backView addSubview:line5];
-        [line5 mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(line3.mas_bottom).offset(5);
-            make.bottom.equalTo(_backView.mas_bottom).offset(-5);
-            make.right.equalTo(_sopyButton.mas_left).offset(-5);
-            make.width.equalTo(@1);
         }];
 
         _modelDoneView = [[UIView alloc]init];

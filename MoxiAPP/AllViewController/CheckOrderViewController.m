@@ -43,18 +43,13 @@
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:20],NSForegroundColorAttributeName:kBarLightTextColor}];
 
-    _orderView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49) style:UITableViewStylePlain];
+    _orderView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-64) style:UITableViewStylePlain];
     _orderView.backgroundColor = kBackgroundViewColor;
     _orderView.delegate = self;
     _orderView.dataSource = self;
     _orderView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_orderView];
-
-    self.orderView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            //Call this Block When enter the refresh status automatically
-        [self loadNewData];
-    }];
-        // Set the callback（Once you enter the refresh status，then call the action of target，that is call [self loadNewData]）
+            // Set the callback（Once you enter the refresh status，then call the action of target，that is call [self loadNewData]）
     self.orderView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
 
         // Enter the refresh status immediately
@@ -101,13 +96,10 @@
                          [KxMenuItem menuItem:@"发布民宿订单" image:nil target:self action:@selector(showMinsuOrder)],
                          [KxMenuItem menuItem:@"发布用车订单" image:nil target:self action:@selector(showCarOrder)]
                          ];
-    OptionalConfiguration option = {9,7,7,8.5,6.5,YES,NO,YES,NO,{0.376, 0.255, 0.227},{1,1,1}};
+    OptionalConfiguration option = {11,7,7,8.5,6.5,YES,NO,YES,NO,{0.376, 0.255, 0.227},{1,1,1}};
+    [KxMenu setTitleFont:[UIFont systemFontOfSize:20]];
 
-    [KxMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width-50, 6, 50, 60) menuItems:itemArr withOptions:option];
-        //    if (![KxMenu isShow]) {
-        //    }else{
-        //        [KxMenu dismissMenu];
-        //    }
+    [KxMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width-50, -60, 52, 60) menuItems:itemArr withOptions:option];
 }
 
 - (void)showMinsuOrder
@@ -216,15 +208,13 @@
     if ([[dic objectForKey:@"orderType"] intValue]==0) {//车
         CGFloat height = [self heightForText1:[dic objectForKey:@"startPlace"]];
         CGFloat height2 = [self heightForText1:[dic objectForKey:@"endPlace"]];
-        return 285 + height2 +height;
+        return 241 + height2 +height;
     }else{
-        CGFloat height = [self heightForText:[dic objectForKey:@"text"]];
-        if (height<35) {
-            return 308;
-        }else{
-            return 308 + height - 10;
-        }
+        NSString *str = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"yaoqiu"];
+        /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */
+        return [self.orderView cellHeightForIndexPath:indexPath model:str keyPath:@"text" cellClass:[HouseTableViewCell class] contentViewWidth:kScreenSize.width];
     }
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

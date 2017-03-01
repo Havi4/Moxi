@@ -51,12 +51,8 @@
                                                                             target:self
                                                                             action:@selector(changLocation)];
     self.changeLocationItem.tag = 101;
-    UIBarButtonItem *addOrderItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"order_pulish_icon"] imageByTintColor:kBarLightTextColor]
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(addNewOrder:)];
 
-    self.navigationItem.rightBarButtonItems = @[addOrderItem,self.changeLocationItem];
+    self.navigationItem.rightBarButtonItems = @[self.changeLocationItem];
 
     _locationChange = [UIButton buttonWithType:UIButtonTypeCustom];
     _locationChange.frame = CGRectMake(0, 0, 120, 44);
@@ -65,8 +61,6 @@
     [_locationChange setTitleColor:kBarLightTextColor forState:UIControlStateNormal];
     [_locationChange setTarget:self action:@selector(showAllLoaction) forControlEvents:UIControlEventTouchUpInside];
     _locationChange.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
-//    [_locationChange setImageEdgeInsets:UIEdgeInsetsMake(0, 5, 0, _locationChange.titleLabel.intrinsicContentSize.width)];
-//    [_locationChange setTitleEdgeInsets:UIEdgeInsetsMake(0, -_locationChange.currentImage.size.width, 0, -25)];
     self.navigationItem.titleView = _locationChange;
 
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
@@ -75,17 +69,12 @@
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:imageView];
 
-    _orderView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-49-64) style:UITableViewStylePlain];
+    _orderView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-49-64) style:UITableViewStylePlain];
     _orderView.backgroundColor = kBackgroundViewColor;
     _orderView.delegate = self;
     _orderView.dataSource = self;
     _orderView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_orderView];
-
-    self.orderView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            //Call this Block When enter the refresh status automatically
-        [self loadNewData];
-    }];
         // Set the callback（Once you enter the refresh status，then call the action of target，that is call [self loadNewData]）
     self.orderView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
 
@@ -148,6 +137,7 @@
                          ];
     OptionalConfiguration option = {9,7,7,15,6.5,YES,NO,YES,NO,{0.376, 0.255, 0.227},{1,1,1}};
 
+    [KxMenu setTitleFont:[UIFont systemFontOfSize:20]];
     [KxMenu showMenuInView:self.view fromRect:CGRectMake(self.view.frame.size.width-50, 6, 50, 60) menuItems:itemArr withOptions:option];
 }
 
@@ -288,7 +278,7 @@
     if ([[dic objectForKey:@"orderType"] intValue]==0) {//车
         CGFloat height = [self heightForText1:[dic objectForKey:@"startPlace"]];
         CGFloat height2 = [self heightForText1:[dic objectForKey:@"endPlace"]];
-        return 285 + height2 +height;
+        return 241 + height2 +height;
     }else{
         NSString *str = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"yaoqiu"];
         /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */

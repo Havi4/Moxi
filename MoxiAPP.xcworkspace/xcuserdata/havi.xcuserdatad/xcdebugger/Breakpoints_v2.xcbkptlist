@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/CarTableViewCell.m"
-            timestampString = "510040637.809038"
+            timestampString = "510052141.628495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "720"
-            endingLineNumber = "720">
+            startingLineNumber = "722"
+            endingLineNumber = "722">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/HouseTableViewCell.m"
-            timestampString = "510040753.691754"
+            timestampString = "510051806.472707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "416"
-            endingLineNumber = "416"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
             landmarkName = "-showMoreNext:"
             landmarkType = "7">
          </BreakpointContent>

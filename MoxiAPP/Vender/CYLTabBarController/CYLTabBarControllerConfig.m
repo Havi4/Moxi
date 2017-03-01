@@ -43,7 +43,7 @@
         tabBarController.tabBarItemsAttributes = self.tabBarItemsAttributesForController;
 //        CYLTabBarController *tabBarController = [CYLTabBarController tabBarControllerWithViewControllers:self.viewControllers
 //                                                                                      tabBarItemsAttributes:self.tabBarItemsAttributesForController];
-        tabBarController.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
+        tabBarController.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
         tabBarController.titlePositionAdjustment = UIOffsetMake(0, MAXFLOAT);
         tabBarController.viewControllers = self.viewControllers;
         [self customizeTabBarAppearance:tabBarController];

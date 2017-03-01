@@ -15,11 +15,14 @@
 {
         //状态栏
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
-    [[UINavigationBar appearance] setBarTintColor:kNaviBarBackColor];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navi_bar"] forBarMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance]setBarTintColor:kNaviBarBackColor];
+//    [[UINavigationBar appearance] setBackgroundColor:kNaviBarBackColor];
     [[UINavigationBar appearance] setTintColor:kBarLightTextColor];
     [[IQKeyboardManager sharedManager] setToolbarManageBehaviour:IQAutoToolbarByPosition];
     [IQKeyboardManager sharedManager].toolbarDoneBarButtonItemText = @"完成";
     [IQKeyboardManager sharedManager].canAdjustTextView = YES;
+
 }
 
 @end
