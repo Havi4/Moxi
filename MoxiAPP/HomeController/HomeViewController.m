@@ -248,8 +248,9 @@
         if (!cell) {
             cell = [[HouseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }
-        [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
         cell.backgroundColor = [UIColor clearColor];
+        cell.text = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"yaoqiu"];
+        [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if ([[dic objectForKey:@"isDone"] intValue]==0) {//未完成
             cell.hideModelDoneView = YES;
@@ -289,12 +290,9 @@
         CGFloat height2 = [self heightForText1:[dic objectForKey:@"endPlace"]];
         return 285 + height2 +height;
     }else{
-        CGFloat height = [self heightForText:[dic objectForKey:@"text"]];
-        if (height<35) {
-            return 308;
-        }else{
-            return 308 + height - 10;
-        }
+        NSString *str = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"yaoqiu"];
+        /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */
+        return [self.orderView cellHeightForIndexPath:indexPath model:str keyPath:@"text" cellClass:[HouseTableViewCell class] contentViewWidth:kScreenSize.width];
     }
 }
 

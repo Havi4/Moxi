@@ -47,6 +47,7 @@
         _backView.layer.cornerRadius = 5;
         _backView.layer.masksToBounds = YES;
         _backView.backgroundColor = [UIColor whiteColor];
+        self.contentView.userInteractionEnabled = YES;
         [self addSubview:_backView];
         [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self).insets(UIEdgeInsetsMake(7.5, 15, 7.5, 15));

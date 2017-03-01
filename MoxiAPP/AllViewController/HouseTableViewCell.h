@@ -19,4 +19,7 @@
 - (void)cellConfigWithItem:(id)item andIndex:(NSIndexPath *)indexPath;
 
 @property (nonatomic, assign) BOOL hideModelDoneView;
+
+@property (nonatomic, copy) NSString *text;
+
 @end
