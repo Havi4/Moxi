@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/CarTableViewCell.m"
-            timestampString = "510052141.628495"
+            timestampString = "510071185.023194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "722"
-            endingLineNumber = "722">
+            startingLineNumber = "997"
+            endingLineNumber = "997">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,6 +46,38 @@
             startingLineNumber = "427"
             endingLineNumber = "427"
             landmarkName = "-showMoreNext:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/Vender/CYLTabBarController/AnimationTransition.m"
+            timestampString = "510073467.351054"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "-animateTransition:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/Vender/CYLTabBarController/AnimationTransition.m"
+            timestampString = "510073474.162271"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-animateTransition:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

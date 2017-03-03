@@ -23,25 +23,49 @@
 
 @implementation CheckOrderViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationItem.titleView.alpha = 0;
+    self.navigationItem.leftBarButtonItem.customView.alpha = 0;
+    self.navigationItem.rightBarButtonItem.customView.alpha = 0;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [UIView animateWithDuration:1 animations:^{
+        self.navigationItem.titleView.alpha = 1;
+        self.navigationItem.leftBarButtonItem.customView.alpha = 1;
+        self.navigationItem.rightBarButtonItem.customView.alpha = 1;
+
+    }];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dic = @[].mutableCopy;
 
     // Do any additional setup after loading the view.
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"bar_user_icon"] imageByTintColor:kBarLightTextColor]
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:(BaseNaviViewController *)self.navigationController
-                                                                            action:@selector(showMenu)];
-    UIBarButtonItem *addOrderItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"order_pulish_icon"] imageByTintColor:kBarLightTextColor]
-                                                                     style:UIBarButtonItemStylePlain
-                                                                    target:self
-                                                                    action:@selector(addNewOrder:)];
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftButton.frame = CGRectMake(0, 0, 44, 44);
+    leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 15);
+    [leftButton setImage:[[UIImage imageNamed:@"bar_user_icon"] imageByTintColor:kBarLightTextColor] forState:UIControlStateNormal];
+    [leftButton addTarget:(BaseNaviViewController *)self.navigationController action:@selector(showMenu) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
 
-    self.navigationItem.rightBarButtonItems = @[addOrderItem];
+    UIButton *_rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _rightButton.frame = CGRectMake(0, 0, 44, 44);
+    _rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 15, 0, -15);
+    [_rightButton setImage:[[UIImage imageNamed:@"bar_user_icon"] imageByTintColor:kBarLightTextColor] forState:UIControlStateNormal];
+    [_rightButton addTarget:self action:@selector(addNewOrder:) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rightButton];
 
-    self.navigationItem.title = @"我的发布";
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:20],NSForegroundColorAttributeName:kBarLightTextColor}];
+    UILabel *titleLabel = [[UILabel alloc]init];
+    titleLabel.text = @"我的发布";
+    titleLabel.frame = CGRectMake((kScreenSize.width-100)/2, 20, 100, 44);
+    titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
+    titleLabel.textColor = kBarLightTextColor;
+    self.navigationItem.titleView = titleLabel;
 
     _orderView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-64) style:UITableViewStylePlain];
     _orderView.backgroundColor = kBackgroundViewColor;
@@ -83,7 +107,7 @@
     });
 }
 
-- (void)addNewOrder:(UIBarButtonItem *)sender
+- (void)addNewOrder:(UIButton *)sender
 {
     DeBugLog(@"addneworder");
     for (UIView *view in self.view.subviews) {

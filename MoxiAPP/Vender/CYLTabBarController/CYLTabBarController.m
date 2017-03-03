@@ -9,6 +9,7 @@
 #import "CYLTabBarController.h"
 #import "CYLTabBar.h"
 #import <objc/runtime.h>
+#import "AnimationTransition.h"
 
 NSString *const CYLTabBarItemTitle = @"CYLTabBarItemTitle";
 NSString *const CYLTabBarItemImage = @"CYLTabBarItemImage";
@@ -291,6 +292,19 @@ static void * const CYLSwappableImageViewDefaultOffsetContext = (void*)&CYLSwapp
     [[self cyl_tabBarController] updateSelectionStatusIfNeededForTabBarController:tabBarController shouldSelectViewController:viewController];
     return YES;
 }
+
+//- (nullable id <UIViewControllerAnimatedTransitioning>)tabBarController:(UITabBarController *)tabBarController
+//                     animationControllerForTransitionFromViewController:(UIViewController *)fromVC
+//                                                       toViewController:(UIViewController *)toVC  NS_AVAILABLE_IOS(7_0)
+//{
+//    AnimationTransition *animatorTransition = [[AnimationTransition alloc]init];
+//        //    animatorTransition.animatorTransitionType = kAnimatorTransitionTypePresent;
+//    animatorTransition.animatorTransitionType = kAnimatorTransitionTypePresent;
+//    animatorTransition.from = fromVC;
+//    animatorTransition.to = toVC;
+////    animatorTransition.bubbleCenter = self.view.center;
+//    return animatorTransition;
+//}
 
 @end
 

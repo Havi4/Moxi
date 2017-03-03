@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CarModel.h"
 @interface CarTableViewCell : UITableViewCell
 
 @property (nonatomic, copy) void (^tapDoneDelete)(NSIndexPath *indexPath);
@@ -21,4 +21,9 @@
 - (void)cellConfigWithItem:(id)item andIndex:(NSIndexPath *)indexPath;
 
 @property (nonatomic, assign) BOOL hideModelDoneView;
+
+@property (nonatomic, copy) CarModel *carModel;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) NSString *text2;
+
 @end

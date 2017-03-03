@@ -18,6 +18,7 @@
 @interface HomeViewController ()<DropViewDataSource,DropViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UIBarButtonItem *changeLocationItem;
+@property (nonatomic, strong) UIButton *rightButton;
 @property (nonatomic, copy) NSArray  *dataA2;
 @property (nonatomic, assign) BOOL isShowDropView;
 @property (nonatomic, strong) JDDropView *dropDwonView;
@@ -35,24 +36,44 @@
     [self setSubViews];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationItem.titleView.alpha = 0;
+    self.navigationItem.leftBarButtonItem.customView.alpha = 0;
+    self.navigationItem.rightBarButtonItem.customView.alpha = 0;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+
+    [UIView animateWithDuration:1 animations:^{
+        self.navigationItem.titleView.alpha = 1;
+        self.navigationItem.leftBarButtonItem.customView.alpha = 1;
+        self.navigationItem.rightBarButtonItem.customView.alpha = 1;
+    }];
+}
+
 - (void)setSubViews
 {
         // Do any additional setup after loading the view.
     self.isShowTag = NO;
     self.isShowDropView = NO;
     self.dic = @[].mutableCopy;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"bar_user_icon"] imageByTintColor:kBarLightTextColor]
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:(BaseNaviViewController *)self.navigationController
-                                                                            action:@selector(showMenu)];
 
-    self.changeLocationItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"house_order_icon"] imageByTintColor:kBarLightTextColor]
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(changLocation)];
-    self.changeLocationItem.tag = 101;
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    leftButton.frame = CGRectMake(0, 0, 44, 44);
+    leftButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 15);
+    [leftButton setImage:[[UIImage imageNamed:@"bar_user_icon"] imageByTintColor:kBarLightTextColor] forState:UIControlStateNormal];
+    [leftButton addTarget:(BaseNaviViewController *)self.navigationController action:@selector(showMenu) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
 
-    self.navigationItem.rightBarButtonItems = @[self.changeLocationItem];
+    self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _rightButton.frame = CGRectMake(0, 0, 44, 44);
+    _rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 15, 0, -15);
+    [_rightButton setImage:[[UIImage imageNamed:@"order_pulish_icon"] imageByTintColor:kBarLightTextColor] forState:UIControlStateNormal];
+    [_rightButton addTarget:self action:@selector(changLocation) forControlEvents:UIControlEventTouchUpInside];
+    self.rightButton.tag = 101;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rightButton];
 
     _locationChange = [UIButton buttonWithType:UIButtonTypeCustom];
     _locationChange.frame = CGRectMake(0, 0, 120, 44);
@@ -111,13 +132,13 @@
 
 - (void)changLocation
 {
-    if (self.changeLocationItem.tag == 101) {
-        self.changeLocationItem.tag = 102;
-        self.changeLocationItem.image = [UIImage imageNamed:@"car_order_icon"];
+    if (self.rightButton.tag == 101) {
+        self.rightButton.tag = 102;
+        [self.rightButton setImage:[UIImage imageNamed:@"car_order_icon"] forState:UIControlStateNormal];
         DeBugLog(@"changlocation hourse");
     }else{
-        self.changeLocationItem.tag = 101;
-        self.changeLocationItem.image = [UIImage imageNamed:@"house_order_icon"];
+        self.rightButton.tag = 101;
+        [self.rightButton setImage:[UIImage imageNamed:@"house_order_icon"] forState:UIControlStateNormal];
         DeBugLog(@"changlocation car");
     }
 }
@@ -172,7 +193,7 @@
 - (JDDropView *)dropDwonView
 {
     if (!_dropDwonView) {
-        _dropDwonView = [[JDDropView alloc]initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, 50)];
+        _dropDwonView = [[JDDropView alloc]initWithFrame:CGRectMake(0, -14, self.view.frame.size.width, 50)];
         _dropDwonView.bgView.alpha = 0.6;
         _dropDwonView.dataSource=self;
         _dropDwonView.delegate=self;
@@ -276,9 +297,13 @@
 {
     NSDictionary *dic = [self.dic objectAtIndex:indexPath.row];
     if ([[dic objectForKey:@"orderType"] intValue]==0) {//车
-        CGFloat height = [self heightForText1:[dic objectForKey:@"startPlace"]];
-        CGFloat height2 = [self heightForText1:[dic objectForKey:@"endPlace"]];
-        return 241 + height2 +height;
+        NSString *str = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"startPlace"];
+        NSString *str1 = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"endPlace"];
+        /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */
+        CarModel *car = [[CarModel alloc]init];
+        car.text = str;
+        car.text1 = str1;
+        return [self.orderView cellHeightForIndexPath:indexPath model:car keyPath:@"carModel" cellClass:[CarTableViewCell class] contentViewWidth:kScreenSize.width];
     }else{
         NSString *str = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"yaoqiu"];
         /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */

@@ -44,6 +44,8 @@
 		57745F5C1E665FD90001D0CC /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F5A1E665FD90001D0CC /* UIView+SDAutoLayout.m */; };
 		57745F611E66C3CC0001D0CC /* MyCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F5E1E66C3CC0001D0CC /* MyCarTableViewCell.m */; };
 		57745F621E66C3CC0001D0CC /* MyHouseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F601E66C3CC0001D0CC /* MyHouseTableViewCell.m */; };
+		57745F651E66FEA00001D0CC /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F641E66FEA00001D0CC /* CarModel.m */; };
+		57745F681E6718A60001D0CC /* AnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F671E6718A60001D0CC /* AnimationTransition.m */; };
 		577A85EF1E5EEA2A00834E61 /* CheckOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85EE1E5EEA2A00834E61 /* CheckOrderViewController.m */; };
 		577A85F21E5EEA4D00834E61 /* ChangeWXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85F11E5EEA4D00834E61 /* ChangeWXViewController.m */; };
 		577A85F51E5EEA7B00834E61 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577A85F41E5EEA7B00834E61 /* ContactViewController.m */; };
@@ -190,6 +192,10 @@
 		57745F5E1E66C3CC0001D0CC /* MyCarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyCarTableViewCell.m; path = AllViewController/MyCarTableViewCell.m; sourceTree = "<group>"; };
 		57745F5F1E66C3CC0001D0CC /* MyHouseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyHouseTableViewCell.h; path = AllViewController/MyHouseTableViewCell.h; sourceTree = "<group>"; };
 		57745F601E66C3CC0001D0CC /* MyHouseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyHouseTableViewCell.m; path = AllViewController/MyHouseTableViewCell.m; sourceTree = "<group>"; };
+		57745F631E66FEA00001D0CC /* CarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CarModel.h; path = AllViewController/CarModel.h; sourceTree = "<group>"; };
+		57745F641E66FEA00001D0CC /* CarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CarModel.m; path = AllViewController/CarModel.m; sourceTree = "<group>"; };
+		57745F661E6718A60001D0CC /* AnimationTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationTransition.h; sourceTree = "<group>"; };
+		57745F671E6718A60001D0CC /* AnimationTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationTransition.m; sourceTree = "<group>"; };
 		577A85ED1E5EEA2A00834E61 /* CheckOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckOrderViewController.h; path = AllViewController/CheckOrderViewController.h; sourceTree = "<group>"; };
 		577A85EE1E5EEA2A00834E61 /* CheckOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckOrderViewController.m; path = AllViewController/CheckOrderViewController.m; sourceTree = "<group>"; };
 		577A85F01E5EEA4D00834E61 /* ChangeWXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangeWXViewController.h; path = AllViewController/ChangeWXViewController.h; sourceTree = "<group>"; };
@@ -609,6 +615,8 @@
 				57E148E81E607EA000EB3B35 /* HouseTableViewCell.m */,
 				57E148EA1E607ED500EB3B35 /* CarTableViewCell.h */,
 				57E148EB1E607ED500EB3B35 /* CarTableViewCell.m */,
+				57745F631E66FEA00001D0CC /* CarModel.h */,
+				57745F641E66FEA00001D0CC /* CarModel.m */,
 				57745F5D1E66C3CC0001D0CC /* MyCarTableViewCell.h */,
 				57745F5E1E66C3CC0001D0CC /* MyCarTableViewCell.m */,
 				57745F5F1E66C3CC0001D0CC /* MyHouseTableViewCell.h */,
@@ -678,6 +686,8 @@
 				57E148D21E60359200EB3B35 /* CYNavigationViewController.m */,
 				57E148D31E60359200EB3B35 /* UIViewController+CYLTabBarControllerExtention.h */,
 				57E148D41E60359200EB3B35 /* UIViewController+CYLTabBarControllerExtention.m */,
+				57745F661E6718A60001D0CC /* AnimationTransition.h */,
+				57745F671E6718A60001D0CC /* AnimationTransition.m */,
 			);
 			path = CYLTabBarController;
 			sourceTree = "<group>";
@@ -1087,12 +1097,14 @@
 				577A85F51E5EEA7B00834E61 /* ContactViewController.m in Sources */,
 				57F0D6701E63FDFA00600C16 /* NSDate+WQCalendarLogic.m in Sources */,
 				57F0D6ED1E641EFC00600C16 /* MJRefreshAutoNormalFooter.m in Sources */,
+				57745F681E6718A60001D0CC /* AnimationTransition.m in Sources */,
 				57F0D6F01E641EFC00600C16 /* MJRefreshBackNormalFooter.m in Sources */,
 				57E148E11E60359200EB3B35 /* CYLTabBarControllerConfig.m in Sources */,
 				57F0D6681E63ED6F00600C16 /* ActionSheetDistancePicker.m in Sources */,
 				570649AA1E4C743400181159 /* UIViewController+REFrostedViewController.m in Sources */,
 				57E148F51E62B7B000EB3B35 /* HourseViewController.m in Sources */,
 				570649911E4C64E100181159 /* BaseNetworkAPI.m in Sources */,
+				57745F651E66FEA00001D0CC /* CarModel.m in Sources */,
 				57F0D6F11E641EFC00600C16 /* MJRefreshBackStateFooter.m in Sources */,
 				57745F5B1E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				57F0D66B1E63ED7000600C16 /* ActionSheetStringPicker.m in Sources */,
