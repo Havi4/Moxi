@@ -290,7 +290,24 @@ static void * const CYLSwappableImageViewDefaultOffsetContext = (void*)&CYLSwapp
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     [[self cyl_tabBarController] updateSelectionStatusIfNeededForTabBarController:tabBarController shouldSelectViewController:viewController];
+
     return YES;
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    DeBugLog(@"xuan");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"naviAlpha" object:nil userInfo:@{@"key":viewController}];
+//    viewController.navigationItem.titleView.alpha = 0;
+//    viewController.navigationItem.leftBarButtonItem.customView.alpha = 0;
+//    viewController.navigationItem.rightBarButtonItem.customView.alpha = 0;
+//
+//    [UIView animateWithDuration:1 animations:^{
+//        viewController.navigationItem.titleView.alpha = 1;
+//        viewController.navigationItem.leftBarButtonItem.customView.alpha = 1;
+//        viewController.navigationItem.rightBarButtonItem.customView.alpha = 1;
+//    }];
+
 }
 
 //- (nullable id <UIViewControllerAnimatedTransitioning>)tabBarController:(UITabBarController *)tabBarController

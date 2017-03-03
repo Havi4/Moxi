@@ -139,16 +139,21 @@
 
 - (void)animatorPresent{
         //得到初始frame,fromView为全屏，toView为（0，0，0，0）
-    CATransform3D viewFromTransform = CATransform3DMakeRotation(M_PI/2, 0, 1, 0);
-    CATransform3D viewToTransform = CATransform3DMakeRotation(-M_PI/2, 0, 1, 0);
-    viewFromTransform.m34 = PERSPECTIVE;
-    viewToTransform.m34 = PERSPECTIVE;
+//    CATransform3D viewFromTransform = CATransform3DMakeRotation(M_PI/2, 0, 1, 0);
+//    CATransform3D viewToTransform = CATransform3DMakeRotation(-M_PI/2, 0, 1, 0);
+//    viewFromTransform.m34 = PERSPECTIVE;
+//    viewToTransform.m34 = PERSPECTIVE;
 
 
     UIViewController *toVC = [_transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *fromVC = [_transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIView *container = [_transitionContext containerView];
-
+    fromVC.navigationItem.titleView.alpha = 1;
+    fromVC.navigationItem.leftBarButtonItem.customView.alpha = 1;
+    fromVC.navigationItem.rightBarButtonItem.customView.alpha = 1;
+    toVC.navigationItem.titleView.alpha = 0;
+    toVC.navigationItem.leftBarButtonItem.customView.alpha = 0;
+    toVC.navigationItem.rightBarButtonItem.customView.alpha = 0;
 //    [toVC.view.layer setAnchorPoint:CGPointMake(0, 0.5)];
 //    [fromVC.view.layer setAnchorPoint:CGPointMake(1, 0.5)];
 //
@@ -159,10 +164,15 @@
 
 
     [UIView animateWithDuration:[self transitionDuration:_transitionContext] animations:^{
-
-        fromVC.view.frame = CGRectMake(kScreenSize.width, 0, kScreenSize.width, kScreenSize.height);
-        toVC.view.frame = CGRectMake(0, 0, kScreenSize.width, kScreenSize.height);
-        container.frame = CGRectMake(0, 0, kScreenSize.width, kScreenSize.height);
+        fromVC.navigationItem.titleView.alpha = 0;
+        fromVC.navigationItem.leftBarButtonItem.customView.alpha = 0;
+        fromVC.navigationItem.rightBarButtonItem.customView.alpha = 0;
+        toVC.navigationItem.titleView.alpha = 1;
+        toVC.navigationItem.leftBarButtonItem.customView.alpha = 1;
+        toVC.navigationItem.rightBarButtonItem.customView.alpha = 1;
+//        fromVC.view.frame = CGRectMake(kScreenSize.width, 0, kScreenSize.width, kScreenSize.height);
+//        toVC.view.frame = CGRectMake(0, 0, kScreenSize.width, kScreenSize.height);
+//        container.frame = CGRectMake(0, 0, kScreenSize.width, kScreenSize.height);
 //        fromVC.view.layer.transform = viewFromTransform;
 //        toVC.view.layer.transform = CATransform3DIdentity;
 //        [container setTransform:CGAffineTransformMakeTranslation(-container.frame.size.width/2.0, 0)];

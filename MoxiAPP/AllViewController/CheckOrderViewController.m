@@ -25,26 +25,50 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+        //    self.navigationItem.titleView.alpha = 0;
+        //    self.navigationItem.leftBarButtonItem.customView.alpha = 0;
+        //    self.navigationItem.rightBarButtonItem.customView.alpha = 0;
+
+}
+
+- (void)showAnimation:(NSNotification *)userInfo
+{
     self.navigationItem.titleView.alpha = 0;
     self.navigationItem.leftBarButtonItem.customView.alpha = 0;
     self.navigationItem.rightBarButtonItem.customView.alpha = 0;
+    NSDictionary *dic = userInfo.userInfo;
+    BaseNaviViewController *navi = [dic objectForKey:@"key"];
+    if ([[[navi viewControllers] firstObject] isKindOfClass:[CheckOrderViewController class]]) {
+        DeBugLog(@"check");
+        [UIView animateWithDuration:1 animations:^{
+            self.navigationItem.titleView.alpha = 1;
+            self.navigationItem.leftBarButtonItem.customView.alpha = 1;
+            self.navigationItem.rightBarButtonItem.customView.alpha = 1;
+        }];
+    }
 }
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [UIView animateWithDuration:1 animations:^{
-        self.navigationItem.titleView.alpha = 1;
-        self.navigationItem.leftBarButtonItem.customView.alpha = 1;
-        self.navigationItem.rightBarButtonItem.customView.alpha = 1;
-
-    }];
-}
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    self.navigationItem.titleView.alpha = 0;
+//    self.navigationItem.leftBarButtonItem.customView.alpha = 0;
+//    self.navigationItem.rightBarButtonItem.customView.alpha = 0;
+//}
+//
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [UIView animateWithDuration:1 animations:^{
+//        self.navigationItem.titleView.alpha = 1;
+//        self.navigationItem.leftBarButtonItem.customView.alpha = 1;
+//        self.navigationItem.rightBarButtonItem.customView.alpha = 1;
+//
+//    }];
+//}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dic = @[].mutableCopy;
-
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showAnimation:) name:@"naviAlpha" object:nil];
     // Do any additional setup after loading the view.
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.frame = CGRectMake(0, 0, 44, 44);
@@ -56,7 +80,7 @@
     UIButton *_rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _rightButton.frame = CGRectMake(0, 0, 44, 44);
     _rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 15, 0, -15);
-    [_rightButton setImage:[[UIImage imageNamed:@"bar_user_icon"] imageByTintColor:kBarLightTextColor] forState:UIControlStateNormal];
+    [_rightButton setImage:[[UIImage imageNamed:@"order_pulish_icon"] imageByTintColor:kBarLightTextColor] forState:UIControlStateNormal];
     [_rightButton addTarget:self action:@selector(addNewOrder:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rightButton];
 
