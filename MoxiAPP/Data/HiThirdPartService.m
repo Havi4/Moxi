@@ -22,7 +22,10 @@
     [[IQKeyboardManager sharedManager] setToolbarManageBehaviour:IQAutoToolbarByPosition];
     [IQKeyboardManager sharedManager].toolbarDoneBarButtonItemText = @"完成";
     [IQKeyboardManager sharedManager].canAdjustTextView = YES;
+    [HYBNetworking configCommonHttpHeaders:@{@"Content-Type":@"application/x-www-form-urlencoded"}];
+    [HYBNetworking updateBaseUrl:kAppBaseURL];
 
+    regionArr = @[@"东京",@"大阪",@"京都",@"名古屋",@"北海道",@"冲绳",@"其它"];
 }
 
 @end

@@ -34,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setSubViews];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated

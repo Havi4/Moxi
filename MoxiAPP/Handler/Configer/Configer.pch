@@ -25,5 +25,7 @@
 #import "NSDate+WQCalendarLogic.h"
 #import <BlockAlertsAnd-ActionSheets/BlockAlertView.h>
 #import "SDAutoLayout.h"
+#import "BaseNetworking.h"
+#import "Global.h"
 
 #endif /* Configer_pch */

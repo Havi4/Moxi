@@ -43,6 +43,7 @@
 @property (nonatomic, strong) UILabel *moneyTitle;
 @property (nonatomic, strong) UnderlineTextField *moneyValue;
 @property (nonatomic, strong) DVSwitch *selectMoney;
+@property (nonatomic, strong) NSString *moneyType;
     //
 @property (nonatomic, strong) UILabel *carTitle;
 @property (nonatomic, strong) UITextView *carTitleText;
@@ -61,6 +62,7 @@
         // Do any additional setup after loading the view.
     _textFontSize = 20.0;
     _textRowCount = 2;
+    self.moneyType = @"JPY";
     UIImageView *backgroundImage = [[UIImageView alloc]initWithFrame:self.view.bounds];
     backgroundImage.image = [UIImage imageNamed:@"back_ground_image"];
     [self.view addSubview:backgroundImage];
@@ -207,7 +209,7 @@
 {
     if (!_regionValue) {
         _regionValue = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_regionValue setTitle:@"大阪" forState:UIControlStateNormal];
+        [_regionValue setTitle:@"东京" forState:UIControlStateNormal];
         [_regionValue addTarget:self action:@selector(slectRegion:) forControlEvents:UIControlEventTouchUpInside];
         _regionValue.titleLabel.font = [UIFont systemFontOfSize:20];
     }
@@ -508,6 +510,7 @@
 - (void)selectMoneyTpye:(NSUInteger)index
 {
     DeBugLog(@"选中%@",index == 0 ? @"人民币":@"日元");
+    self.moneyType = index ==0 ? @"CNY":@"JPY";
 }
 
 - (void)commitOrder:(UIButton *)button
@@ -537,15 +540,46 @@
     }
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"订单一旦建立将无法修改" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *done = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-
+        [[HIPregressHUD shartMBHUD]showLoadingWith:@"提交中" inView:self.view];
+        [self commitSure];
     }];
     [alert addAction:done];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
 
     }];
     [alert addAction:cancel];
+
     [self presentViewController:alert animated:YES completion:^{
         
+    }];
+}
+
+- (void)commitSure
+{
+    NSString *region = [NSString stringWithFormat:@"%d",(int)[regionArr indexOfObject:self.regionValue.titleLabel.text]];
+    NSString *ruzhu = [NSString stringWithFormat:@"%@/%@",[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(0, 2)],[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(3, 2)]];
+    NSString *tuifang = [NSString stringWithFormat:@"%@/%@",[self.carTakeTime.titleLabel.text substringWithRange:NSMakeRange(0, 2)],[self.carTakeTime.titleLabel.text substringWithRange:NSMakeRange(3, 2)]];
+    NSDictionary *dic = @{
+                          @"ruzhu":ruzhu,
+                          @"tuifang":tuifang,
+                          @"renshu":self.peopleNum.text,
+                          @"diqu":region,
+                          @"priceType":self.moneyType,
+                          @"price":self.moneyValue.text,
+                          @"title":self.carTitleText.text,
+                          @"yaoqiu":self.startPlaceValue.text
+                          };
+    [[BaseNetworking sharedAPIManager] addHourseOrderWith:(NSDictionary *)dic success:^(id response) {
+        NSDictionary *dic = (NSDictionary *)response;
+        [[HIPregressHUD shartMBHUD]hideLoading];
+        if ([[dic objectForKey:@"code"] intValue]==200) {
+            [self dismissViewControllerAnimated:YES completion:^{
+
+                [[HIPregressHUD shartMBHUD]showAlertWith:@"民宿订单发布成功" inView:[UIApplication sharedApplication].keyWindow];
+            }];
+        }
+    } fail:^(NSError *error) {
+        NSLog(@"错误是%@",error);
     }];
 }
 

@@ -42,6 +42,8 @@
 @property (nonatomic, strong) UILabel *moneyTitle;
 @property (nonatomic, strong) UnderlineTextField *moneyValue;
 @property (nonatomic, strong) DVSwitch *selectMoney;
+@property (nonatomic, strong) NSString *moneyType;
+
 //
 @property (nonatomic, strong) UILabel *carTitle;
 @property (nonatomic, strong) UITextView *carTitleText;
@@ -63,6 +65,7 @@
     // Do any additional setup after loading the view.
     _textFontSize = 20.0;
     _textRowCount = 2;
+    self.moneyType = @"JPY";
     UIImageView *backgroundImage = [[UIImageView alloc]initWithFrame:self.view.bounds];
     backgroundImage.image = [UIImage imageNamed:@"back_ground_image"];
     [self.view addSubview:backgroundImage];
@@ -568,7 +571,8 @@
     }
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"订单一旦建立将无法修改" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *done = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-
+        [[HIPregressHUD shartMBHUD]showLoadingWith:@"提交中" inView:self.view];
+        [self commitSure];
     }];
     [alert addAction:done];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -577,6 +581,34 @@
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:^{
 
+    }];
+}
+
+- (void)commitSure
+{
+    NSString *region = [NSString stringWithFormat:@"%d",(int)[regionArr indexOfObject:self.regionValue.titleLabel.text]];
+    NSString *ruzhu = [NSString stringWithFormat:@"%@/%@",[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(0, 2)],[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(3, 2)]];
+    NSDictionary *dic = @{
+                          @"time":[NSString stringWithFormat:@"%@ %@",ruzhu,self.carTakeTime.titleLabel.text],
+                          @"renshu":self.peopleNum.text,
+                          @"diqu":region,
+                          @"priceType":self.moneyType,
+                          @"price":self.moneyValue.text,
+                          @"title":self.carTitleText.text,
+                          @"from":self.startPlaceValue.text,
+                          @"to":self.endPlaceValue.text
+                          };
+    [[BaseNetworking sharedAPIManager] addCarOrderWith:(NSDictionary *)dic success:^(id response) {
+        NSDictionary *dic = (NSDictionary *)response;
+        [[HIPregressHUD shartMBHUD]hideLoading];
+        if ([[dic objectForKey:@"code"] intValue]==200) {
+            [self dismissViewControllerAnimated:YES completion:^{
+
+                [[HIPregressHUD shartMBHUD]showAlertWith:@"用车订单发布成功" inView:[UIApplication sharedApplication].keyWindow];
+            }];
+        }
+    } fail:^(NSError *error) {
+        NSLog(@"错误是%@",error);
     }];
 }
 
