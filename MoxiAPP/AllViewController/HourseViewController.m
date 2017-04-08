@@ -556,7 +556,12 @@
 
 - (void)commitSure
 {
-    NSString *region = [NSString stringWithFormat:@"%d",(int)[regionArr indexOfObject:self.regionValue.titleLabel.text]];
+    NSString *region = @"1";
+    if ([self.regionValue.titleLabel.text isEqualToString:@"其它"]) {
+        region = @"0";
+    }else{
+        region = [NSString stringWithFormat:@"%d",(int)([regionArr indexOfObject:self.regionValue.titleLabel.text]+1)];
+    }
     NSString *ruzhu = [NSString stringWithFormat:@"%@/%@",[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(0, 2)],[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(3, 2)]];
     NSString *tuifang = [NSString stringWithFormat:@"%@/%@",[self.carTakeTime.titleLabel.text substringWithRange:NSMakeRange(0, 2)],[self.carTakeTime.titleLabel.text substringWithRange:NSMakeRange(3, 2)]];
     NSDictionary *dic = @{

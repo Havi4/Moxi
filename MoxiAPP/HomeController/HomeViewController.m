@@ -15,6 +15,11 @@
 #import "MJRefreshNormalHeader.h"
 #import "MJRefreshAutoNormalFooter.h"
 
+typedef enum : NSUInteger {
+    CarOrderType,
+    HourseOrderType,
+} OrderType;
+
 @interface HomeViewController ()<DropViewDataSource,DropViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UIBarButtonItem *changeLocationItem;
@@ -25,7 +30,11 @@
 @property (nonatomic, strong) UIButton *locationChange;
 @property (nonatomic, assign) BOOL isShowTag;
 @property (nonatomic, strong) UITableView *orderView;
-@property (nonatomic, strong) NSMutableArray *dic;
+@property (nonatomic, strong) NSMutableArray *orderArr;
+@property (nonatomic, assign) int orderPg;
+@property (nonatomic, strong) NSString *orderRegion;
+@property (nonatomic, strong) NSString *orderTopId;
+@property (nonatomic, assign) OrderType orderType;
 
 @end
 
@@ -34,7 +43,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setSubViews];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,7 +80,11 @@
         // Do any additional setup after loading the view.
     self.isShowTag = NO;
     self.isShowDropView = NO;
-    self.dic = @[].mutableCopy;
+    self.orderArr = @[].mutableCopy;
+    self.orderPg = 1;
+    self.orderRegion = @"1";
+    self.orderTopId = @"";
+    self.orderType = HourseOrderType;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showAnimation:) name:@"naviAlpha" object:nil];
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.frame = CGRectMake(0, 0, 44, 44);
@@ -84,7 +96,7 @@
     self.rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _rightButton.frame = CGRectMake(0, 0, 44, 44);
     _rightButton.imageEdgeInsets = UIEdgeInsetsMake(0, 15, 0, -15);
-    [_rightButton setImage:[[UIImage imageNamed:@"house_order_icon"] imageByTintColor:kBarLightTextColor] forState:UIControlStateNormal];
+    [_rightButton setImage:[[UIImage imageNamed:@"car_order_icon"] imageByTintColor:kBarLightTextColor] forState:UIControlStateNormal];
     [_rightButton addTarget:self action:@selector(changLocation) forControlEvents:UIControlEventTouchUpInside];
     self.rightButton.tag = 101;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:_rightButton];
@@ -92,7 +104,7 @@
     _locationChange = [UIButton buttonWithType:UIButtonTypeCustom];
     _locationChange.frame = CGRectMake(0, 0, 120, 44);
     [_locationChange setImage:[[UIImage imageNamed:@"change_location_icon"] imageByTintColor:kBarLightTextColor] forState:UIControlStateNormal];
-    [_locationChange setTitle:@"大板" forState:UIControlStateNormal];
+    [_locationChange setTitle:@"东京" forState:UIControlStateNormal];
     [_locationChange setTitleColor:kBarLightTextColor forState:UIControlStateNormal];
     [_locationChange setTarget:self action:@selector(showAllLoaction) forControlEvents:UIControlEventTouchUpInside];
     _locationChange.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:20];
@@ -124,35 +136,99 @@
 
 - (void)loadAllData
 {
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"testData" ofType:@"plist"];
-    [self.dic addObjectsFromArray:[NSArray arrayWithContentsOfFile:path]];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.orderView.mj_footer endRefreshing];
-        [self.orderView reloadData];
-    });
+    self.orderPg += 1;
+    [self getOrder];
 }
 
 - (void)loadNewData
 {
-//    [[HIPregressHUD shartMBHUD]showLoadingWith:@"加载中" inView:self.view];
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"testData" ofType:@"plist"];
-    self.dic = [NSMutableArray arrayWithArray:[NSArray arrayWithContentsOfFile:path]];
-    DeBugLog(@"字典%@",self.dic);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.orderView.mj_header endRefreshing];
-        [self.orderView reloadData];
-    });
+    [[HIPregressHUD shartMBHUD]showLoadingWith:@"加载中" inView:self.view];
+    self.orderPg = 1;
+    [self.orderArr removeAllObjects];
+    [self getOrder];
+}
+
+- (void)getOrder
+{
+    if (self.orderType == HourseOrderType) {
+
+        NSDictionary *para = @{
+                               @"diqu":self.orderRegion,
+                               @"topid":self.orderTopId,
+                               @"pg":[NSNumber numberWithInt:self.orderPg]
+                               };
+        [[BaseNetworking sharedAPIManager]getMSOrderWith:para success:^(id response) {
+            DeBugLog(@"订单是%@",response);
+            [[HIPregressHUD shartMBHUD]hideLoading];
+            [self.orderView.mj_header endRefreshing];
+            if ([[response objectForKey:@"code"] intValue]==200) {
+                [self.orderArr addObjectsFromArray:[response objectForKey:@"data"]];
+                [self.orderView reloadData];
+                if (self.orderArr.count<3) {
+                    self.orderView.mj_footer.hidden = YES;
+                }else{
+                    self.orderView.mj_footer.hidden = NO;
+                }
+                if ([[response objectForKey:@"data"] count]==0) {
+                    self.orderView.mj_footer.state = MJRefreshStateNoMoreData;
+                }else{
+                    self.orderView.mj_footer.state = MJRefreshStateIdle;
+                }
+            }else {
+                [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:self.view];
+            }
+        } fail:^(NSError *error) {
+            
+        }];
+    }else{
+        NSDictionary *para = @{
+                               @"diqu":self.orderRegion,
+                               @"topid":self.orderTopId,
+                               @"pg":[NSNumber numberWithInt:self.orderPg]
+                               };
+        [[BaseNetworking sharedAPIManager]getYCOrderWith:para success:^(id response) {
+            DeBugLog(@"yongche订单是%@",response);
+            [[HIPregressHUD shartMBHUD]hideLoading];
+            [self.orderView.mj_header endRefreshing];
+            if ([[response objectForKey:@"code"] intValue]==200) {
+                [self.orderArr addObjectsFromArray:[response objectForKey:@"data"]];
+                [self.orderView reloadData];
+                if (self.orderArr.count<3) {
+                    self.orderView.mj_footer.hidden = YES;
+                }else{
+                    self.orderView.mj_footer.hidden = NO;
+                }
+                if ([[response objectForKey:@"data"] count]==0) {
+                    self.orderView.mj_footer.state = MJRefreshStateNoMoreData;
+                }else{
+                    self.orderView.mj_footer.state = MJRefreshStateIdle;
+                }
+            }else {
+                [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:self.view];
+            }
+        } fail:^(NSError *error) {
+
+        }];
+    }
 }
 
 - (void)changLocation
 {
     if (self.rightButton.tag == 101) {
         self.rightButton.tag = 102;
-        [self.rightButton setImage:[UIImage imageNamed:@"car_order_icon"] forState:UIControlStateNormal];
+        [self.rightButton setImage:[UIImage imageNamed:@"house_order_icon"] forState:UIControlStateNormal];
         DeBugLog(@"changlocation hourse");
+        self.orderType = CarOrderType;
+        self.orderPg = 1;
+        [self.orderArr removeAllObjects];
+        [self.orderView.mj_header beginRefreshing];
     }else{
         self.rightButton.tag = 101;
-        [self.rightButton setImage:[UIImage imageNamed:@"house_order_icon"] forState:UIControlStateNormal];
+        [self.rightButton setImage:[UIImage imageNamed:@"car_order_icon"] forState:UIControlStateNormal];
+        self.orderType = HourseOrderType;
+        self.orderPg = 1;
+        [self.orderArr removeAllObjects];
+        [self.orderView.mj_header beginRefreshing];
         DeBugLog(@"changlocation car");
     }
 }
@@ -226,19 +302,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dic.count;
+    return self.orderArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *dic = [self.dic objectAtIndex:indexPath.row];
-    if ([[dic objectForKey:@"orderType"] intValue]==0) {//车
+    NSDictionary *dic = [self.orderArr objectAtIndex:indexPath.row];
+    if (self.orderType == CarOrderType) {//车
 
         CarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"carcell"];
         if (!cell) {
             cell = [[CarTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"carcell"];
         }
-        [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
+        [cell cellConfigWithItem:[self.orderArr objectAtIndex:indexPath.row] andIndex:indexPath];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if ([[dic objectForKey:@"isDone"] intValue]==0) {//未完成
@@ -274,8 +350,7 @@
             cell = [[HouseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }
         cell.backgroundColor = [UIColor clearColor];
-        cell.text = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"yaoqiu"];
-        [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
+        [cell cellConfigWithItem:[self.orderArr objectAtIndex:indexPath.row] andIndex:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if ([[dic objectForKey:@"isDone"] intValue]==0) {//未完成
             cell.hideModelDoneView = YES;
@@ -309,17 +384,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *dic = [self.dic objectAtIndex:indexPath.row];
-    if ([[dic objectForKey:@"orderType"] intValue]==0) {//车
-        NSString *str = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"startPlace"];
-        NSString *str1 = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"endPlace"];
+    if (self.orderType == CarOrderType) {//车
+        NSString *str = [[self.orderArr objectAtIndex:indexPath.row] objectForKey:@"from"];
+        NSString *str1 = [[self.orderArr objectAtIndex:indexPath.row] objectForKey:@"to"];
         /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */
         CarModel *car = [[CarModel alloc]init];
         car.text = str;
         car.text1 = str1;
         return [self.orderView cellHeightForIndexPath:indexPath model:car keyPath:@"carModel" cellClass:[CarTableViewCell class] contentViewWidth:kScreenSize.width];
     }else{
-        NSString *str = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"yaoqiu"];
+        NSString *str = [[self.orderArr objectAtIndex:indexPath.row] objectForKey:@"yaoqiu"];
         /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */
         return [self.orderView cellHeightForIndexPath:indexPath model:str keyPath:@"text" cellClass:[HouseTableViewCell class] contentViewWidth:kScreenSize.width];
     }
@@ -328,22 +402,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (CGFloat)heightForText:(NSString *)text
-{
-        //设置计算文本时字体的大小,以什么标准来计算
-    NSDictionary *attrbute = @{NSFontAttributeName:[UIFont systemFontOfSize:16]};
-    CGFloat width = self.view.frame.size.width-100;
-    return [text boundingRectWithSize:CGSizeMake(width, 0) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attrbute context:nil].size.height;
-}
-
-- (CGFloat)heightForText1:(NSString *)text
-{
-        //设置计算文本时字体的大小,以什么标准来计算
-    NSDictionary *attrbute = @{NSFontAttributeName:[UIFont systemFontOfSize:16]};
-    CGFloat width = self.view.frame.size.width-120;
-    return [text boundingRectWithSize:CGSizeMake(width, 0) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attrbute context:nil].size.height;
 }
 
 - (void)deleteOrder:(NSIndexPath *)indexPath
@@ -385,7 +443,7 @@
 - (void)showMore:(NSIndexPath *)indexPath
 {
     DeBugLog(@"展示是%ld",(long)indexPath.row);
-    NSDictionary *dic = [self.dic objectAtIndex:indexPath.row];
+    NSDictionary *dic = [self.orderArr objectAtIndex:indexPath.row];
     if ([[dic objectForKey:@"isMine"] intValue]==0) {//自己的
         UIAlertController *alertView = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *done = [UIAlertAction actionWithTitle:@"复制订单内容" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -474,6 +532,15 @@
     DeBugLog(@"%d====%d===%d",colum,leftRow,rightRow);
     NSString *title = [_dataA2 objectAtIndex:rightRow];
     [_locationChange setTitle:title forState:UIControlStateNormal];
+    if (rightRow != 5) {
+        self.orderRegion = [NSString stringWithFormat:@"%d",rightRow+1];
+    }else{
+        self.orderRegion = @"0";
+    }
+    [self.orderArr removeAllObjects];
+    self.orderPg = 1;
+    [[HIPregressHUD shartMBHUD]showLoadingWith:@"加载中" inView:self.view];
+    [self getOrder];
 }
 -(void)didSelectItemsTagArray:(NSArray *)itemsA
 {

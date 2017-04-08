@@ -24,4 +24,13 @@
                    success:(HYBResponseSuccess)success
                       fail:(HYBResponseFail)fail;
 
+- (void)getMSOrderWith:(NSDictionary *)params
+                   success:(HYBResponseSuccess)success
+                      fail:(HYBResponseFail)fail;
+- (void)getYCOrderWith:(NSDictionary *)params
+               success:(HYBResponseSuccess)success
+                  fail:(HYBResponseFail)fail;
+- (void)getMYOrderWith:(NSDictionary *)params
+               success:(HYBResponseSuccess)success
+                  fail:(HYBResponseFail)fail;
 @end

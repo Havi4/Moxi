@@ -641,12 +641,13 @@
         return;
     }
     self.titleLabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
-    self.moneyShowLabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"money"]];
-    self.startLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"startPlace"]];
-    self.endLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"endPlace"]];;
-    self.dateLabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"date"]];
-    self.timelabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]];
-    self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"num"]];
+    self.moneyShowLabel.text = [NSString stringWithFormat:@"%@ %@",[dic objectForKey:@"priceType"],[dic objectForKey:@"price"]];
+    self.startLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"from"]];
+    self.endLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"to"]];;
+    self.dateLabel.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(5, 5)];
+    self.timelabel.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(11, 5)];
+    self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"renshu"]];
+    self.hunter.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]] isEqualToString:@"<null>"] ? @"":[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]];
 }
 
 - (void)deleteOrder:(UIButton *)button

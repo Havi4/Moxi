@@ -37,5 +37,27 @@ static BaseNetworking *baseApi = nil;
     [HYBNetworking postWithUrl:@"ms/add/" refreshCache:YES params:params success:success fail:fail];
 }
 
+- (void)getMSOrderWith:(NSDictionary *)params
+               success:(HYBResponseSuccess)success
+                  fail:(HYBResponseFail)fail
+{
+    NSString *urlString = [NSString stringWithFormat:@"/ms/list/?diqu=%@&topid=%@&pg=%@",[params objectForKey:@"diqu"],[params objectForKey:@"topid"],[params objectForKey:@"pg"]];
+    [HYBNetworking getWithUrl:urlString refreshCache:YES success:success fail:fail];
+}
 
+- (void)getYCOrderWith:(NSDictionary *)params
+               success:(HYBResponseSuccess)success
+                  fail:(HYBResponseFail)fail
+{
+    NSString *urlString = [NSString stringWithFormat:@"/yc/list/?diqu=%@&topid=%@&pg=%@",[params objectForKey:@"diqu"],[params objectForKey:@"topid"],[params objectForKey:@"pg"]];
+    [HYBNetworking getWithUrl:urlString refreshCache:YES success:success fail:fail];
+}
+
+- (void)getMYOrderWith:(NSDictionary *)params
+               success:(HYBResponseSuccess)success
+                  fail:(HYBResponseFail)fail
+{
+    NSString *urlString = [NSString stringWithFormat:@"/myfabu/list/?pg=%@",[params objectForKey:@"pg"]];
+    [HYBNetworking getWithUrl:urlString refreshCache:YES success:success fail:fail];
+}
 @end

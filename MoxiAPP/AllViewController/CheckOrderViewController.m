@@ -17,7 +17,9 @@
 @interface CheckOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *orderView;
-@property (nonatomic, strong) NSMutableArray *dic;
+@property (nonatomic, strong) NSMutableArray *orderArr;
+@property (nonatomic, assign) int orderPg;
+
 
 @end
 
@@ -25,9 +27,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-        //    self.navigationItem.titleView.alpha = 0;
-        //    self.navigationItem.leftBarButtonItem.customView.alpha = 0;
-        //    self.navigationItem.rightBarButtonItem.customView.alpha = 0;
 
 }
 
@@ -47,27 +46,11 @@
         }];
     }
 }
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    self.navigationItem.titleView.alpha = 0;
-//    self.navigationItem.leftBarButtonItem.customView.alpha = 0;
-//    self.navigationItem.rightBarButtonItem.customView.alpha = 0;
-//}
-//
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [UIView animateWithDuration:1 animations:^{
-//        self.navigationItem.titleView.alpha = 1;
-//        self.navigationItem.leftBarButtonItem.customView.alpha = 1;
-//        self.navigationItem.rightBarButtonItem.customView.alpha = 1;
-//
-//    }];
-//}
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dic = @[].mutableCopy;
+    self.orderArr = @[].mutableCopy;
+    self.orderPg = 1;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showAnimation:) name:@"naviAlpha" object:nil];
     // Do any additional setup after loading the view.
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -111,25 +94,48 @@
 
 - (void)loadAllData
 {
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"testData" ofType:@"plist"];
-    [self.dic addObjectsFromArray:[NSArray arrayWithContentsOfFile:path]];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.orderView.mj_footer endRefreshing];
-        [self.orderView reloadData];
-    });
+    self.orderPg += 1;
+    [self getOrder];
 }
 
 - (void)loadNewData
 {
-        //    [[HIPregressHUD shartMBHUD]showLoadingWith:@"加载中" inView:self.view];
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"testData" ofType:@"plist"];
-    self.dic = [NSMutableArray arrayWithArray:[NSArray arrayWithContentsOfFile:path]];
-    DeBugLog(@"字典%@",self.dic);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.orderView.mj_header endRefreshing];
-        [self.orderView reloadData];
-    });
+    [[HIPregressHUD shartMBHUD]showLoadingWith:@"加载中" inView:self.view];
+    self.orderPg = 1;
+    [self.orderArr removeAllObjects];
+    [self getOrder];
 }
+
+- (void)getOrder
+{
+    NSDictionary *para = @{
+                           @"pg":[NSNumber numberWithInt:self.orderPg]
+                           };
+    [[BaseNetworking sharedAPIManager]getMYOrderWith:para success:^(id response) {
+        DeBugLog(@"订单是%@",response);
+        [[HIPregressHUD shartMBHUD]hideLoading];
+        [self.orderView.mj_header endRefreshing];
+        if ([[response objectForKey:@"code"] intValue]==200) {
+            [self.orderArr addObjectsFromArray:[response objectForKey:@"data"]];
+            [self.orderView reloadData];
+            if (self.orderArr.count<3) {
+                self.orderView.mj_footer.hidden = YES;
+            }else{
+                self.orderView.mj_footer.hidden = NO;
+            }
+            if ([[response objectForKey:@"data"] count]==0) {
+                self.orderView.mj_footer.state = MJRefreshStateNoMoreData;
+            }else{
+                self.orderView.mj_footer.state = MJRefreshStateIdle;
+            }
+        }else {
+            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:self.view];
+        }
+    } fail:^(NSError *error) {
+
+    }];
+}
+
 
 - (void)addNewOrder:(UIButton *)sender
 {
@@ -170,19 +176,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dic.count;
+    return self.orderArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *dic = [self.dic objectAtIndex:indexPath.row];
-    if ([[dic objectForKey:@"orderType"] intValue]==0) {//车
+    NSDictionary *dic = [self.orderArr objectAtIndex:indexPath.row];
+    if ([[dic objectForKey:@"type"] isEqualToString:@"yc"]) {//车
 
         CarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"carcell"];
         if (!cell) {
             cell = [[CarTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"carcell"];
         }
-        [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
+        [cell cellConfigWithItem:[self.orderArr objectAtIndex:indexPath.row] andIndex:indexPath];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if ([[dic objectForKey:@"isDone"] intValue]==0) {//未完成
@@ -217,7 +223,7 @@
         if (!cell) {
             cell = [[HouseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }
-        [cell cellConfigWithItem:[self.dic objectAtIndex:indexPath.row] andIndex:indexPath];
+        [cell cellConfigWithItem:[self.orderArr objectAtIndex:indexPath.row] andIndex:indexPath];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if ([[dic objectForKey:@"isDone"] intValue]==0) {//未完成
@@ -252,13 +258,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary *dic = [self.dic objectAtIndex:indexPath.row];
-    if ([[dic objectForKey:@"orderType"] intValue]==0) {//车
-        CGFloat height = [self heightForText1:[dic objectForKey:@"startPlace"]];
-        CGFloat height2 = [self heightForText1:[dic objectForKey:@"endPlace"]];
+    NSDictionary *dic = [self.orderArr objectAtIndex:indexPath.row];
+    if ([[dic objectForKey:@"type"] isEqualToString:@"yc"]) {//车
+        CGFloat height = [self heightForText1:[dic objectForKey:@"from"]];
+        CGFloat height2 = [self heightForText1:[dic objectForKey:@"to"]];
         return 241 + height2 +height;
     }else{
-        NSString *str = [[self.dic objectAtIndex:indexPath.row] objectForKey:@"yaoqiu"];
+        NSString *str = [[self.orderArr objectAtIndex:indexPath.row] objectForKey:@"yaoqiu"];
         /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */
         return [self.orderView cellHeightForIndexPath:indexPath model:str keyPath:@"text" cellClass:[HouseTableViewCell class] contentViewWidth:kScreenSize.width];
     }
@@ -325,7 +331,7 @@
 - (void)showMore:(NSIndexPath *)indexPath
 {
     DeBugLog(@"展示是%ld",(long)indexPath.row);
-    NSDictionary *dic = [self.dic objectAtIndex:indexPath.row];
+    NSDictionary *dic = [self.orderArr objectAtIndex:indexPath.row];
     if ([[dic objectForKey:@"isMine"] intValue]==0) {//自己的
         UIAlertController *alertView = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         UIAlertAction *done = [UIAlertAction actionWithTitle:@"复制订单内容" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

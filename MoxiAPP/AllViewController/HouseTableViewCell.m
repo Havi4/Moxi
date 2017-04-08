@@ -98,7 +98,7 @@
         [self.contentView addSubview:_moneyShowLabel];
         _moneyShowLabel.textColor = kFocusTextColor;
         _moneyShowLabel.textAlignment = NSTextAlignmentRight;
-        _moneyShowLabel.text = @"JPY 8500";
+        _moneyShowLabel.text = @"JPY 0";
         _moneyShowLabel.font = [UIFont systemFontOfSize:16];
         _moneyShowLabel.sd_layout
         .rightSpaceToView(self.contentView,25)
@@ -396,7 +396,19 @@
 - (void)cellConfigWithItem:(id)item andIndex:(NSIndexPath *)indexPath
 {
     NSDictionary *dic = item;
-//    self.queryLabelShow.text = [dic objectForKey:@"text"];
+    self.tapIndex = indexPath;
+    if (!item) {
+        return;
+    }
+    self.titleLabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
+    self.moneyShowLabel.text = [NSString stringWithFormat:@"%@ %@",[dic objectForKey:@"priceType"],[dic objectForKey:@"price"]];
+    self.startTime.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ruzhu"]];
+    self.endTime.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"tuifang"]];
+    self.nightLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"wan"]];;
+    self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"renshu"]];
+    self.queryLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"yaoqiu"]];
+    self.hunter.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]] isEqualToString:@"<null>"] ? @"":[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]];
+
 
 }
 

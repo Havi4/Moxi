@@ -23,7 +23,5 @@
 @property (nonatomic, assign) BOOL hideModelDoneView;
 
 @property (nonatomic, copy) CarModel *carModel;
-@property (nonatomic, copy) NSString *text;
-@property (nonatomic, copy) NSString *text2;
 
 @end
