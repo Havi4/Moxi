@@ -41,7 +41,7 @@ static HIPregressHUD *share = nil;
         // Move to bottm center.
         //    hud.offset = CGPointMake(0.f, MBProgressMaxOffset);
 
-    [_alertHUD hideAnimated:YES afterDelay:3.f];
+    [_alertHUD hideAnimated:YES afterDelay:2.f];
 }
 
 - (void)showLoadingWith:(NSString *)title inView:(UIView *)inView

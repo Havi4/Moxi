@@ -33,6 +33,7 @@
 @property (nonatomic, strong) UIButton *sopyButton;
 @property (nonatomic, strong) UIView *modelDoneView;
 @property (nonatomic, strong) NSIndexPath *tapIndex;
+@property (nonatomic, strong) UIImageView *topImage;
 @end
 
 @implementation HouseTableViewCell
@@ -83,6 +84,11 @@
             make.width.equalTo(@60);
             make.height.equalTo(@40);
         }];
+
+        _topImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"topImage"]];
+        _topImage.frame = CGRectMake(0, 0, 27, 27);
+        _topImage.hidden = YES;
+        [_titleBackView addSubview:_topImage];
 
         _moneyLabel = [[UILabel alloc]init];
         [self.contentView addSubview:_moneyLabel];
@@ -408,7 +414,7 @@
     self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"renshu"]];
     self.queryLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"yaoqiu"]];
     self.hunter.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]] isEqualToString:@"<null>"] ? @"":[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]];
-
+    self.topImage.hidden = [[dic objectForKey:@"isTop"] intValue]==1?NO:YES;
 
 }
 
@@ -426,14 +432,14 @@
         self.copyWx(self.tapIndex);
     }
 }
-
+/*
 - (void)callMoxi:(UIButton *)button
 {
     if (self.callMoxi) {
         self.callMoxi(self.tapIndex);
     }
 }
-
+*/
 - (void)showMoreNext:(UIButton *)button
 {
     if (self.moreNext) {

@@ -33,6 +33,7 @@
 @property (nonatomic, strong) UIButton *sopyButton;
 @property (nonatomic, strong) UIView *modelDoneView;
 @property (nonatomic, strong) NSIndexPath *tapIndex;
+@property (nonatomic, strong) UIImageView *topImage;
 
 @end
 
@@ -379,6 +380,12 @@
             make.height.equalTo(@40);
         }];
 
+        _topImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"topImage"]];
+        _topImage.frame = CGRectMake(0, 0, 27, 27);
+        _topImage.hidden = YES;
+        [_titleBackView addSubview:_topImage];
+
+
         _moneyLabel = [[UILabel alloc]init];
         [self.contentView addSubview:_moneyLabel];
         _moneyLabel.text = @"游客预算:";
@@ -648,6 +655,7 @@
     self.timelabel.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(11, 5)];
     self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"renshu"]];
     self.hunter.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]] isEqualToString:@"<null>"] ? @"":[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]];
+    self.topImage.hidden = [[dic objectForKey:@"isTop"] intValue]==1?NO:YES;
 }
 
 - (void)deleteOrder:(UIButton *)button

@@ -60,4 +60,23 @@ static BaseNetworking *baseApi = nil;
     NSString *urlString = [NSString stringWithFormat:@"/myfabu/list/?pg=%@",[params objectForKey:@"pg"]];
     [HYBNetworking getWithUrl:urlString refreshCache:YES success:success fail:fail];
 }
+
+- (void)completeOrderWith:(NSDictionary *)params
+                  success:(HYBResponseSuccess)success
+                     fail:(HYBResponseFail)fail
+{
+    NSString *urlString = [NSString stringWithFormat:@"/%@/setComplete/?id=%@",[params objectForKey:@"type"],[params objectForKey:@"ids"]];
+    [HYBNetworking getWithUrl:urlString refreshCache:YES success:success fail:fail];
+}
+
+- (void)deleteOrderWith:(NSDictionary *)params
+                success:(HYBResponseSuccess)success
+                   fail:(HYBResponseFail)fail
+{
+    @synchronized (self) {
+        NSString *urlString = [NSString stringWithFormat:@"/%@/delete/?id=%@",[params objectForKey:@"type"],[params objectForKey:@"ids"]];
+        [HYBNetworking getWithUrl:urlString refreshCache:YES success:success fail:fail];
+    }
+}
+
 @end

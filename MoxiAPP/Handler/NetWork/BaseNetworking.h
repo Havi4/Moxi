@@ -33,4 +33,10 @@
 - (void)getMYOrderWith:(NSDictionary *)params
                success:(HYBResponseSuccess)success
                   fail:(HYBResponseFail)fail;
+- (void)completeOrderWith:(NSDictionary *)params
+               success:(HYBResponseSuccess)success
+                  fail:(HYBResponseFail)fail;
+- (void)deleteOrderWith:(NSDictionary *)params
+                  success:(HYBResponseSuccess)success
+                     fail:(HYBResponseFail)fail;
 @end
