@@ -18,6 +18,8 @@
 #define kUserDefaults [NSUserDefaults standardUserDefaults]
 #define kAdImageName @"adImageName";
 
+#define kHourseTopIds @"kHourseTopIds"
+#define kCarTopIds @"kCarTopIds"
 #define kWXPlatform @"wx.com"
 #define kSinaPlatform @"sina.com"
 #define kTXPlatform @"qq.com"

@@ -27,7 +27,8 @@
 
     regionArr = @[@"东京",@"大阪",@"京都",@"名古屋",@"北海道",@"冲绳",@"其它"];
 
-    [[NSUserDefaults standardUserDefaults]registerDefaults:@{@"topIds":@""}];
+    [[NSUserDefaults standardUserDefaults]registerDefaults:@{kHourseTopIds:@""}];
+    [[NSUserDefaults standardUserDefaults]registerDefaults:@{kCarTopIds:@""}];
 }
 
 @end

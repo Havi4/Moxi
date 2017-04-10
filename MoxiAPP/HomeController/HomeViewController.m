@@ -33,7 +33,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) NSMutableArray *orderArr;
 @property (nonatomic, assign) int orderPg;
 @property (nonatomic, strong) NSString *orderRegion;
-@property (nonatomic, strong) NSString *orderTopId;
+@property (nonatomic, strong) NSString *hourseOrderTopId;
+@property (nonatomic, strong) NSString *carOrderTopId;
 @property (nonatomic, assign) OrderType orderType;
 
 @end
@@ -83,7 +84,8 @@ typedef enum : NSUInteger {
     self.orderArr = @[].mutableCopy;
     self.orderPg = 1;
     self.orderRegion = @"1";
-    self.orderTopId = [[NSUserDefaults standardUserDefaults]objectForKey:@"topIds"];
+    self.hourseOrderTopId = [[NSUserDefaults standardUserDefaults]objectForKey:kHourseTopIds];
+    self.carOrderTopId = [[NSUserDefaults standardUserDefaults]objectForKey:kCarTopIds];
     self.orderType = HourseOrderType;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showAnimation:) name:@"naviAlpha" object:nil];
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -150,12 +152,13 @@ typedef enum : NSUInteger {
 
 - (void)getOrder
 {
-    self.orderTopId = [[NSUserDefaults standardUserDefaults]objectForKey:@"topIds"];
+    self.hourseOrderTopId = [[NSUserDefaults standardUserDefaults]objectForKey:kHourseTopIds];
+    self.carOrderTopId = [[NSUserDefaults standardUserDefaults]objectForKey:kCarTopIds];
     if (self.orderType == HourseOrderType) {
 
         NSDictionary *para = @{
                                @"diqu":self.orderRegion,
-                               @"topid":self.orderTopId,
+                               @"topid":self.hourseOrderTopId,
                                @"pg":[NSNumber numberWithInt:self.orderPg]
                                };
         [[BaseNetworking sharedAPIManager]getMSOrderWith:para success:^(id response) {
@@ -192,7 +195,7 @@ typedef enum : NSUInteger {
     }else{
         NSDictionary *para = @{
                                @"diqu":self.orderRegion,
-                               @"topid":self.orderTopId,
+                               @"topid":self.carOrderTopId,
                                @"pg":[NSNumber numberWithInt:self.orderPg]
                                };
         [[BaseNetworking sharedAPIManager]getYCOrderWith:para success:^(id response) {
@@ -239,14 +242,14 @@ typedef enum : NSUInteger {
         self.orderType = CarOrderType;
         self.orderPg = 1;
         [self.orderArr removeAllObjects];
-        [self.orderView.mj_header beginRefreshing];
+        [self loadNewData];
     }else{
         self.rightButton.tag = 101;
         [self.rightButton setImage:[UIImage imageNamed:@"car_order_icon"] forState:UIControlStateNormal];
         self.orderType = HourseOrderType;
         self.orderPg = 1;
         [self.orderArr removeAllObjects];
-        [self.orderView.mj_header beginRefreshing];
+        [self loadNewData];
         DeBugLog(@"changlocation car");
     }
 }
@@ -615,13 +618,13 @@ typedef enum : NSUInteger {
     NSMutableDictionary *orderInfo = [NSMutableDictionary dictionaryWithDictionary:[self.orderArr objectAtIndex:indexPath.row]];
     if (self.orderType == HourseOrderType) {
         [orderInfo setObject:@"1" forKey:@"isTop"];
-        NSString *topids = [[NSUserDefaults standardUserDefaults]objectForKey:@"topIds"];
+        NSString *topids = [[NSUserDefaults standardUserDefaults]objectForKey:kHourseTopIds];
         if (topids.length == 0) {
-            [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%@",[orderInfo objectForKey:@"id"]] forKey:@"topIds"];
+            [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%@",[orderInfo objectForKey:@"id"]] forKey:kHourseTopIds];
             [[NSUserDefaults standardUserDefaults]synchronize];
         }else{
             NSString *newIds = [NSString stringWithFormat:@"%@|%@",topids,[orderInfo objectForKey:@"id"]];
-            [[NSUserDefaults standardUserDefaults]setObject:newIds forKey:@"topIds"];
+            [[NSUserDefaults standardUserDefaults]setObject:newIds forKey:kHourseTopIds];
             [[NSUserDefaults standardUserDefaults]synchronize];
         }
         [self.orderArr replaceObjectAtIndex:indexPath.row withObject:orderInfo];
@@ -652,13 +655,13 @@ typedef enum : NSUInteger {
 //        }];
     }else{
         [orderInfo setObject:@"1" forKey:@"isTop"];
-        NSString *topids = [[NSUserDefaults standardUserDefaults]objectForKey:@"topIds"];
+        NSString *topids = [[NSUserDefaults standardUserDefaults]objectForKey:kCarTopIds];
         if (topids.length == 0) {
-            [[NSUserDefaults standardUserDefaults]setObject:[orderInfo objectForKey:@"id"] forKey:@"topIds"];
+            [[NSUserDefaults standardUserDefaults]setObject:[orderInfo objectForKey:@"id"] forKey:kCarTopIds];
             [[NSUserDefaults standardUserDefaults]synchronize];
         }else{
             NSString *newIds = [NSString stringWithFormat:@"%@|%@",topids,[orderInfo objectForKey:@"id"]];
-            [[NSUserDefaults standardUserDefaults]setObject:newIds forKey:@"topIds"];
+            [[NSUserDefaults standardUserDefaults]setObject:newIds forKey:kCarTopIds];
             [[NSUserDefaults standardUserDefaults]synchronize];
         }
         [self.orderArr replaceObjectAtIndex:indexPath.row withObject:orderInfo];
