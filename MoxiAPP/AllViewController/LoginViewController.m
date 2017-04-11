@@ -7,8 +7,8 @@
 //
 
 #import "LoginViewController.h"
-
-@interface LoginViewController ()
+#import "WXApi.h"
+@interface LoginViewController ()<WXApiDelegate>
 
 @property (nonatomic, strong) UILabel *loginTitle;
 @property (nonatomic, strong) UILabel *loginWelcome;
@@ -61,7 +61,7 @@
     [self.loginWithWXButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.loginWithWXButton setTitle:@"使用微信登录" forState:UIControlStateNormal];
     self.loginWithWXButton.titleLabel.font = [UIFont systemFontOfSize:18];
-    [self.loginWithWXButton setTarget:self action:@selector(loginWX) forControlEvents:UIControlEventTouchUpInside];
+    [self.loginWithWXButton setTarget:self action:@selector(weixinButtonTaped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.loginWithWXButton];
     [self.loginWithWXButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view.mas_bottom).offset(-64);
@@ -71,8 +71,20 @@
     }];
 }
 
+- (void)weixinButtonTaped:(UIButton *)sender
+{
+        //    isThirdLogin = YES;
+    SendAuthReq* req = [[SendAuthReq alloc] init];
+    req.scope = @"snsapi_message,snsapi_userinfo,snsapi_friend,snsapi_contact";
+    req.state = @"xxx";
+    req.openID = @"0c806938e2413ce73eef92cc3";
+
+    [WXApi sendAuthReq:req viewController:self delegate:self];
+}
+
 - (void)loginWX
 {
+
     self.loginDone(@{});
 }
 
