@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		3549B004BDCC4195F3707782 /* libPods-MoxiAPP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7541113CE931050E0F1B5619 /* libPods-MoxiAPP.a */; };
+		57031E731E9C869700B6AD8A /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57031E6F1E9C869700B6AD8A /* libWeChatSDK.a */; };
+		57031E751E9C873E00B6AD8A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57031E741E9C873E00B6AD8A /* SystemConfiguration.framework */; };
+		57031E771E9C875F00B6AD8A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 57031E761E9C875F00B6AD8A /* libz.tbd */; };
+		57031E791E9C877E00B6AD8A /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 57031E781E9C877E00B6AD8A /* libsqlite3.0.tbd */; };
+		57031E7B1E9C878C00B6AD8A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 57031E7A1E9C878C00B6AD8A /* libc++.tbd */; };
+		57031E7D1E9C879600B6AD8A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57031E7C1E9C879600B6AD8A /* Security.framework */; };
+		57031E7F1E9C87A300B6AD8A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57031E7E1E9C87A300B6AD8A /* CoreTelephony.framework */; };
+		57031E811E9C87AD00B6AD8A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57031E801E9C87AD00B6AD8A /* CFNetwork.framework */; };
+		57031E941E9C8C3A00B6AD8A /* WeiXinAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 57031E881E9C8C3A00B6AD8A /* WeiXinAPI.m */; };
+		57031E951E9C8C3A00B6AD8A /* WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 57031E8B1E9C8C3A00B6AD8A /* WTRequestCenter.m */; };
+		57031E961E9C8C3A00B6AD8A /* WTURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 57031E8D1E9C8C3A00B6AD8A /* WTURLRequestOperation.m */; };
+		57031E971E9C8C3A00B6AD8A /* WTURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 57031E8F1E9C8C3A00B6AD8A /* WTURLRequestSerialization.m */; };
+		57031E981E9C8C3A00B6AD8A /* WTURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57031E911E9C8C3A00B6AD8A /* WTURLSessionManager.m */; };
 		5706494B1E4C605B00181159 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5706494A1E4C605B00181159 /* main.m */; };
 		5706494E1E4C605B00181159 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5706494D1E4C605B00181159 /* AppDelegate.m */; };
 		570649541E4C605B00181159 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 570649521E4C605B00181159 /* Main.storyboard */; };
@@ -123,6 +136,28 @@
 
 /* Begin PBXFileReference section */
 		2BF57FA1683E7F7D9C4F4DF9 /* Pods-MoxiAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoxiAPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoxiAPP/Pods-MoxiAPP.release.xcconfig"; sourceTree = "<group>"; };
+		57031E6F1E9C869700B6AD8A /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		57031E701E9C869700B6AD8A /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		57031E711E9C869700B6AD8A /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		57031E721E9C869700B6AD8A /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		57031E741E9C873E00B6AD8A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		57031E761E9C875F00B6AD8A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		57031E781E9C877E00B6AD8A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		57031E7A1E9C878C00B6AD8A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		57031E7C1E9C879600B6AD8A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		57031E7E1E9C87A300B6AD8A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		57031E801E9C87AD00B6AD8A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		57031E871E9C8C3A00B6AD8A /* WeiXinAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiXinAPI.h; sourceTree = "<group>"; };
+		57031E881E9C8C3A00B6AD8A /* WeiXinAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeiXinAPI.m; sourceTree = "<group>"; };
+		57031E891E9C8C3A00B6AD8A /* WTNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWork.h; sourceTree = "<group>"; };
+		57031E8A1E9C8C3A00B6AD8A /* WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestCenter.h; sourceTree = "<group>"; };
+		57031E8B1E9C8C3A00B6AD8A /* WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenter.m; sourceTree = "<group>"; };
+		57031E8C1E9C8C3A00B6AD8A /* WTURLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLRequestOperation.h; sourceTree = "<group>"; };
+		57031E8D1E9C8C3A00B6AD8A /* WTURLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLRequestOperation.m; sourceTree = "<group>"; };
+		57031E8E1E9C8C3A00B6AD8A /* WTURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLRequestSerialization.h; sourceTree = "<group>"; };
+		57031E8F1E9C8C3A00B6AD8A /* WTURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLRequestSerialization.m; sourceTree = "<group>"; };
+		57031E901E9C8C3A00B6AD8A /* WTURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLSessionManager.h; sourceTree = "<group>"; };
+		57031E911E9C8C3A00B6AD8A /* WTURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLSessionManager.m; sourceTree = "<group>"; };
 		570649461E4C605B00181159 /* MoxiAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoxiAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5706494A1E4C605B00181159 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5706494C1E4C605B00181159 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -323,6 +358,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57031E811E9C87AD00B6AD8A /* CFNetwork.framework in Frameworks */,
+				57031E7F1E9C87A300B6AD8A /* CoreTelephony.framework in Frameworks */,
+				57031E7D1E9C879600B6AD8A /* Security.framework in Frameworks */,
+				57031E7B1E9C878C00B6AD8A /* libc++.tbd in Frameworks */,
+				57031E791E9C877E00B6AD8A /* libsqlite3.0.tbd in Frameworks */,
+				57031E771E9C875F00B6AD8A /* libz.tbd in Frameworks */,
+				57031E751E9C873E00B6AD8A /* SystemConfiguration.framework in Frameworks */,
+				57031E731E9C869700B6AD8A /* libWeChatSDK.a in Frameworks */,
 				570649C81E4C7F5800181159 /* UIKit.framework in Frameworks */,
 				570649C61E4C7F5100181159 /* Foundation.framework in Frameworks */,
 				570649C41E4C7F4700181159 /* CoreGraphics.framework in Frameworks */,
@@ -356,6 +399,35 @@
 				2BF57FA1683E7F7D9C4F4DF9 /* Pods-MoxiAPP.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		57031E6E1E9C869700B6AD8A /* wxsdk */ = {
+			isa = PBXGroup;
+			children = (
+				57031E6F1E9C869700B6AD8A /* libWeChatSDK.a */,
+				57031E701E9C869700B6AD8A /* WechatAuthSDK.h */,
+				57031E711E9C869700B6AD8A /* WXApi.h */,
+				57031E721E9C869700B6AD8A /* WXApiObject.h */,
+			);
+			path = wxsdk;
+			sourceTree = "<group>";
+		};
+		57031E821E9C8C3A00B6AD8A /* ThirdLoginSession */ = {
+			isa = PBXGroup;
+			children = (
+				57031E871E9C8C3A00B6AD8A /* WeiXinAPI.h */,
+				57031E881E9C8C3A00B6AD8A /* WeiXinAPI.m */,
+				57031E891E9C8C3A00B6AD8A /* WTNetWork.h */,
+				57031E8A1E9C8C3A00B6AD8A /* WTRequestCenter.h */,
+				57031E8B1E9C8C3A00B6AD8A /* WTRequestCenter.m */,
+				57031E8C1E9C8C3A00B6AD8A /* WTURLRequestOperation.h */,
+				57031E8D1E9C8C3A00B6AD8A /* WTURLRequestOperation.m */,
+				57031E8E1E9C8C3A00B6AD8A /* WTURLRequestSerialization.h */,
+				57031E8F1E9C8C3A00B6AD8A /* WTURLRequestSerialization.m */,
+				57031E901E9C8C3A00B6AD8A /* WTURLSessionManager.h */,
+				57031E911E9C8C3A00B6AD8A /* WTURLSessionManager.m */,
+			);
+			path = ThirdLoginSession;
 			sourceTree = "<group>";
 		};
 		5706493D1E4C605B00181159 = {
@@ -480,6 +552,7 @@
 		570649881E4C64E100181159 /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
+				57031E821E9C8C3A00B6AD8A /* ThirdLoginSession */,
 				570649891E4C64E100181159 /* BaseNetworkAPI.h */,
 				5706498A1E4C64E100181159 /* BaseNetworkAPI.m */,
 				57236DF41E96851500D88664 /* BaseNetworking.h */,
@@ -526,6 +599,7 @@
 		570649971E4C743400181159 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				57031E6E1E9C869700B6AD8A /* wxsdk */,
 				57745F551E665FD90001D0CC /* SDAutoLayout */,
 				57F0D6B81E641EFB00600C16 /* MJRefresh */,
 				57F0D6501E63ED6F00600C16 /* Pickers */,
@@ -851,6 +925,13 @@
 		ED94B3D5A6E8F8427EFF52AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57031E801E9C87AD00B6AD8A /* CFNetwork.framework */,
+				57031E7E1E9C87A300B6AD8A /* CoreTelephony.framework */,
+				57031E7C1E9C879600B6AD8A /* Security.framework */,
+				57031E7A1E9C878C00B6AD8A /* libc++.tbd */,
+				57031E781E9C877E00B6AD8A /* libsqlite3.0.tbd */,
+				57031E761E9C875F00B6AD8A /* libz.tbd */,
+				57031E741E9C873E00B6AD8A /* SystemConfiguration.framework */,
 				570649C71E4C7F5800181159 /* UIKit.framework */,
 				570649C51E4C7F5100181159 /* Foundation.framework */,
 				570649C31E4C7F4700181159 /* CoreGraphics.framework */,
@@ -1054,6 +1135,7 @@
 				570649AD1E4C772D00181159 /* HiThirdPartService.m in Sources */,
 				57236DF61E96851500D88664 /* BaseNetworking.m in Sources */,
 				57F0D6661E63ED6F00600C16 /* ActionSheetCustomPicker.m in Sources */,
+				57031E941E9C8C3A00B6AD8A /* WeiXinAPI.m in Sources */,
 				57E148E21E60359200EB3B35 /* CYNavigationViewController.m in Sources */,
 				57E148E61E60359200EB3B35 /* WeChatStylePlaceHolder.m in Sources */,
 				57F0D66C1E63ED7000600C16 /* DistancePickerView.m in Sources */,
@@ -1066,6 +1148,7 @@
 				5706498F1E4C64E100181159 /* NSObject+AdvertisementView.m in Sources */,
 				570649BA1E4C78D100181159 /* HomeViewController.m in Sources */,
 				57F0D6EF1E641EFC00600C16 /* MJRefreshBackGifFooter.m in Sources */,
+				57031E971E9C8C3A00B6AD8A /* WTURLRequestSerialization.m in Sources */,
 				570649A91E4C743400181159 /* UIView+REFrostedViewController.m in Sources */,
 				57E148DF1E60359200EB3B35 /* CYLTabBar.m in Sources */,
 				57E148E41E60359200EB3B35 /* CYLPlusButtonSubclass.m in Sources */,
@@ -1076,8 +1159,10 @@
 				570649B71E4C78A200181159 /* BaseViewController.m in Sources */,
 				57F0D6F61E641EFC00600C16 /* MJRefreshConst.m in Sources */,
 				57F0D6E71E641EFB00600C16 /* MJRefreshAutoFooter.m in Sources */,
+				57031E951E9C8C3A00B6AD8A /* WTRequestCenter.m in Sources */,
 				57745F5C1E665FD90001D0CC /* UIView+SDAutoLayout.m in Sources */,
 				570649A61E4C743400181159 /* REFrostedContainerViewController.m in Sources */,
+				57031E981E9C8C3A00B6AD8A /* WTURLSessionManager.m in Sources */,
 				57F0D66D1E63ED7000600C16 /* SWActionSheet.m in Sources */,
 				57F0D6671E63ED6F00600C16 /* ActionSheetDatePicker.m in Sources */,
 				570649DA1E583EBC00181159 /* JDDropView.m in Sources */,
@@ -1093,6 +1178,7 @@
 				57F0D6E81E641EFC00600C16 /* MJRefreshBackFooter.m in Sources */,
 				570649921E4C64E100181159 /* HYBNetworking.m in Sources */,
 				577A85FF1E5F289D00834E61 /* NirKxMenu.m in Sources */,
+				57031E961E9C8C3A00B6AD8A /* WTURLRequestOperation.m in Sources */,
 				57F0D6E91E641EFC00600C16 /* MJRefreshComponent.m in Sources */,
 				57F0D6F41E641EFC00600C16 /* MJRefreshStateHeader.m in Sources */,
 				57E148E31E60359200EB3B35 /* UIViewController+CYLTabBarControllerExtention.m in Sources */,
@@ -1286,6 +1372,51 @@
 				INFOPLIST_FILE = MoxiAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MoxiAPP/Vender/wxsdk",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"BlockAlertsAnd-ActionSheets\"",
+					"-l\"IQKeyboardManager\"",
+					"-l\"Masonry\"",
+					"-l\"YYKit\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"WebP\"",
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihotkeys.ihotkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6068214e-b7ba-4f4c-81f5-cbcd212c206b";
@@ -1305,6 +1436,51 @@
 				INFOPLIST_FILE = MoxiAPP/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MoxiAPP/Vender/wxsdk",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"BlockAlertsAnd-ActionSheets\"",
+					"-l\"IQKeyboardManager\"",
+					"-l\"Masonry\"",
+					"-l\"YYKit\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"AssetsLibrary\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreImage\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"WebP\"",
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihotkeys.ihotkeys;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "968d2e1d-93ae-41e0-bc89-d6318ebd9d88";
