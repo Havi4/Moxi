@@ -62,7 +62,7 @@
         // Do any additional setup after loading the view.
     _textFontSize = 20.0;
     _textRowCount = 2;
-    self.moneyType = @"JPY";
+    self.moneyType = @"CNY";
     UIImageView *backgroundImage = [[UIImageView alloc]initWithFrame:self.view.bounds];
     backgroundImage.image = [UIImage imageNamed:@"back_ground_image"];
     [self.view addSubview:backgroundImage];

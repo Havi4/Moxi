@@ -65,7 +65,7 @@
     // Do any additional setup after loading the view.
     _textFontSize = 20.0;
     _textRowCount = 2;
-    self.moneyType = @"JPY";
+    self.moneyType = @"CNY";
     UIImageView *backgroundImage = [[UIImageView alloc]initWithFrame:self.view.bounds];
     backgroundImage.image = [UIImage imageNamed:@"back_ground_image"];
     [self.view addSubview:backgroundImage];
@@ -212,7 +212,7 @@
 {
     if (!_regionValue) {
         _regionValue = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_regionValue setTitle:@"大阪" forState:UIControlStateNormal];
+        [_regionValue setTitle:@"东京" forState:UIControlStateNormal];
         [_regionValue addTarget:self action:@selector(slectRegion:) forControlEvents:UIControlEventTouchUpInside];
         _regionValue.titleLabel.font = [UIFont systemFontOfSize:20];
     }
@@ -539,6 +539,7 @@
 - (void)selectMoneyTpye:(NSUInteger)index
 {
     DeBugLog(@"选中%@",index == 0 ? @"人民币":@"日元");
+    self.moneyType = index ==0 ? @"CNY":@"JPY";
 }
 
 - (void)commitOrder:(UIButton *)button
@@ -586,7 +587,12 @@
 
 - (void)commitSure
 {
-    NSString *region = [NSString stringWithFormat:@"%d",(int)[regionArr indexOfObject:self.regionValue.titleLabel.text]];
+    NSString *region = @"1";
+    if ([self.regionValue.titleLabel.text isEqualToString:@"其它"]) {
+        region = @"0";
+    }else{
+        region = [NSString stringWithFormat:@"%d",(int)([regionArr indexOfObject:self.regionValue.titleLabel.text]+1)];
+    }
     NSString *ruzhu = [NSString stringWithFormat:@"%@/%@",[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(0, 2)],[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(3, 2)]];
     NSDictionary *dic = @{
                           @"time":[NSString stringWithFormat:@"%@ %@",ruzhu,self.carTakeTime.titleLabel.text],
