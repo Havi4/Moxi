@@ -25,15 +25,18 @@
 #define kTXPlatform @"qq.com"
 #define kMeddoPlatform @"meddo99.com"
 
-#define kWXAPPKey @"wx7be2e0c9ebd9e161"
-#define kWXAPPSecret @"8fc579120ceceae54cb43dc2a17f1d54"
+#define kWXAPPKey @"wx2ffd54537518d701"
+#define kWXAPPSecret @"6fc35955f83974f9c411e7acc28ca7ad"
+//#define kWXAPPKey @"wx7be2e0c9ebd9e161"
+//#define kWXAPPSecret @"8fc579120ceceae54cb43dc2a17f1d54"
+
 //
 #define kWBAPPKey @"2199355574"
 #define kWBRedirectURL @"http://www.meddo.com"
 
 #define kBadgeKey [NSString stringWithFormat:@"badge%@",thirdPartyLoginUserId]
 
-
+#define kLogoutKey @"kLogoutKey"
 #define StatusbarSize 20
 #define kDefaultWordFont      [UIFont systemFontOfSize:17]
 #define kDefaultColor [UIColor colorWithRed:0.145f green:0.733f blue:0.957f alpha:1.00f]

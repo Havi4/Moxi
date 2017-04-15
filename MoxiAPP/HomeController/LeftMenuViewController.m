@@ -15,6 +15,7 @@
 #import "AboutViewController.h"
 #import "UIViewController+REFrostedViewController.h"
 #import "AppDelegate.h"
+#import <UIImage+AFNetworking.h>
 
 @interface LeftMenuViewController ()
 
@@ -45,7 +46,7 @@
             make.height.equalTo(@60);
             make.width.equalTo(@60);
         }];
-        imageView.image = [UIImage imageNamed:@"avatar.jpg"];
+        [imageView setImageWithURL:[NSURL URLWithString:thirdPartyUseIcon] placeholder:[UIImage imageNamed:@"avatar.jpg"]];
         imageView.layer.masksToBounds = YES;
         imageView.layer.cornerRadius = 30.0;
         imageView.layer.borderColor = [UIColor colorWithRed:0.957 green:0.906 blue:0.729 alpha:1.00].CGColor;
@@ -55,7 +56,7 @@
         imageView.clipsToBounds = YES;
 
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
-        label.text = @"Roman Efimov";
+        label.text = thirdPartyNickName;
         label.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor colorWithRed:0.953 green:0.953 blue:0.953 alpha:1.00];
@@ -77,7 +78,9 @@
     [logoutButton setTitleEdgeInsets:UIEdgeInsetsMake(0, -logoutButton.currentImage.size.width, 0, -50)];
     [logoutButton setTitle:@"解绑微信并退出" forState:UIControlStateNormal];
     [logoutButton setTitleColor:[UIColor colorWithRed:0.376 green:0.255 blue:0.227 alpha:1.00] forState:UIControlStateNormal];
+    [logoutButton addTarget:self action:@selector(logout:) forControlEvents:UIControlEventTouchUpInside];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 #pragma mark -
@@ -186,15 +189,24 @@
     NSArray *titles = @[@"  修改联系微信", @"  联系客服",@"  关于MOXI"];
     cell.textLabel.text = titles[indexPath.row];
     cell.textLabel.textColor = kBarLightTextColor;
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsMake(0, 20, 0, self.view.frame.size.width-50)];
-    }
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
+//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [cell setSeparatorInset:UIEdgeInsetsMake(0, 20, 0, self.view.frame.size.width-50)];
+//    }
+//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [cell setLayoutMargins:UIEdgeInsetsZero];
+//    }
+    UIView *line = [[UIView alloc]init];
+    line.backgroundColor = kFocusTextColor;
+    line.frame = CGRectMake(20, 53, 50, 1);
+    [cell addSubview:line];
     return cell;
 }
 
+- (void)logout:(UIButton *)button
+{
+    [self.frostedViewController hideMenuViewController];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kLogoutKey object:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

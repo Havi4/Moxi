@@ -15,3 +15,6 @@ BOOL isDeviceOK = NO;
 NSInteger minFingerData = NSIntegerMax;
 NSInteger maxFingerData = NSIntegerMin;
 NSString *gameLevel = @"";
+NSString *thirdPartyLoginUserId = @"";
+NSString *thirdPartyUseIcon = @"";
+NSString *thirdPartyNickName = @"";

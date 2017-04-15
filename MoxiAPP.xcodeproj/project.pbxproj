@@ -54,6 +54,7 @@
 		570649CF1E57EB4400181159 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649CE1E57EB4400181159 /* UIImage+Tint.m */; };
 		570649DA1E583EBC00181159 /* JDDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649D91E583EBC00181159 /* JDDropView.m */; };
 		57236DF61E96851500D88664 /* BaseNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 57236DF51E96851500D88664 /* BaseNetworking.m */; };
+		57587C851EA064C200C82366 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57587C841EA064C200C82366 /* UserManager.m */; };
 		57745F5B1E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F581E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m */; };
 		57745F5C1E665FD90001D0CC /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F5A1E665FD90001D0CC /* UIView+SDAutoLayout.m */; };
 		57745F611E66C3CC0001D0CC /* MyCarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F5E1E66C3CC0001D0CC /* MyCarTableViewCell.m */; };
@@ -222,6 +223,8 @@
 		570649D91E583EBC00181159 /* JDDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDDropView.m; sourceTree = "<group>"; };
 		57236DF41E96851500D88664 /* BaseNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNetworking.h; sourceTree = "<group>"; };
 		57236DF51E96851500D88664 /* BaseNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNetworking.m; sourceTree = "<group>"; };
+		57587C831EA064C200C82366 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		57587C841EA064C200C82366 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		57745F561E665FD90001D0CC /* SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAutoLayout.h; sourceTree = "<group>"; };
 		57745F571E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
 		57745F581E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 				570649871E4C64E100181159 /* Definations.h */,
 				57CACC251E97B24B00352078 /* Global.h */,
 				57CACC261E97B24B00352078 /* Global.m */,
+				57587C831EA064C200C82366 /* UserManager.h */,
+				57587C841EA064C200C82366 /* UserManager.m */,
 			);
 			path = Configer;
 			sourceTree = "<group>";
@@ -1012,7 +1017,7 @@
 				TargetAttributes = {
 					570649451E4C605B00181159 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = CF99UB3L46;
+						DevelopmentTeam = Q32494ZT62;
 						ProvisioningStyle = Manual;
 					};
 					5706495E1E4C605B00181159 = {
@@ -1155,6 +1160,7 @@
 				57F0D64C1E63BE7C00600C16 /* MBProgressHUD.m in Sources */,
 				57F0D6EC1E641EFC00600C16 /* MJRefreshAutoGifFooter.m in Sources */,
 				570649A71E4C743400181159 /* REFrostedViewController.m in Sources */,
+				57587C851EA064C200C82366 /* UserManager.m in Sources */,
 				57F0D6651E63ED6F00600C16 /* AbstractActionSheetPicker.m in Sources */,
 				570649B71E4C78A200181159 /* BaseViewController.m in Sources */,
 				57F0D6F61E641EFC00600C16 /* MJRefreshConst.m in Sources */,
@@ -1366,7 +1372,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = CF99UB3L46;
+				DEVELOPMENT_TEAM = Q32494ZT62;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoxiAPP/Handler/Configer/Configer.pch";
 				INFOPLIST_FILE = MoxiAPP/Info.plist;
@@ -1417,10 +1423,10 @@
 					"-Objc",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ihotkeys.ihotkeys;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moxi.appshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6068214e-b7ba-4f4c-81f5-cbcd212c206b";
-				PROVISIONING_PROFILE_SPECIFIER = "ihotkeys-develop-profile";
+				PROVISIONING_PROFILE = "8352445c-d5de-4419-a81f-cc020e7d47cb";
+				PROVISIONING_PROFILE_SPECIFIER = com.moxi.shareprofile;
 			};
 			name = Debug;
 		};
@@ -1429,8 +1435,8 @@
 			baseConfigurationReference = 2BF57FA1683E7F7D9C4F4DF9 /* Pods-MoxiAPP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = CF99UB3L46;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = Q32494ZT62;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoxiAPP/Handler/Configer/Configer.pch";
 				INFOPLIST_FILE = MoxiAPP/Info.plist;
@@ -1481,10 +1487,10 @@
 					"-Objc",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ihotkeys.ihotkeys;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moxi.appshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "968d2e1d-93ae-41e0-bc89-d6318ebd9d88";
-				PROVISIONING_PROFILE_SPECIFIER = ihotkeys_distribute;
+				PROVISIONING_PROFILE = "8352445c-d5de-4419-a81f-cc020e7d47cb";
+				PROVISIONING_PROFILE_SPECIFIER = com.moxi.shareprofile;
 			};
 			name = Release;
 		};

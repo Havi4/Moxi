@@ -15,3 +15,8 @@ extern BOOL isDeviceOK;
 extern NSInteger minFingerData;
 extern NSInteger maxFingerData;
 extern NSString *gameLevel;
+//useinfo
+extern NSString *thirdPartyLoginUserId;
+extern NSString *thirdPartyUseIcon;
+extern NSString *thirdPartyNickName;
+

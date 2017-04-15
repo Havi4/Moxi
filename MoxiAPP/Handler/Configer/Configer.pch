@@ -27,5 +27,6 @@
 #import "SDAutoLayout.h"
 #import "BaseNetworking.h"
 #import "Global.h"
+#import "UserManager.h"
 
 #endif /* Configer_pch */

@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "WXApi.h"
+#import "AppDelegate.h"
 @interface LoginViewController ()<WXApiDelegate>
 
 @property (nonatomic, strong) UILabel *loginTitle;
@@ -77,8 +78,6 @@
     SendAuthReq* req = [[SendAuthReq alloc] init];
     req.scope = @"snsapi_message,snsapi_userinfo,snsapi_friend,snsapi_contact";
     req.state = @"xxx";
-    req.openID = @"0c806938e2413ce73eef92cc3";
-
     [WXApi sendAuthReq:req viewController:self delegate:self];
 }
 
