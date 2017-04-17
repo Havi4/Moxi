@@ -332,7 +332,7 @@
         _modelDoneView.layer.cornerRadius = 5;
         _modelDoneView.layer.masksToBounds = YES;
         _modelDoneView.hidden = YES;
-        _modelDoneView.backgroundColor = [UIColor colorWithRed:0.118 green:0.145 blue:0.204 alpha:0.5];
+        _modelDoneView.backgroundColor = [UIColor colorWithRed:0.118 green:0.145 blue:0.204 alpha:0.25];
         [self addSubview:_modelDoneView];
         [_modelDoneView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self).insets(UIEdgeInsetsMake(7.5, 15, 7.5, 15));
