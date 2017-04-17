@@ -343,7 +343,7 @@
         }
         UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
         pasteboard.string= orderContent;
-        [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号已复制到剪切板" inView:self.view];
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"订单内容已复制到剪贴板" inView:self.view];
     }];
     [done setValue:kFocusTextColor forKey:@"titleTextColor"];
     [alertView addAction:done];

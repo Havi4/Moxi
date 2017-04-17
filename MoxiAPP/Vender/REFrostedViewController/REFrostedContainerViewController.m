@@ -326,9 +326,9 @@
                 frame.origin.x = 0;
                 
                 if (!self.frostedViewController.limitMenuViewSize) {
-                    frame.size.width = self.frostedViewController.calculatedMenuViewSize.width + self.containerOrigin.x + point.x;
-                    if (frame.size.width > self.view.frame.size.width)
-                        frame.size.width = self.view.frame.size.width;
+//                    frame.size.width = self.frostedViewController.calculatedMenuViewSize.width + self.containerOrigin.x + point.x;
+//                    if (frame.size.width > self.view.frame.size.width)
+//                        frame.size.width = self.view.frame.size.width;
                 }
             }
         }
