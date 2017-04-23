@@ -54,6 +54,8 @@
     //
 @property (nonatomic, strong) UIButton *commitButton;
 
+@property (nonatomic, strong) NSDate *dateSelectDate;
+
 @end
 
 @implementation HourseViewController
@@ -446,6 +448,7 @@
     if (!selectedDate) {
         return;
     }
+    self.dateSelectDate = selectedDate;
     self.carTakeDateLabel.hidden = NO;
     NSString *date = [[NSString stringWithFormat:@"%@",[selectedDate dateByAddingHours:8]] substringWithRange:NSMakeRange(5, 5)];
 
@@ -456,8 +459,8 @@
 {
     DeBugLog(@"显示时间");
     ActionSheetDatePicker *datePicker = [[ActionSheetDatePicker alloc] initWithTitle:@"选择时间" datePickerMode:UIDatePickerModeDate selectedDate:[NSDate date]
-                                                                         minimumDate:[NSDate date]
-                                                                         maximumDate:[[NSDate date] dateByAddingDays:30]
+                                                                         minimumDate:[self.dateSelectDate dateByAddingHours:8]
+                                                                         maximumDate:nil
                                                                               target:self action:@selector(timeWasSelected:element:) origin:button];
     datePicker.minuteInterval = 1;
     UIButton *okButton = [UIButton buttonWithType:UIButtonTypeCustom];
