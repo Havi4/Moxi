@@ -35,6 +35,7 @@
     _wxTextfield.backgroundColor = [UIColor whiteColor];
     _wxTextfield.clearButtonMode = UITextFieldViewModeNever;
     _wxTextfield.font = [UIFont systemFontOfSize:20];
+    _wxTextfield.placeholder = [[publicGet objectForKey:@"data"] objectForKey:@"vxhao"];
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 15, 50)];
     _wxTextfield.leftViewMode = UITextFieldViewModeAlways;
     _wxTextfield.leftView = view;

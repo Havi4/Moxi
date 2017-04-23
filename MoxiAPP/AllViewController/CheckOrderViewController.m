@@ -14,6 +14,7 @@
 #import "MJRefreshNormalHeader.h"
 #import "MJRefreshAutoNormalFooter.h"
 #import <AFHTTPSessionManager.h>
+#import "FaBuSetVXViewController.h"
 
 @interface CheckOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -131,7 +132,7 @@
                 self.orderView.mj_footer.state = MJRefreshStateIdle;
             }
         }else {
-            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:self.view];
+            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
         }
     } fail:^(NSError *error) {
 
@@ -160,18 +161,44 @@
 
 - (void)showMinsuOrder
 {
-    HourseViewController *hourse = [[HourseViewController alloc]init];
-    [self presentViewController:hourse animated:YES completion:^{
+    if (![[[publicGet objectForKey:@"data"] objectForKey:@"vxhao"] isEqualToString:@"null"]) {
+        FaBuSetVXViewController *wx = [[FaBuSetVXViewController alloc]init];
+        wx.doneSave = ^(NSInteger index) {
+            HourseViewController *hourse = [[HourseViewController alloc]init];
+            [self presentViewController:hourse animated:YES completion:^{
 
-    }];
+            }];
+        };
+        [self presentViewController:wx animated:YES completion:^{
+
+        }];
+    }else{
+        HourseViewController *hourse = [[HourseViewController alloc]init];
+        [self presentViewController:hourse animated:YES completion:^{
+
+        }];
+    }
 }
 
 - (void)showCarOrder
 {
-    CarOrderViewController *carOrder = [[CarOrderViewController alloc]init];
-    [self presentViewController:carOrder animated:YES completion:^{
+    if (![[[publicGet objectForKey:@"data"] objectForKey:@"vxhao"] isEqualToString:@"null"]) {
+        FaBuSetVXViewController *wx = [[FaBuSetVXViewController alloc]init];
+        wx.doneSave = ^(NSInteger index) {
+            CarOrderViewController *carOrder = [[CarOrderViewController alloc]init];
+            [self presentViewController:carOrder animated:YES completion:^{
 
-    }];
+            }];
+        };
+        [self presentViewController:wx animated:YES completion:^{
+
+        }];
+    }else{
+        CarOrderViewController *carOrder = [[CarOrderViewController alloc]init];
+        [self presentViewController:carOrder animated:YES completion:^{
+
+        }];
+    }
 }
 
 #pragma mark tableview
@@ -387,7 +414,7 @@
             [self.orderArr replaceObjectAtIndex:indexPath.row withObject:orderInfo];
             [self.orderView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
         }else {
-            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:self.view];
+            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
         }
     } fail:^(NSError *error) {
 
@@ -412,7 +439,7 @@
             [self.orderArr removeObjectAtIndex:indexPath.row];
             [self.orderView reloadData];
         }else {
-            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:self.view];
+            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
         }
     } fail:^(NSError *error) {
 

@@ -9,6 +9,7 @@
 #import "Global.h"
 
 NSDictionary *returnErrorMessage = nil;
+NSDictionary *publicGet = nil;
 NSArray *regionArr = nil;
 NSString *selectedBlueName = @"";
 BOOL isDeviceOK = NO;

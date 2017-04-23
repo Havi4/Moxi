@@ -188,7 +188,7 @@ typedef enum : NSUInteger {
                     self.orderView.mj_footer.state = MJRefreshStateIdle;
                 }
             }else {
-                [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:self.view];
+                [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
             }
         } fail:^(NSError *error) {
             
@@ -226,7 +226,7 @@ typedef enum : NSUInteger {
                     self.orderView.mj_footer.state = MJRefreshStateIdle;
                 }
             }else {
-                [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:self.view];
+                [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
             }
         } fail:^(NSError *error) {
 
@@ -474,11 +474,11 @@ typedef enum : NSUInteger {
         UIAlertAction *done = [UIAlertAction actionWithTitle:@"复制订单内容" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSString *orderContent = @"";
             if (self.orderType == HourseOrderType) {
-                orderContent = [NSString stringWithFormat:@"%@\n游客预算:%@%@\n入住时间:%@,退房时间：%@共计%@晚，入住:%@人\n介绍人:%@\n要求:%@\n微信号:%@\n本订单信息来自MoxiSharing，更多用房用车订单尽在http://orders.moxi.gg",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:2]],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"tuifang"] substringFromIndex:2]],[dic objectForKey:@"wan"],[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"yaoqiu"],[dic objectForKey:@"vxhao"]];
+                orderContent = [NSString stringWithFormat:@"%@\n游客预算：%@%@\n入住时间：%@\n退房时间：%@共计%@晚，入住：%@人\n介绍人：%@\n要求：%@\n微信号：%@\n%@",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:2]],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"tuifang"] substringFromIndex:2]],[dic objectForKey:@"wan"],[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"yaoqiu"],[dic objectForKey:@"vxhao"],[[publicGet objectForKey:@"data"] objectForKey:@"copyEndMsg"]];
             }else{
-                NSString * time = [NSString stringWithFormat:@"%@月%@日 %@",[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(5, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(8, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(11, 5)]];
+                NSString * time = [NSString stringWithFormat:@"%@月%@日 %@",[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(0, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(3, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(6, 5)]];
 
-                orderContent = [NSString stringWithFormat:@"%@\n游客预算:%@%@\n乘车时间:%@,共计:%@人\n介绍人:%@\n微信号:%@\n本订单信息来自MoxiSharing，更多用房用车订单尽在http://orders.moxi.gg",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],time,[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"vxhao"]];
+                orderContent = [NSString stringWithFormat:@"%@\n游客预算：%@%@\n乘车时间：%@\n共计：%@人\n介绍人：%@\n微信号：%@\n%@",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],time,[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"vxhao"],[[publicGet objectForKey:@"data"] objectForKey:@"copyEndMsg"]];
 
             }
             UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
@@ -511,11 +511,11 @@ typedef enum : NSUInteger {
         UIAlertAction *done = [UIAlertAction actionWithTitle:@"复制订单内容" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSString *orderContent = @"";
             if (self.orderType == HourseOrderType) {
-                orderContent = [NSString stringWithFormat:@"%@\n游客预算:%@%@\n入住时间:%@,退房时间：%@共计%@晚，入住:%@人\n介绍人:%@\n要求:%@\n微信号:%@\n本订单信息来自MoxiSharing，更多用房用车订单尽在http://orders.moxi.gg",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:2]],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"tuifang"] substringFromIndex:2]],[dic objectForKey:@"wan"],[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"yaoqiu"],[dic objectForKey:@"vxhao"]];
+                orderContent = [NSString stringWithFormat:@"%@\n游客预算：%@%@\n入住时间：%@\n退房时间：%@共计%@晚，入住：%@人\n介绍人：%@\n要求：%@\n微信号：%@\n%@",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:2]],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"tuifang"] substringFromIndex:2]],[dic objectForKey:@"wan"],[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"yaoqiu"],[dic objectForKey:@"vxhao"],[[publicGet objectForKey:@"data"] objectForKey:@"copyEndMsg"]];
             }else{
-                NSString * time = [NSString stringWithFormat:@"%@月%@日 %@",[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(5, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(8, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(11, 5)]];
+                NSString * time = [NSString stringWithFormat:@"%@月%@日 %@",[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(0, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(3, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(6, 5)]];
 
-                orderContent = [NSString stringWithFormat:@"%@\n游客预算:%@%@\n乘车时间:%@,共计:%@人\n介绍人:%@\n微信号:%@\n本订单信息来自MoxiSharing，更多用房用车订单尽在http://orders.moxi.gg",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],time,[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"vxhao"]];
+                orderContent = [NSString stringWithFormat:@"%@\n游客预算：%@%@\n乘车时间：%@\n共计：%@人\n介绍人：%@\n微信号：%@\n%@",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],time,[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"vxhao"],[[publicGet objectForKey:@"data"] objectForKey:@"copyEndMsg"]];
             }
             UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
             pasteboard.string= orderContent;
@@ -611,7 +611,7 @@ typedef enum : NSUInteger {
             [self.orderArr replaceObjectAtIndex:indexPath.row withObject:orderInfo];
             [self.orderView reloadRowAtIndexPath:indexPath withRowAnimation:UITableViewRowAnimationNone];
         }else {
-            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:self.view];
+            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
         }
     } fail:^(NSError *error) {
 
@@ -709,7 +709,7 @@ typedef enum : NSUInteger {
             [self.orderArr removeObjectAtIndex:indexPath.row];
             [self.orderView reloadData];
         }else {
-            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:self.view];
+            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
         }
     } fail:^(NSError *error) {
 

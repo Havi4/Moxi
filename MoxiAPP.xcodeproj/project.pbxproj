@@ -55,6 +55,7 @@
 		570649DA1E583EBC00181159 /* JDDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649D91E583EBC00181159 /* JDDropView.m */; };
 		57236DF61E96851500D88664 /* BaseNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 57236DF51E96851500D88664 /* BaseNetworking.m */; };
 		573C421C1EAC2D37002D45FE /* SetWXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 573C421B1EAC2D37002D45FE /* SetWXViewController.m */; };
+		573C421F1EAC90C4002D45FE /* FaBuSetVXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 573C421E1EAC90C4002D45FE /* FaBuSetVXViewController.m */; };
 		57587C851EA064C200C82366 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57587C841EA064C200C82366 /* UserManager.m */; };
 		57745F5B1E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F581E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m */; };
 		57745F5C1E665FD90001D0CC /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F5A1E665FD90001D0CC /* UIView+SDAutoLayout.m */; };
@@ -226,6 +227,8 @@
 		57236DF51E96851500D88664 /* BaseNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNetworking.m; sourceTree = "<group>"; };
 		573C421A1EAC2D37002D45FE /* SetWXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetWXViewController.h; path = AllViewController/SetWXViewController.h; sourceTree = "<group>"; };
 		573C421B1EAC2D37002D45FE /* SetWXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetWXViewController.m; path = AllViewController/SetWXViewController.m; sourceTree = "<group>"; };
+		573C421D1EAC90C4002D45FE /* FaBuSetVXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FaBuSetVXViewController.h; path = AllViewController/FaBuSetVXViewController.h; sourceTree = "<group>"; };
+		573C421E1EAC90C4002D45FE /* FaBuSetVXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaBuSetVXViewController.m; path = AllViewController/FaBuSetVXViewController.m; sourceTree = "<group>"; };
 		57587C831EA064C200C82366 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		57587C841EA064C200C82366 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		57745F561E665FD90001D0CC /* SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAutoLayout.h; sourceTree = "<group>"; };
@@ -674,6 +677,8 @@
 				570649CA1E57DC0200181159 /* LoginViewController.m */,
 				573C421A1EAC2D37002D45FE /* SetWXViewController.h */,
 				573C421B1EAC2D37002D45FE /* SetWXViewController.m */,
+				573C421D1EAC90C4002D45FE /* FaBuSetVXViewController.h */,
+				573C421E1EAC90C4002D45FE /* FaBuSetVXViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1192,6 +1197,7 @@
 				577A85FF1E5F289D00834E61 /* NirKxMenu.m in Sources */,
 				57031E961E9C8C3A00B6AD8A /* WTURLRequestOperation.m in Sources */,
 				57F0D6E91E641EFC00600C16 /* MJRefreshComponent.m in Sources */,
+				573C421F1EAC90C4002D45FE /* FaBuSetVXViewController.m in Sources */,
 				57F0D6F41E641EFC00600C16 /* MJRefreshStateHeader.m in Sources */,
 				57E148E31E60359200EB3B35 /* UIViewController+CYLTabBarControllerExtention.m in Sources */,
 				570649B41E4C789000181159 /* BaseNaviViewController.m in Sources */,

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSDictionary *returnErrorMessage;
+extern NSDictionary *publicGet;
 extern NSArray *regionArr;
 extern NSString *selectedBlueName;
 extern BOOL isDeviceOK;

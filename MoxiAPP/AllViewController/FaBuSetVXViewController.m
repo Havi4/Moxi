@@ -1,23 +1,24 @@
 //
-//  SetWXViewController.m
+//  FaBuSetVXViewController.m
 //  MoxiAPP
 //
 //  Created by HaviLee on 2017/4/23.
 //  Copyright © 2017年 HaviLee. All rights reserved.
 //
 
-#import "SetWXViewController.h"
+#import "FaBuSetVXViewController.h"
 
-@interface SetWXViewController ()<UIAlertViewDelegate>
-
+@interface FaBuSetVXViewController ()
 @property (nonatomic, strong) UITextField *wxTextfield;
 @property (nonatomic, strong) UILabel *loginTitle;
 @property (nonatomic, strong) UILabel *textTitle;
 @property (nonatomic, strong) UIButton *loginWithWXButton;
+@property (nonatomic, strong) UIButton *fangqiWXButton;
+
 
 @end
 
-@implementation SetWXViewController
+@implementation FaBuSetVXViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,7 +32,7 @@
     backgroundImage.image = [UIImage imageNamed:@"back_ground_image"];
     [self.view addSubview:backgroundImage];
     self.loginTitle = [[UILabel alloc]init];
-    self.loginTitle.text = @"请设置您的微信，方便其他服务商与您联系";
+    self.loginTitle.text = @"发布订单后，其他服务商将通过此微信与您取得联系";
     self.loginTitle.numberOfLines = 0;
     self.loginTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
     self.loginTitle.textColor = [UIColor whiteColor];
@@ -81,6 +82,24 @@
         make.right.equalTo(self.wxTextfield.mas_right);
     }];
 
+    self.fangqiWXButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.fangqiWXButton.layer.cornerRadius = 21;
+    self.fangqiWXButton.layer.masksToBounds = YES;
+    self.fangqiWXButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.fangqiWXButton.layer.borderWidth = 1;
+    [self.fangqiWXButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.fangqiWXButton setTitle:@"放弃发布" forState:UIControlStateNormal];
+    self.fangqiWXButton.titleLabel.font = [UIFont systemFontOfSize:18];
+    [self.fangqiWXButton setTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.fangqiWXButton];
+    CGFloat edge = (kScreenSize.width-320)/3;
+    [self.fangqiWXButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.mas_bottom).offset(-64);
+        make.width.equalTo(@160);
+        make.height.equalTo(@42);
+        make.left.equalTo(self.view.mas_left).offset(edge);
+    }];
+
 
     self.loginWithWXButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.loginWithWXButton.layer.cornerRadius = 21;
@@ -96,17 +115,24 @@
         make.bottom.equalTo(self.view.mas_bottom).offset(-64);
         make.width.equalTo(@160);
         make.height.equalTo(@42);
-        make.centerX.equalTo(self.view.mas_centerX);
+        make.right.equalTo(self.view.mas_right).offset(-edge);
     }];
+}
+
+- (void)cancel
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)saveWxId
 {
     DeBugLog(@"爆粗");
     if (self.wxTextfield.text.length == 0) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"微信号可稍后进行设置，是否跳过？" delegate:self cancelButtonTitle:@"跳过" otherButtonTitles:@"现在设置", nil];
-        alert.tag = 101;
-        [alert show];
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"微信号可稍后进行设置，是否跳过？" delegate:self cancelButtonTitle:@"跳过" otherButtonTitles:@"现在设置", nil];
+//        alert.tag = 101;
+//        [alert show];
+
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"请填写微信号" inView:[[UIApplication sharedApplication] keyWindow]];
         return;
     }else{
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"微信号可在个人中心重新设置" delegate:self cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
@@ -130,12 +156,13 @@
             if ([[response objectForKey:@"code"] intValue]==200) {
                 [self dismissViewControllerAnimated:YES completion:^{
                     [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号设置成功" inView:[[UIApplication sharedApplication] keyWindow]];
+                    self.doneSave(1);
                 }];
             }else {
                 [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
             }
         } fail:^(NSError *error) {
-            
+
         }];
     }
 }
@@ -144,7 +171,6 @@
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
-
 
 /*
 #pragma mark - Navigation

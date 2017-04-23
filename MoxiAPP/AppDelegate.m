@@ -15,6 +15,7 @@
 #import "LoginViewController.h"
 #import "WXApi.h"
 #import "WeiXinAPI.h"
+#import "SetWXViewController.h"
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -41,7 +42,16 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self setUpNavigationBarAppearance];
     [self.window makeKeyAndVisible];
-    
+    if (!publicGet && [UserManager IsUserLogged]) {
+        [[BaseNetworking sharedAPIManager]getPublicDicWith:nil success:^(id response) {
+            if ([[response objectForKey:@"code"] intValue]==200) {
+                DeBugLog(@"公共%@",response);
+                publicGet = response;
+            }
+        } fail:^(NSError *error) {
+            
+        }];
+    }
     return YES;
 }
 
@@ -60,6 +70,13 @@
         // Make it a root controller
         //
     self.window.rootViewController = frostedViewController;
+
+    if ([[publicGet objectForKey:@"vxhao"] isEqualToString:@"null"]) {
+        SetWXViewController *wx = [[SetWXViewController alloc]init];
+        [self.window.rootViewController presentViewController:wx animated:YES completion:^{
+
+        }];
+    }
 }
 
 /**
@@ -194,7 +211,18 @@
                 thirdPartyNickName = [obj objectForKey:@"nickname"];
                 [UserManager setGlobalOauth];
                 [HYBNetworking configCommonHttpHeaders:@{@"moxi-token":[NSString stringWithFormat:@"%@|%@",thirdPartyAccess_Token,thirdPartyOpenID]}];
-                [self setRootViewController];
+                [[BaseNetworking sharedAPIManager]getPublicDicWith:nil success:^(id response) {
+                    if ([[response objectForKey:@"code"] intValue]==200) {
+                        publicGet = response;
+
+                        [self setRootViewController];
+                    }else {
+                        [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
+                    }
+
+                } fail:^(NSError *error) {
+
+                }];
                 NSLog(@"用户信息是%@",obj);
             } failed:^(NSURLResponse *response, NSError *error) {
 

@@ -42,4 +42,7 @@
 - (void)changeWXHAOWith:(NSDictionary *)params
                 success:(HYBResponseSuccess)success
                    fail:(HYBResponseFail)fail;
+- (void)getPublicDicWith:(NSDictionary *)params
+                success:(HYBResponseSuccess)success
+                   fail:(HYBResponseFail)fail;
 @end

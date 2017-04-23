@@ -86,4 +86,12 @@ static BaseNetworking *baseApi = nil;
     NSString *urlString = [NSString stringWithFormat:@"/user/setVxhao?vxhao=%@",[params objectForKey:@"wxhao"]];
     [HYBNetworking getWithUrl:urlString refreshCache:YES success:success fail:fail];
 }
+
+- (void)getPublicDicWith:(NSDictionary *)params
+                 success:(HYBResponseSuccess)success
+                    fail:(HYBResponseFail)fail
+{
+    NSString *urlString = [NSString stringWithFormat:@"/public/get"];
+    [HYBNetworking getWithUrl:urlString refreshCache:YES success:success fail:fail];
+}
 @end
