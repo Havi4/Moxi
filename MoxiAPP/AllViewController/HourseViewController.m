@@ -55,7 +55,7 @@
 @property (nonatomic, strong) UIButton *commitButton;
 
 @property (nonatomic, strong) NSDate *dateSelectDate;
-
+@property (nonatomic, strong) NSDate *tuifangSelectDate;
 @end
 
 @implementation HourseViewController
@@ -459,7 +459,7 @@
 {
     DeBugLog(@"显示时间");
     ActionSheetDatePicker *datePicker = [[ActionSheetDatePicker alloc] initWithTitle:@"选择时间" datePickerMode:UIDatePickerModeDate selectedDate:[NSDate date]
-                                                                         minimumDate:[self.dateSelectDate dateByAddingHours:8]
+                                                                         minimumDate:[self.dateSelectDate dateByAddingHours:32]
                                                                          maximumDate:nil
                                                                               target:self action:@selector(timeWasSelected:element:) origin:button];
     datePicker.minuteInterval = 1;
@@ -485,6 +485,7 @@
     if (!selectedTime) {
         return;
     }
+    self.tuifangSelectDate = selectedTime;
     self.carTakeTimeLabel.hidden = NO;
     NSString *date = [[NSString stringWithFormat:@"%@",[selectedTime dateByAddingHours:8]] substringWithRange:NSMakeRange(5, 5)];
 
@@ -566,8 +567,10 @@
     }else{
         region = [NSString stringWithFormat:@"%d",(int)([regionArr indexOfObject:self.regionValue.titleLabel.text]+1)];
     }
-    NSString *ruzhu = [NSString stringWithFormat:@"%@/%@",[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(0, 2)],[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(3, 2)]];
-    NSString *tuifang = [NSString stringWithFormat:@"%@/%@",[self.carTakeTime.titleLabel.text substringWithRange:NSMakeRange(0, 2)],[self.carTakeTime.titleLabel.text substringWithRange:NSMakeRange(3, 2)]];
+    NSString *ruzhuString = [NSString stringWithFormat:@"%@",[self.dateSelectDate dateByAddingHours:8]];
+    NSString *tuifangString = [NSString stringWithFormat:@"%@",[self.tuifangSelectDate dateByAddingHours:8]];
+    NSString *ruzhu = [NSString stringWithFormat:@"%@/%@/%@",[ruzhuString substringWithRange:NSMakeRange(0, 4)],[ruzhuString substringWithRange:NSMakeRange(5, 2)],[ruzhuString substringWithRange:NSMakeRange(8, 2)]];
+    NSString *tuifang = [NSString stringWithFormat:@"%@/%@/%@",[tuifangString substringWithRange:NSMakeRange(0, 4)],[tuifangString substringWithRange:NSMakeRange(5, 2)],[tuifangString substringWithRange:NSMakeRange(8, 2)]];
     NSDictionary *dic = @{
                           @"ruzhu":ruzhu,
                           @"tuifang":tuifang,

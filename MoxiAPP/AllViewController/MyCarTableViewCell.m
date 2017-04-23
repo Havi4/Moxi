@@ -559,7 +559,7 @@
 
 
         _hunterLabel = [[UILabel alloc]init];
-        _hunterLabel.text = @"介绍人:";
+        _hunterLabel.text = @"发布板块:";
         _hunterLabel.font = [UIFont systemFontOfSize:16];
 
         [self.contentView addSubview:_hunterLabel];
@@ -567,7 +567,7 @@
         _hunterLabel.sd_layout
         .leftSpaceToView(self.contentView,25)
         .topSpaceToView(line3,0)
-        .widthIs(69)
+        .widthIs(75)
         .heightIs(44);
 
         _hunter = [[UILabel alloc]init];
@@ -602,7 +602,9 @@
         .topSpaceToView(line3,5)
         .bottomSpaceToView(self.contentView,12.5)
         .widthIs(1);
-        
+        _sopyButton.hidden = YES;
+        line4.hidden = YES;
+
         _modelDoneView = [[UIView alloc]init];
         _modelDoneView.layer.cornerRadius = 5;
         _modelDoneView.layer.masksToBounds = YES;
@@ -651,11 +653,12 @@
     self.moneyShowLabel.text = [NSString stringWithFormat:@"%@ %@",[dic objectForKey:@"priceType"],[dic objectForKey:@"price"]];
     self.startLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"from"]];
     self.endLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"to"]];
-    NSString *date = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(5, 5)];
+    NSString *date = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(0, 5)];
     self.dateLabel.text = [NSString stringWithFormat:@"%@月%@日",[date substringToIndex:2],[date substringFromIndex:3]];
-    self.timelabel.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(11, 5)];
+    self.timelabel.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(6, 5)];
     self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"renshu"]];
-    self.hunter.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]] isEqualToString:@"<null>"] ? @"":[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]];
+    NSArray *arr = @[@"其它",@"东京",@"大阪",@"京都",@"名古屋",@"北海道",@"冲绳"];
+    self.hunter.text = [NSString stringWithFormat:@"%@",[arr objectAtIndex:[[dic objectForKey:@"diqu"]integerValue]]];
     self.topImage.hidden = [[dic objectForKey:@"isTop"] intValue]==1?NO:YES;
 }
 

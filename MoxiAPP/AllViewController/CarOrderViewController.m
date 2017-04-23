@@ -56,6 +56,7 @@
 @property (nonatomic, strong) UITextView *endPlaceValue;
 //
 @property (nonatomic, strong) UIButton *commitButton;
+@property (nonatomic, strong) NSDate *selectDate;
 
 @end
 
@@ -475,6 +476,7 @@
     if (!selectedDate) {
         return;
     }
+    self.selectDate = selectedDate;
     self.carTakeDateLabel.hidden = NO;
     NSString *date = [[NSString stringWithFormat:@"%@",[selectedDate dateByAddingHours:8]] substringWithRange:NSMakeRange(5, 5)];
 
@@ -594,9 +596,10 @@
     }else{
         region = [NSString stringWithFormat:@"%d",(int)([regionArr indexOfObject:self.regionValue.titleLabel.text]+1)];
     }
-    NSString *ruzhu = [NSString stringWithFormat:@"%@/%@",[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(0, 2)],[self.carTakeDate.titleLabel.text substringWithRange:NSMakeRange(3, 2)]];
+    NSString *ruzhuString = [NSString stringWithFormat:@"%@",[self.selectDate dateByAddingHours:8]];
+    NSString *ruzhu = [NSString stringWithFormat:@"%@/%@/%@/%@",[ruzhuString substringWithRange:NSMakeRange(0, 4)],[ruzhuString substringWithRange:NSMakeRange(5, 2)],[ruzhuString substringWithRange:NSMakeRange(8, 2)],self.carTakeTime.titleLabel.text];
     NSDictionary *dic = @{
-                          @"time":[NSString stringWithFormat:@"%@ %@",ruzhu,self.carTakeTime.titleLabel.text],
+                          @"time":ruzhu,
                           @"renshu":self.peopleNum.text,
                           @"diqu":region,
                           @"priceType":self.moneyType,

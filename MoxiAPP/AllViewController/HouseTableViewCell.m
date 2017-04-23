@@ -410,7 +410,7 @@
     self.moneyShowLabel.text = [NSString stringWithFormat:@"%@ %@",[dic objectForKey:@"priceType"],[dic objectForKey:@"price"]];
     self.startTime.text = [NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:3]];
 
-    self.endTime.text = [NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"tuifang"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:3]];
+    self.endTime.text = [NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"tuifang"] substringToIndex:2],[[dic objectForKey:@"tuifang"] substringFromIndex:3]];
     self.nightLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"wan"]];;
     self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"renshu"]];
     self.queryLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"yaoqiu"]];

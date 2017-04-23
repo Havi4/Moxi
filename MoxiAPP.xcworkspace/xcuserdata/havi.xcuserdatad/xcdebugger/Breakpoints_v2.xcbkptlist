@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/CarOrderViewController.m"
-            timestampString = "514615781.398044"
+            timestampString = "514619722.837245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "480"
-            endingLineNumber = "480"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "-dateWasSelected:element:"
             landmarkType = "7">
          </BreakpointContent>
@@ -63,70 +63,6 @@
             endingLineNumber = "50"
             landmarkName = "-animateTransition:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoxiAPP/AllViewController/HourseViewController.m"
-            timestampString = "514617459.672459"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "584"
-            endingLineNumber = "584"
-            landmarkName = "-commitSure"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoxiAPP/AllViewController/HourseViewController.m"
-            timestampString = "514617459.672459"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "581"
-            endingLineNumber = "581"
-            landmarkName = "-commitSure"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[HourseViewController commitSure]"
-                  moduleName = "MoxiAPP"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514615591.518714"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "577"
-                  endingLineNumber = "577"
-                  offsetFromSymbolStart = "2284">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__34-[HourseViewController commitSure]_block_invoke"
-                  moduleName = "MoxiAPP"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514615591.52101"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "578"
-                  endingLineNumber = "578"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -248,7 +184,7 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/CheckOrderViewController.m"
-                  timestampString = "514615591.55127"
+                  timestampString = "514620231.49005"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "450"
@@ -263,7 +199,7 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/CheckOrderViewController.m"
-                  timestampString = "514615591.55425"
+                  timestampString = "514620231.491471"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "450"
@@ -312,11 +248,11 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/HomeController/HomeViewController.m"
-                  timestampString = "514615591.562514"
+                  timestampString = "514620231.498044"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "672"
-                  endingLineNumber = "672"
+                  startingLineNumber = "663"
+                  endingLineNumber = "663"
                   offsetFromSymbolStart = "1140">
                </Location>
                <Location
@@ -327,11 +263,11 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/HomeController/HomeViewController.m"
-                  timestampString = "514615591.565388"
+                  timestampString = "514620231.499446"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "672"
-                  endingLineNumber = "672"
+                  startingLineNumber = "663"
+                  endingLineNumber = "663"
                   offsetFromSymbolStart = "1152">
                </Location>
             </Locations>
@@ -584,11 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/CarOrderViewController.m"
-            timestampString = "514615781.398044"
+            timestampString = "514619722.837245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "608"
-            endingLineNumber = "608"
+            startingLineNumber = "611"
+            endingLineNumber = "611"
             landmarkName = "-commitSure"
             landmarkType = "7">
             <Locations>
@@ -600,12 +536,12 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/CarOrderViewController.m"
-                  timestampString = "514615591.632263"
+                  timestampString = "514620231.544036"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "607"
-                  endingLineNumber = "607"
-                  offsetFromSymbolStart = "2084">
+                  startingLineNumber = "611"
+                  endingLineNumber = "611"
+                  offsetFromSymbolStart = "2052">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -615,11 +551,11 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/CarOrderViewController.m"
-                  timestampString = "514615591.634514"
+                  timestampString = "514620231.545425"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "608"
-                  endingLineNumber = "608"
+                  startingLineNumber = "612"
+                  endingLineNumber = "612"
                   offsetFromSymbolStart = "48">
                </Location>
             </Locations>
@@ -792,11 +728,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/HourseViewController.m"
-            timestampString = "514617459.672459"
+            timestampString = "514618365.32966"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "598"
-            endingLineNumber = "598"
+            startingLineNumber = "601"
+            endingLineNumber = "601"
             landmarkName = "-commitSure"
             landmarkType = "7">
             <Locations>
@@ -808,59 +744,139 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514615595.340591"
+                  timestampString = "514620231.576592"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "588"
-                  endingLineNumber = "588"
-                  offsetFromSymbolStart = "492">
+                  startingLineNumber = "601"
+                  endingLineNumber = "601"
+                  offsetFromSymbolStart = "796">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.420"
+                  symbolName = "__copy_helper_block_.432"
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514615595.343176"
+                  timestampString = "514620231.57799"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "588"
-                  endingLineNumber = "588"
+                  startingLineNumber = "601"
+                  endingLineNumber = "601"
                   offsetFromSymbolStart = "64">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.421"
+                  symbolName = "__destroy_helper_block_.433"
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514615595.345485"
+                  timestampString = "514620231.579364"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "588"
-                  endingLineNumber = "588"
+                  startingLineNumber = "601"
+                  endingLineNumber = "601"
                   offsetFromSymbolStart = "36">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__34-[HourseViewController commitSure]_block_invoke.424"
+                  symbolName = "__34-[HourseViewController commitSure]_block_invoke.436"
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514615595.347426"
+                  timestampString = "514620231.580741"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "589"
-                  endingLineNumber = "589"
+                  startingLineNumber = "602"
+                  endingLineNumber = "602"
                   offsetFromSymbolStart = "48">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/AllViewController/HourseViewController.m"
+            timestampString = "514618471.277073"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "574"
+            endingLineNumber = "574"
+            landmarkName = "-commitSure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/AllViewController/HourseViewController.m"
+            timestampString = "514618472.669052"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "584"
+            endingLineNumber = "584"
+            landmarkName = "-commitSure"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[HourseViewController commitSure]"
+                  moduleName = "MoxiAPP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
+                  timestampString = "514620231.588549"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "584"
+                  endingLineNumber = "584"
+                  offsetFromSymbolStart = "2372">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[HourseViewController commitSure]_block_invoke"
+                  moduleName = "MoxiAPP"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
+                  timestampString = "514620231.589961"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "585"
+                  endingLineNumber = "585"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/AllViewController/CarOrderViewController.m"
+            timestampString = "514619663.38519"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "602"
+            endingLineNumber = "602"
+            landmarkName = "-commitSure"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -651,9 +651,9 @@
     self.moneyShowLabel.text = [NSString stringWithFormat:@"%@ %@",[dic objectForKey:@"priceType"],[dic objectForKey:@"price"]];
     self.startLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"from"]];
     self.endLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"to"]];
-    NSString *date = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(5, 5)];
+    NSString *date = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(0, 5)];
     self.dateLabel.text = [NSString stringWithFormat:@"%@月%@日",[date substringToIndex:2],[date substringFromIndex:3]];
-    self.timelabel.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(11, 5)];
+    self.timelabel.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(6, 5)];
     self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"renshu"]];
     self.hunter.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]] isEqualToString:@"<null>"] ? @"":[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]];
     self.topImage.hidden = [[dic objectForKey:@"isTop"] intValue]==1?NO:YES;
