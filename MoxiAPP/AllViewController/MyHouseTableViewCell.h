@@ -21,5 +21,4 @@
 @property (nonatomic, assign) BOOL hideModelDoneView;
 
 @property (nonatomic, copy) NSString *text;
-
 @end

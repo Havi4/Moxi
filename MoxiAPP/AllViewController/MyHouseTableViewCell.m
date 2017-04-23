@@ -33,7 +33,7 @@
 @property (nonatomic, strong) UIButton *sopyButton;
 @property (nonatomic, strong) UIView *modelDoneView;
 @property (nonatomic, strong) NSIndexPath *tapIndex;
-@end
+@property (nonatomic, strong) UIImageView *topImage;@end
 
 @implementation MyHouseTableViewCell
 
@@ -49,7 +49,7 @@
         _backView.sd_layout
         .spaceToSuperView(UIEdgeInsetsMake(7.5, 15, 7.5, 15));
 
-        
+
         _titleBackView = [[UIImageView alloc]init];
         _titleBackView.userInteractionEnabled = YES;
         _titleBackView.image = [UIImage imageNamed:@"home_order_title"];
@@ -69,7 +69,7 @@
         [_titleBackView addSubview:_moreButton];
 
         [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(_titleBackView.mas_left).offset(10);
+            make.left.equalTo(_titleBackView.mas_left).offset(15);
             make.top.equalTo(_titleBackView.mas_top);
             make.bottom.equalTo(_titleBackView.mas_bottom);
         }];
@@ -83,6 +83,11 @@
             make.width.equalTo(@60);
             make.height.equalTo(@40);
         }];
+
+        _topImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"topImage"]];
+        _topImage.frame = CGRectMake(0, 0, 27, 27);
+        _topImage.hidden = YES;
+        [_titleBackView addSubview:_topImage];
 
         _moneyLabel = [[UILabel alloc]init];
         [self.contentView addSubview:_moneyLabel];
@@ -98,7 +103,7 @@
         [self.contentView addSubview:_moneyShowLabel];
         _moneyShowLabel.textColor = kFocusTextColor;
         _moneyShowLabel.textAlignment = NSTextAlignmentRight;
-        _moneyShowLabel.text = @"JPY 8500";
+        _moneyShowLabel.text = @"JPY 0";
         _moneyShowLabel.font = [UIFont systemFontOfSize:16];
         _moneyShowLabel.sd_layout
         .rightSpaceToView(self.contentView,25)
@@ -164,7 +169,7 @@
         _startTime = [[UILabel alloc]init];
         [self.contentView addSubview:_startTime];
         _startTime.text = @"10月1日";
-        _startTime.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
+        _startTime.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
         _startTime.sd_layout
         .leftSpaceToView(self.contentView,25)
         .topSpaceToView(_startTimeLabel,0)
@@ -187,7 +192,7 @@
         [self.contentView addSubview:_endTime];
         _endTime.textAlignment = NSTextAlignmentCenter;
         _endTime.text = @"10月5日";
-        _endTime.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
+        _endTime.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
         _endTime.sd_layout
         .topSpaceToView(_endTimeLabel,0)
         .leftEqualToView(_endTimeLabel)
@@ -202,7 +207,7 @@
         .widthIs(10)
         .heightIs(20);
 
-    //
+            //
         _nightLabel = [[UILabel alloc]init];
         [self.contentView addSubview:_nightLabel];
         _nightLabel.text = @"共计";
@@ -232,7 +237,7 @@
         .rightSpaceToView(_nightLabell,5)
         .topSpaceToView(line2,10)
         .heightIs(25)
-        .widthIs(20);
+        .widthIs(30);
 
         _nightLabel.sd_layout
         .rightSpaceToView(_nightLabelNum,5)
@@ -271,7 +276,7 @@
         .rightSpaceToView(_nightLabell,5)
         .topSpaceToView(_nightLabel,0)
         .heightIs(25)
-        .widthIs(20);
+        .widthIs(30);
 
         _peopleLabel.sd_layout
         .rightSpaceToView(_nightLabelNum,5)
@@ -287,20 +292,20 @@
         .leftSpaceToView(self.contentView,25)
         .rightSpaceToView(self.contentView,25)
         .heightIs(1);
-//
+            //
         _hunterLabel = [[UILabel alloc]init];
-        _hunterLabel.text = @"介绍人:";
+        _hunterLabel.text = @"发布板块:";
         _hunterLabel.font = [UIFont systemFontOfSize:16];
 
         [self.contentView addSubview:_hunterLabel];
         _hunterLabel.sd_layout
         .leftSpaceToView(self.contentView,25)
         .topSpaceToView(line3,0)
-        .widthIs(69)
+        .widthIs(75)
         .heightIs(44);
 
         _hunter = [[UILabel alloc]init];
-        _hunter.text = @"VANX";
+        _hunter.text = @"这是个测试";
         _hunter.font = [UIFont systemFontOfSize:16];
 
         [self.contentView addSubview:_hunter];
@@ -310,38 +315,31 @@
             make.height.equalTo(@46);
         }];
 
-        UIView *line4 = [[UIView alloc]init];
-        line4.backgroundColor = kSepetorColor;
-        [self.contentView addSubview:line4];
-        line4.sd_layout
-        .topSpaceToView(_hunterLabel,0)
-        .leftSpaceToView(self.contentView,25)
-        .rightSpaceToView(self.contentView,25)
-        .heightIs(1);
-
-        UIView *line5 = [[UIView alloc]init];
-        line5.backgroundColor = kSepetorColor;
-        [self.contentView addSubview:line5];
-        line5.sd_layout
-        .centerXEqualToView(self.contentView)
-        .topSpaceToView(line4,5)
-        .bottomSpaceToView(self.contentView,12.5)
-        .widthIs(1);
-
-        _contactButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_contactButton setTitle:@"MOXI直连" forState:UIControlStateNormal];
-        _contactButton.titleLabel.font = [UIFont systemFontOfSize:16];
-        [_contactButton addTarget:self action:@selector(callMoxi:) forControlEvents:UIControlEventTouchUpInside];
-
-        [_contactButton setTitleColor:kFocusTextColor forState:UIControlStateNormal];
-        [self.contentView addSubview:_contactButton];
-
-        _contactButton.sd_layout
-        .leftSpaceToView(self.contentView,25)
-        .topSpaceToView(line4,0)
-        .heightIs(40)
-        .rightSpaceToView(line5,5);
+//                    UIView *line4 = [[UIView alloc]init];
+//                    line4.backgroundColor = kSepetorColor;
+//                    [self.contentView addSubview:line4];
+//                    line4.sd_layout
+//                    .topSpaceToView(_hunterLabel,0)
+//                    .leftSpaceToView(self.contentView,25)
+//                    .rightSpaceToView(self.contentView,25)
+//                    .heightIs(1);
 //
+//
+//
+//                    _contactButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//                    [_contactButton setTitle:@"MOXI直连" forState:UIControlStateNormal];
+//                    _contactButton.titleLabel.font = [UIFont systemFontOfSize:16];
+//                    [_contactButton addTarget:self action:@selector(callMoxi:) forControlEvents:UIControlEventTouchUpInside];
+//            
+//                    [_contactButton setTitleColor:kFocusTextColor forState:UIControlStateNormal];
+//                    [self.contentView addSubview:_contactButton];
+//            
+//                    _contactButton.sd_layout
+//                    .leftSpaceToView(self.contentView,25)
+//                    .topSpaceToView(line4,0)
+//                    .heightIs(40)
+//                    .rightSpaceToView(line5,5);
+
         _sopyButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_sopyButton setTitle:@"复制微信号" forState:UIControlStateNormal];
         _sopyButton.titleLabel.font = [UIFont systemFontOfSize:16];
@@ -350,17 +348,28 @@
         [_sopyButton setTitleColor:kCarOrderBarColor forState:UIControlStateNormal];
         [self.contentView addSubview:_sopyButton];
         _sopyButton.sd_layout
-        .leftSpaceToView(line5,5)
-        .topSpaceToView(line4,0)
         .rightSpaceToView(self.contentView,25)
-        .heightIs(40);
+        .topSpaceToView(line3,0)
+        .heightIs(40)
+        .widthIs(100);
 
+        UIView *line4 = [[UIView alloc]init];
+        line4.backgroundColor = kSepetorColor;
+        [self.contentView addSubview:line4];
+        line4.sd_layout
+        .rightSpaceToView(_sopyButton,5)
+        .topSpaceToView(line3,5)
+        .bottomSpaceToView(self.contentView,12.5)
+        .widthIs(1);
 
         _modelDoneView = [[UIView alloc]init];
         _modelDoneView.layer.cornerRadius = 5;
         _modelDoneView.layer.masksToBounds = YES;
         _modelDoneView.hidden = YES;
         _modelDoneView.backgroundColor = [UIColor colorWithRed:0.118 green:0.145 blue:0.204 alpha:0.25];
+
+        _sopyButton.hidden = YES;
+        line4.hidden = YES;
         [self.contentView addSubview:_modelDoneView];
         _modelDoneView.sd_layout
         .spaceToSuperView(UIEdgeInsetsMake(7.5, 15, 7.5, 15));
@@ -378,7 +387,7 @@
         UIButton *buttonDelete = [UIButton buttonWithType:UIButtonTypeCustom];
         [buttonDelete setImage:[UIImage imageNamed:@"delete_done_order"] forState:UIControlStateNormal];
         [buttonDelete addTarget:self action:@selector(deleteOrder:) forControlEvents:UIControlEventTouchUpInside];
-        
+
         [_modelDoneView addSubview:buttonDelete];
         [buttonDelete mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(@40);
@@ -387,7 +396,7 @@
             make.right.equalTo(_modelDoneView.mas_right).offset(-5);
         }];
 
-        [self setupAutoHeightWithBottomView:_contactButton bottomMargin:10];
+        [self setupAutoHeightWithBottomView:_sopyButton bottomMargin:10];
     }
     return self;
 }
@@ -395,7 +404,21 @@
 - (void)cellConfigWithItem:(id)item andIndex:(NSIndexPath *)indexPath
 {
     NSDictionary *dic = item;
-//    self.queryLabelShow.text = [dic objectForKey:@"text"];
+    self.tapIndex = indexPath;
+    if (!item) {
+        return;
+    }
+    self.titleLabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
+    self.moneyShowLabel.text = [NSString stringWithFormat:@"%@ %@",[dic objectForKey:@"priceType"],[dic objectForKey:@"price"]];
+    self.startTime.text = [NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:3]];
+
+    self.endTime.text = [NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"tuifang"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:3]];
+    self.nightLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"wan"]];;
+    self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"renshu"]];
+    self.queryLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"yaoqiu"]];
+    NSArray *arr = @[@"其它",@"东京",@"大阪",@"京都",@"名古屋",@"北海道",@"冲绳"];
+    self.hunter.text = [NSString stringWithFormat:@"%@",[arr objectAtIndex:[[dic objectForKey:@"diqu"]integerValue]]];
+    self.topImage.hidden = [[dic objectForKey:@"isTop"] intValue]==1?NO:YES;
 
 }
 
@@ -413,14 +436,14 @@
         self.copyWx(self.tapIndex);
     }
 }
-
-- (void)callMoxi:(UIButton *)button
-{
-    if (self.callMoxi) {
-        self.callMoxi(self.tapIndex);
-    }
-}
-
+/*
+ - (void)callMoxi:(UIButton *)button
+ {
+ if (self.callMoxi) {
+ self.callMoxi(self.tapIndex);
+ }
+ }
+ */
 - (void)showMoreNext:(UIButton *)button
 {
     if (self.moreNext) {
@@ -443,6 +466,7 @@
     _text = text;
     self.queryLabelShow.text = text;
 }
+
 
 
 @end

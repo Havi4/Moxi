@@ -15,6 +15,7 @@
 #import "MJRefreshNormalHeader.h"
 #import "MJRefreshAutoNormalFooter.h"
 #import <AFHTTPSessionManager.h>
+#import "SetWXViewController.h"
 typedef enum : NSUInteger {
     CarOrderType,
     HourseOrderType,
@@ -670,17 +671,6 @@ typedef enum : NSUInteger {
             [[NSUserDefaults standardUserDefaults]setObject:newIds forKey:kCarTopIds];
             [[NSUserDefaults standardUserDefaults]synchronize];
         }
-//        [self.orderArr replaceObjectAtIndex:indexPath.row withObject:orderInfo];
-//        [self.orderArr sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-//            NSInteger doorID1 = [[obj1 objectForKey:@"isTop"] integerValue];
-//            NSInteger doorID2 = [[obj2 objectForKey:@"isTop"] integerValue];;
-//            if (doorID1 > doorID2)
-//                return NSOrderedAscending;
-//            else
-//                return NSOrderedAscending;
-//        }];
-//
-//        [self.orderView reloadData];
         [self loadNewData];
 //        NSDictionary *para = @{
 //                               @"diqu":self.orderRegion,

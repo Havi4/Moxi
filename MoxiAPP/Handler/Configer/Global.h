@@ -19,4 +19,6 @@ extern NSString *gameLevel;
 extern NSString *thirdPartyLoginUserId;
 extern NSString *thirdPartyUseIcon;
 extern NSString *thirdPartyNickName;
+extern NSString *thirdPartyOpenID;
+extern NSString *thirdPartyAccess_Token;
 

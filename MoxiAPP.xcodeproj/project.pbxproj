@@ -54,6 +54,7 @@
 		570649CF1E57EB4400181159 /* UIImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649CE1E57EB4400181159 /* UIImage+Tint.m */; };
 		570649DA1E583EBC00181159 /* JDDropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 570649D91E583EBC00181159 /* JDDropView.m */; };
 		57236DF61E96851500D88664 /* BaseNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 57236DF51E96851500D88664 /* BaseNetworking.m */; };
+		573C421C1EAC2D37002D45FE /* SetWXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 573C421B1EAC2D37002D45FE /* SetWXViewController.m */; };
 		57587C851EA064C200C82366 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57587C841EA064C200C82366 /* UserManager.m */; };
 		57745F5B1E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F581E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m */; };
 		57745F5C1E665FD90001D0CC /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F5A1E665FD90001D0CC /* UIView+SDAutoLayout.m */; };
@@ -223,6 +224,8 @@
 		570649D91E583EBC00181159 /* JDDropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDDropView.m; sourceTree = "<group>"; };
 		57236DF41E96851500D88664 /* BaseNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNetworking.h; sourceTree = "<group>"; };
 		57236DF51E96851500D88664 /* BaseNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNetworking.m; sourceTree = "<group>"; };
+		573C421A1EAC2D37002D45FE /* SetWXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetWXViewController.h; path = AllViewController/SetWXViewController.h; sourceTree = "<group>"; };
+		573C421B1EAC2D37002D45FE /* SetWXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetWXViewController.m; path = AllViewController/SetWXViewController.m; sourceTree = "<group>"; };
 		57587C831EA064C200C82366 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		57587C841EA064C200C82366 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		57745F561E665FD90001D0CC /* SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAutoLayout.h; sourceTree = "<group>"; };
@@ -669,6 +672,8 @@
 			children = (
 				570649C91E57DC0200181159 /* LoginViewController.h */,
 				570649CA1E57DC0200181159 /* LoginViewController.m */,
+				573C421A1EAC2D37002D45FE /* SetWXViewController.h */,
+				573C421B1EAC2D37002D45FE /* SetWXViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -1159,6 +1164,7 @@
 				57E148E41E60359200EB3B35 /* CYLPlusButtonSubclass.m in Sources */,
 				57F0D64C1E63BE7C00600C16 /* MBProgressHUD.m in Sources */,
 				57F0D6EC1E641EFC00600C16 /* MJRefreshAutoGifFooter.m in Sources */,
+				573C421C1EAC2D37002D45FE /* SetWXViewController.m in Sources */,
 				570649A71E4C743400181159 /* REFrostedViewController.m in Sources */,
 				57587C851EA064C200C82366 /* UserManager.m in Sources */,
 				57F0D6651E63ED6F00600C16 /* AbstractActionSheetPicker.m in Sources */,

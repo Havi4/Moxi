@@ -20,6 +20,10 @@
     [WTRequestCenter getWithURL:tockenUrl parameters:nil finished:^(NSURLResponse *response, NSData *data) {
         NSDictionary *obj = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         DeBugLog(@"微信是%@",obj);
+        thirdPartyOpenID = [obj objectForKey:@"openid"];
+        thirdPartyAccess_Token = [obj objectForKey:@"access_token"];
+        [UserManager setGlobalOauth];
+
         NSString *refreshTockenUrl = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=%@&grant_type=refresh_token&refresh_token=%@",kWXAPPKey,[obj objectForKey:@"refresh_token"]];
         
         [WTRequestCenter getWithURL:refreshTockenUrl parameters:nil finished:^(NSURLResponse *response, NSData *data) {

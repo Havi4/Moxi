@@ -7,8 +7,8 @@
 //
 
 #import "CheckOrderViewController.h"
-#import "HouseTableViewCell.h"
-#import "CarTableViewCell.h"
+#import "MyHouseTableViewCell.h"
+#import "MyCarTableViewCell.h"
 #import "CarOrderViewController.h"
 #import "HourseViewController.h"
 #import "MJRefreshNormalHeader.h"
@@ -186,9 +186,9 @@
     NSDictionary *dic = [self.orderArr objectAtIndex:indexPath.row];
     if ([[dic objectForKey:@"type"] isEqualToString:@"yc"]) {//车
 
-        CarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"carcell"];
+        MyCarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"carcell"];
         if (!cell) {
-            cell = [[CarTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"carcell"];
+            cell = [[MyCarTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"carcell"];
         }
         [cell cellConfigWithItem:[self.orderArr objectAtIndex:indexPath.row] andIndex:indexPath];
         cell.backgroundColor = [UIColor clearColor];
@@ -221,9 +221,9 @@
         }
         return cell;
     }else{
-        HouseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        MyHouseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         if (!cell) {
-            cell = [[HouseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+            cell = [[MyHouseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         }
         [cell cellConfigWithItem:[self.orderArr objectAtIndex:indexPath.row] andIndex:indexPath];
         cell.backgroundColor = [UIColor clearColor];
@@ -265,7 +265,7 @@
     }else{
         NSString *str = [[self.orderArr objectAtIndex:indexPath.row] objectForKey:@"yaoqiu"];
         /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */
-        return [self.orderView cellHeightForIndexPath:indexPath model:str keyPath:@"text" cellClass:[HouseTableViewCell class] contentViewWidth:kScreenSize.width];
+        return [self.orderView cellHeightForIndexPath:indexPath model:str keyPath:@"text" cellClass:[MyHouseTableViewCell class] contentViewWidth:kScreenSize.width];
     }
 
 }
@@ -337,9 +337,11 @@
     UIAlertAction *done = [UIAlertAction actionWithTitle:@"复制订单内容" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSString *orderContent = @"";
         if ([[dic objectForKey:@"type"] isEqualToString:@"ms"]) {
-            orderContent = [NSString stringWithFormat:@"%@\n入住时间:%@-%@\n共计%@晚，入住:%@人\n游客要求:%@",[dic objectForKey:@"title"],[dic objectForKey:@"ruzhu"],[dic objectForKey:@"tuifang"],[dic objectForKey:@"wan"],[dic objectForKey:@"renshu"],[dic objectForKey:@"yaoqiu"]];
+            orderContent = [NSString stringWithFormat:@"%@\n游客预算:%@%@\n入住时间:%@,退房时间：%@共计%@晚，入住:%@人\n介绍人:%@\n要求:%@\n微信号:%@\n本订单信息来自MoxiSharing，更多用房用车订单尽在http://orders.moxi.gg",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:2]],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"tuifang"] substringFromIndex:2]],[dic objectForKey:@"wan"],[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"yaoqiu"],[dic objectForKey:@"vxhao"]];
         }else{
-            orderContent = [NSString stringWithFormat:@"%@\n用车时间:%@，出发地:%@，目的地:%@\n人数:%@人\n游客要求:%@",[dic objectForKey:@"title"],[dic objectForKey:@"time"],[dic objectForKey:@"from"],[dic objectForKey:@"to"],[dic objectForKey:@"renshu"],[dic objectForKey:@"yaoqiu"]];
+            NSString * time = [NSString stringWithFormat:@"%@月%@日 %@",[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(5, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(8, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(11, 5)]];
+
+            orderContent = [NSString stringWithFormat:@"%@\n游客预算:%@%@\n乘车时间:%@,共计:%@人\n介绍人:%@\n微信号:%@\n本订单信息来自MoxiSharing，更多用房用车订单尽在http://orders.moxi.gg",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],time,[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"vxhao"]];
         }
         UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
         pasteboard.string= orderContent;

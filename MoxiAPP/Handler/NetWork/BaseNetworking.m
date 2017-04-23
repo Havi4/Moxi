@@ -79,4 +79,11 @@ static BaseNetworking *baseApi = nil;
     }
 }
 
+- (void)changeWXHAOWith:(NSDictionary *)params
+                success:(HYBResponseSuccess)success
+                   fail:(HYBResponseFail)fail
+{
+    NSString *urlString = [NSString stringWithFormat:@"/user/setVxhao?vxhao=%@",[params objectForKey:@"wxhao"]];
+    [HYBNetworking getWithUrl:urlString refreshCache:YES success:success fail:fail];
+}
 @end

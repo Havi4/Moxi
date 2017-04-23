@@ -32,6 +32,7 @@
     [WXApi registerApp:kWXAPPKey];
     if ([UserManager IsUserLogged]) {
         [UserManager GetUserObj];
+        [HYBNetworking configCommonHttpHeaders:@{@"moxi-token":[NSString stringWithFormat:@"%@|%@",thirdPartyAccess_Token,thirdPartyOpenID]}];
         [self setRootViewController];
     }else{
         LoginViewController* login = [[LoginViewController alloc]init];
@@ -192,6 +193,7 @@
                 thirdPartyUseIcon = [obj objectForKey:@"headimgurl"];
                 thirdPartyNickName = [obj objectForKey:@"nickname"];
                 [UserManager setGlobalOauth];
+                [HYBNetworking configCommonHttpHeaders:@{@"moxi-token":[NSString stringWithFormat:@"%@|%@",thirdPartyAccess_Token,thirdPartyOpenID]}];
                 [self setRootViewController];
                 NSLog(@"用户信息是%@",obj);
             } failed:^(NSURLResponse *response, NSError *error) {

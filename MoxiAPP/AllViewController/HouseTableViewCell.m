@@ -170,7 +170,7 @@
         _startTime = [[UILabel alloc]init];
         [self.contentView addSubview:_startTime];
         _startTime.text = @"10月1日";
-        _startTime.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
+        _startTime.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
         _startTime.sd_layout
         .leftSpaceToView(self.contentView,25)
         .topSpaceToView(_startTimeLabel,0)
@@ -193,7 +193,7 @@
         [self.contentView addSubview:_endTime];
         _endTime.textAlignment = NSTextAlignmentCenter;
         _endTime.text = @"10月5日";
-        _endTime.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
+        _endTime.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
         _endTime.sd_layout
         .topSpaceToView(_endTimeLabel,0)
         .leftEqualToView(_endTimeLabel)
@@ -306,7 +306,7 @@
         .heightIs(44);
 
         _hunter = [[UILabel alloc]init];
-        _hunter.text = @"VANX";
+        _hunter.text = @"这是个测试";
         _hunter.font = [UIFont systemFontOfSize:16];
 
         [self.contentView addSubview:_hunter];
@@ -408,8 +408,9 @@
     }
     self.titleLabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
     self.moneyShowLabel.text = [NSString stringWithFormat:@"%@ %@",[dic objectForKey:@"priceType"],[dic objectForKey:@"price"]];
-    self.startTime.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"ruzhu"]];
-    self.endTime.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"tuifang"]];
+    self.startTime.text = [NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:3]];
+
+    self.endTime.text = [NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"tuifang"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:3]];
     self.nightLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"wan"]];;
     self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"renshu"]];
     self.queryLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"yaoqiu"]];

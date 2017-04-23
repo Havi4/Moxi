@@ -18,3 +18,5 @@ NSString *gameLevel = @"";
 NSString *thirdPartyLoginUserId = @"";
 NSString *thirdPartyUseIcon = @"";
 NSString *thirdPartyNickName = @"";
+NSString *thirdPartyOpenID = @"";
+NSString *thirdPartyAccess_Token = @"";

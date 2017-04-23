@@ -494,7 +494,7 @@
         _dateLabel = [[UILabel alloc]init];
         [self.contentView addSubview:_dateLabel];
         _dateLabel.text = @"10月1日";
-        _dateLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
+        _dateLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
 
         _dateLabel.sd_layout
         .topSpaceToView(line2,10)
@@ -505,7 +505,7 @@
         _timelabel = [[UILabel alloc]init];
         [self.contentView addSubview:_timelabel];
         _timelabel.text = @"12:00";
-        _timelabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:22];
+        _timelabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
 
         _timelabel.sd_layout
         .leftSpaceToView(_dateLabel,5)
@@ -650,8 +650,9 @@
     self.titleLabel.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
     self.moneyShowLabel.text = [NSString stringWithFormat:@"%@ %@",[dic objectForKey:@"priceType"],[dic objectForKey:@"price"]];
     self.startLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"from"]];
-    self.endLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"to"]];;
-    self.dateLabel.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(5, 5)];
+    self.endLabelShow.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"to"]];
+    NSString *date = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(5, 5)];
+    self.dateLabel.text = [NSString stringWithFormat:@"%@月%@日",[date substringToIndex:2],[date substringFromIndex:3]];
     self.timelabel.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"time"]] substringWithRange:NSMakeRange(11, 5)];
     self.peopleLabelNum.text = [NSString stringWithFormat:@"%@",[dic objectForKey:@"renshu"]];
     self.hunter.text = [[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]] isEqualToString:@"<null>"] ? @"":[NSString stringWithFormat:@"%@",[dic objectForKey:@"nickName"]];

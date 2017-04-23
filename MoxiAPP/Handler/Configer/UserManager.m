@@ -12,6 +12,7 @@ static NSString* CUR_USERINFO = @"CURRENT_USER_INFO";
 static NSString* CUR_USERID = @"CURRENT_USER_ID";
 static NSString* CUR_OriginalUSERID = @"CUR_OriginalUSERID";
 static NSString* CUR_USERTOKEN = @"CURRENT_USER_TOKEN";
+static NSString* CUR_USEROPENID = @"CURRENT_USER_OPENID";
 static NSString* CUR_USERICON = @"CURRENT_USER_ICON";
 static NSString* CUR_USERPLATFORM= @"CURRENT_USER_PLATFORM";
 static NSString* CUR_HardWareUUID = @"CUR_HardWareUUID";
@@ -39,6 +40,8 @@ static NSString* CUR_LanChoice = @"CUR_LangagueChoice";
     userinfo[CUR_USERID] = thirdPartyLoginUserId;
     userinfo[CUR_USERICON] = thirdPartyUseIcon;
     userinfo[CUR_USERNICKNAME] = thirdPartyNickName;
+    userinfo[CUR_USEROPENID] = thirdPartyOpenID;
+    userinfo[CUR_USERTOKEN] = thirdPartyAccess_Token;
     [global setObject:userinfo forKey:CUR_USERINFO];
 }
 
@@ -50,6 +53,8 @@ static NSString* CUR_LanChoice = @"CUR_LangagueChoice";
     thirdPartyLoginUserId = @"";
     thirdPartyUseIcon = @"";
     thirdPartyNickName = @"";
+    thirdPartyOpenID = @"";
+    thirdPartyAccess_Token = @"";
 }
 
 +(void)resetInitUserInfo {
@@ -73,6 +78,8 @@ static NSString* CUR_LanChoice = @"CUR_LangagueChoice";
         thirdPartyLoginUserId = [userinfo objectForKey:CUR_USERID];
         thirdPartyUseIcon = [userinfo objectForKey:CUR_USERICON];
         thirdPartyNickName = [userinfo objectForKey:CUR_USERNICKNAME];
+        thirdPartyAccess_Token = [userinfo objectForKey:CUR_USERTOKEN];
+        thirdPartyOpenID = [userinfo objectForKey:CUR_USEROPENID];
         return TRUE;
         
     } else {

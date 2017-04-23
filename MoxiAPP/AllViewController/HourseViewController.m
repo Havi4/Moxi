@@ -12,6 +12,7 @@
 #import "ActionSheetStringPicker.h"
 #import "ActionSheetLocalePicker.h"
 #import "ActionSheetDatePicker.h"
+#import "SetWXViewController.h"
 
 #define MAX_PLACE_NUMS     101
 #define MAX_TITLE_NUMS     16
@@ -582,6 +583,14 @@
 
                 [[HIPregressHUD shartMBHUD]showAlertWith:@"民宿订单发布成功" inView:[UIApplication sharedApplication].keyWindow];
             }];
+        }else if ([[response objectForKey:@"code"] intValue]==56){
+            SetWXViewController *wx = [[SetWXViewController alloc]init];
+            UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:wx];
+            [self presentViewController:navi animated:YES completion:^{
+
+            }];
+        }else {
+            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:self.view];
         }
     } fail:^(NSError *error) {
         NSLog(@"错误是%@",error);

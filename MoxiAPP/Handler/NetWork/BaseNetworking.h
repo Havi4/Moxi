@@ -39,4 +39,7 @@
 - (void)deleteOrderWith:(NSDictionary *)params
                   success:(HYBResponseSuccess)success
                      fail:(HYBResponseFail)fail;
+- (void)changeWXHAOWith:(NSDictionary *)params
+                success:(HYBResponseSuccess)success
+                   fail:(HYBResponseFail)fail;
 @end
