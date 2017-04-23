@@ -56,6 +56,8 @@
 		57236DF61E96851500D88664 /* BaseNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 57236DF51E96851500D88664 /* BaseNetworking.m */; };
 		573C421C1EAC2D37002D45FE /* SetWXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 573C421B1EAC2D37002D45FE /* SetWXViewController.m */; };
 		573C421F1EAC90C4002D45FE /* FaBuSetVXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 573C421E1EAC90C4002D45FE /* FaBuSetVXViewController.m */; };
+		573C42251EAC9F99002D45FE /* SureGuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 573C42221EAC9F99002D45FE /* SureGuideView.m */; };
+		573C42261EAC9F99002D45FE /* UIImage+Adaptive.m in Sources */ = {isa = PBXBuildFile; fileRef = 573C42241EAC9F99002D45FE /* UIImage+Adaptive.m */; };
 		57587C851EA064C200C82366 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57587C841EA064C200C82366 /* UserManager.m */; };
 		57745F5B1E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F581E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m */; };
 		57745F5C1E665FD90001D0CC /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57745F5A1E665FD90001D0CC /* UIView+SDAutoLayout.m */; };
@@ -229,6 +231,10 @@
 		573C421B1EAC2D37002D45FE /* SetWXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetWXViewController.m; path = AllViewController/SetWXViewController.m; sourceTree = "<group>"; };
 		573C421D1EAC90C4002D45FE /* FaBuSetVXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FaBuSetVXViewController.h; path = AllViewController/FaBuSetVXViewController.h; sourceTree = "<group>"; };
 		573C421E1EAC90C4002D45FE /* FaBuSetVXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FaBuSetVXViewController.m; path = AllViewController/FaBuSetVXViewController.m; sourceTree = "<group>"; };
+		573C42211EAC9F99002D45FE /* SureGuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SureGuideView.h; sourceTree = "<group>"; };
+		573C42221EAC9F99002D45FE /* SureGuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SureGuideView.m; sourceTree = "<group>"; };
+		573C42231EAC9F99002D45FE /* UIImage+Adaptive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Adaptive.h"; sourceTree = "<group>"; };
+		573C42241EAC9F99002D45FE /* UIImage+Adaptive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Adaptive.m"; sourceTree = "<group>"; };
 		57587C831EA064C200C82366 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		57587C841EA064C200C82366 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		57745F561E665FD90001D0CC /* SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAutoLayout.h; sourceTree = "<group>"; };
@@ -610,6 +616,7 @@
 		570649971E4C743400181159 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				573C42201EAC9F99002D45FE /* SureGuideView */,
 				57031E6E1E9C869700B6AD8A /* wxsdk */,
 				57745F551E665FD90001D0CC /* SDAutoLayout */,
 				57F0D6B81E641EFB00600C16 /* MJRefresh */,
@@ -691,6 +698,17 @@
 				570649D91E583EBC00181159 /* JDDropView.m */,
 			);
 			path = DropdownMenu;
+			sourceTree = "<group>";
+		};
+		573C42201EAC9F99002D45FE /* SureGuideView */ = {
+			isa = PBXGroup;
+			children = (
+				573C42211EAC9F99002D45FE /* SureGuideView.h */,
+				573C42221EAC9F99002D45FE /* SureGuideView.m */,
+				573C42231EAC9F99002D45FE /* UIImage+Adaptive.h */,
+				573C42241EAC9F99002D45FE /* UIImage+Adaptive.m */,
+			);
+			path = SureGuideView;
 			sourceTree = "<group>";
 		};
 		57745F551E665FD90001D0CC /* SDAutoLayout */ = {
@@ -1175,6 +1193,7 @@
 				57F0D6651E63ED6F00600C16 /* AbstractActionSheetPicker.m in Sources */,
 				570649B71E4C78A200181159 /* BaseViewController.m in Sources */,
 				57F0D6F61E641EFC00600C16 /* MJRefreshConst.m in Sources */,
+				573C42251EAC9F99002D45FE /* SureGuideView.m in Sources */,
 				57F0D6E71E641EFB00600C16 /* MJRefreshAutoFooter.m in Sources */,
 				57031E951E9C8C3A00B6AD8A /* WTRequestCenter.m in Sources */,
 				57745F5C1E665FD90001D0CC /* UIView+SDAutoLayout.m in Sources */,
@@ -1222,6 +1241,7 @@
 				570649911E4C64E100181159 /* BaseNetworkAPI.m in Sources */,
 				57745F651E66FEA00001D0CC /* CarModel.m in Sources */,
 				57F0D6F11E641EFC00600C16 /* MJRefreshBackStateFooter.m in Sources */,
+				573C42261EAC9F99002D45FE /* UIImage+Adaptive.m in Sources */,
 				57745F5B1E665FD90001D0CC /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				57F0D66B1E63ED7000600C16 /* ActionSheetStringPicker.m in Sources */,
 				57745F611E66C3CC0001D0CC /* MyCarTableViewCell.m in Sources */,

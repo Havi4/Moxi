@@ -25,6 +25,9 @@
 #define kTXPlatform @"qq.com"
 #define kMeddoPlatform @"meddo99.com"
 
+#define kHomeYINDAO @"kHomeYINDAO"
+#define kFaBuYINDAO @"kFaBuYINDAO"
+
 #define kWXAPPKey @"wx2ffd54537518d701"
 #define kWXAPPSecret @"6fc35955f83974f9c411e7acc28ca7ad"
 //#define kWXAPPKey @"wx7be2e0c9ebd9e161"

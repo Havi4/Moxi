@@ -15,6 +15,7 @@
 #import "MJRefreshAutoNormalFooter.h"
 #import <AFHTTPSessionManager.h>
 #import "FaBuSetVXViewController.h"
+#import "SureGuideView.h"
 
 @interface CheckOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -92,7 +93,9 @@
             //Call this Block When enter the refresh status automatically
         [self loadAllData];
     }];
-
+    if ([SureGuideView shouldShowFaGuider]) {
+        [SureGuideView sureGuideViewWithImageName:@"fa_view" imageCount:2];
+    }
 }
 
 - (void)loadAllData

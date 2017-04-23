@@ -16,6 +16,7 @@
 #import "WXApi.h"
 #import "WeiXinAPI.h"
 #import "SetWXViewController.h"
+#import "SureGuideView.h"
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -42,6 +43,8 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self setUpNavigationBarAppearance];
     [self.window makeKeyAndVisible];
+    [[NSUserDefaults standardUserDefaults]registerDefaults:@{kHomeYINDAO:@"YES"}];
+    [[NSUserDefaults standardUserDefaults]registerDefaults:@{kHomeYINDAO:@"NO"}];
     if (!publicGet && [UserManager IsUserLogged]) {
         [[BaseNetworking sharedAPIManager]getPublicDicWith:nil success:^(id response) {
             if ([[response objectForKey:@"code"] intValue]==200) {
@@ -52,6 +55,7 @@
             
         }];
     }
+    
     return YES;
 }
 

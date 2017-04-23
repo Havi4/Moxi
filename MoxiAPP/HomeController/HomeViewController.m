@@ -16,6 +16,7 @@
 #import "MJRefreshAutoNormalFooter.h"
 #import <AFHTTPSessionManager.h>
 #import "SetWXViewController.h"
+#import "SureGuideView.h"
 typedef enum : NSUInteger {
     CarOrderType,
     HourseOrderType,
@@ -45,6 +46,9 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setSubViews];
+    if ([SureGuideView shouldShowHomeGuider]) {
+        [SureGuideView sureGuideViewWithImageName:@"home_view" imageCount:3];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
