@@ -613,7 +613,7 @@
         [[HIPregressHUD shartMBHUD]hideLoading];
         if ([[dic objectForKey:@"code"] intValue]==200) {
             [self dismissViewControllerAnimated:YES completion:^{
-
+                self.fabuDone(1);
                 [[HIPregressHUD shartMBHUD]showAlertWith:@"用车订单发布成功" inView:[UIApplication sharedApplication].keyWindow];
             }];
         }else if ([[response objectForKey:@"code"] intValue]==56){

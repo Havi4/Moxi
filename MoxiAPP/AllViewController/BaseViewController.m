@@ -20,6 +20,21 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navi_bar"] forBarMetrics:0];
 
         // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getNewPublic) name:@"vxchange" object:nil];
+}
+
+- (void)getNewPublic
+{
+    [[BaseNetworking sharedAPIManager]getPublicDicWith:nil success:^(id response) {
+        if ([[response objectForKey:@"code"] intValue]==200) {
+            publicGet = response;
+        }else {
+            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
+        }
+
+    } fail:^(NSError *error) {
+
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

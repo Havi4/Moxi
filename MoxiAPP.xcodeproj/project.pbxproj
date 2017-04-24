@@ -120,6 +120,11 @@
 		57F0D6F81E641EFC00600C16 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F0D6E21E641EFB00600C16 /* UIScrollView+MJExtension.m */; };
 		57F0D6F91E641EFC00600C16 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F0D6E41E641EFB00600C16 /* UIScrollView+MJRefresh.m */; };
 		57F0D6FA1E641EFC00600C16 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F0D6E61E641EFB00600C16 /* UIView+MJExtension.m */; };
+		57F832341EAE155C0081E42C /* closed.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F8322D1EAE155C0081E42C /* closed.png */; };
+		57F832351EAE155C0081E42C /* closed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F8322E1EAE155C0081E42C /* closed@2x.png */; };
+		57F832361EAE155C0081E42C /* closed@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57F8322F1EAE155C0081E42C /* closed@3x.png */; };
+		57F832371EAE155C0081E42C /* RAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F832311EAE155C0081E42C /* RAlertView.m */; };
+		57F832381EAE155C0081E42C /* TextHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F832331EAE155C0081E42C /* TextHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -364,6 +369,13 @@
 		57F0D6E41E641EFB00600C16 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		57F0D6E51E641EFB00600C16 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		57F0D6E61E641EFB00600C16 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		57F8322D1EAE155C0081E42C /* closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closed.png; sourceTree = "<group>"; };
+		57F8322E1EAE155C0081E42C /* closed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closed@2x.png"; sourceTree = "<group>"; };
+		57F8322F1EAE155C0081E42C /* closed@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closed@3x.png"; sourceTree = "<group>"; };
+		57F832301EAE155C0081E42C /* RAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAlertView.h; sourceTree = "<group>"; };
+		57F832311EAE155C0081E42C /* RAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAlertView.m; sourceTree = "<group>"; };
+		57F832321EAE155C0081E42C /* TextHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextHelper.h; sourceTree = "<group>"; };
+		57F832331EAE155C0081E42C /* TextHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextHelper.m; sourceTree = "<group>"; };
 		62E9D7CC928697D1FD787355 /* Pods-MoxiAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoxiAPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoxiAPP/Pods-MoxiAPP.debug.xcconfig"; sourceTree = "<group>"; };
 		7541113CE931050E0F1B5619 /* libPods-MoxiAPP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoxiAPP.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -616,6 +628,7 @@
 		570649971E4C743400181159 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				57F8322C1EAE155C0081E42C /* RAlertView */,
 				573C42201EAC9F99002D45FE /* SureGuideView */,
 				57031E6E1E9C869700B6AD8A /* wxsdk */,
 				57745F551E665FD90001D0CC /* SDAutoLayout */,
@@ -955,6 +968,20 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		57F8322C1EAE155C0081E42C /* RAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				57F8322D1EAE155C0081E42C /* closed.png */,
+				57F8322E1EAE155C0081E42C /* closed@2x.png */,
+				57F8322F1EAE155C0081E42C /* closed@3x.png */,
+				57F832301EAE155C0081E42C /* RAlertView.h */,
+				57F832311EAE155C0081E42C /* RAlertView.m */,
+				57F832321EAE155C0081E42C /* TextHelper.h */,
+				57F832331EAE155C0081E42C /* TextHelper.m */,
+			);
+			path = RAlertView;
+			sourceTree = "<group>";
+		};
 		ED94B3D5A6E8F8427EFF52AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1090,6 +1117,9 @@
 				57F0D6B71E64138000600C16 /* testData.plist in Resources */,
 				57F0D6F51E641EFC00600C16 /* MJRefresh.bundle in Resources */,
 				570649541E4C605B00181159 /* Main.storyboard in Resources */,
+				57F832361EAE155C0081E42C /* closed@3x.png in Resources */,
+				57F832351EAE155C0081E42C /* closed@2x.png in Resources */,
+				57F832341EAE155C0081E42C /* closed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1218,6 +1248,7 @@
 				57F0D6E91E641EFC00600C16 /* MJRefreshComponent.m in Sources */,
 				573C421F1EAC90C4002D45FE /* FaBuSetVXViewController.m in Sources */,
 				57F0D6F41E641EFC00600C16 /* MJRefreshStateHeader.m in Sources */,
+				57F832381EAE155C0081E42C /* TextHelper.m in Sources */,
 				57E148E31E60359200EB3B35 /* UIViewController+CYLTabBarControllerExtention.m in Sources */,
 				570649B41E4C789000181159 /* BaseNaviViewController.m in Sources */,
 				57F0D64F1E63BFAB00600C16 /* HIPregressHUD.m in Sources */,
@@ -1232,6 +1263,7 @@
 				577A85F51E5EEA7B00834E61 /* ContactViewController.m in Sources */,
 				57F0D6701E63FDFA00600C16 /* NSDate+WQCalendarLogic.m in Sources */,
 				57F0D6ED1E641EFC00600C16 /* MJRefreshAutoNormalFooter.m in Sources */,
+				57F832371EAE155C0081E42C /* RAlertView.m in Sources */,
 				57745F681E6718A60001D0CC /* AnimationTransition.m in Sources */,
 				57F0D6F01E641EFC00600C16 /* MJRefreshBackNormalFooter.m in Sources */,
 				57E148E11E60359200EB3B35 /* CYLTabBarControllerConfig.m in Sources */,

@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514728357.598861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
             landmarkName = "-changLocation"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514728357.598861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "-changLocation"
             landmarkType = "7">
          </BreakpointContent>
@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/CheckOrderViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514650944.487893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "394"
+            endingLineNumber = "394"
             landmarkName = "-showMore:"
             landmarkType = "7">
          </BreakpointContent>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/CheckOrderViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514650944.487893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "-deleteMoreOrder:"
             landmarkType = "7">
          </BreakpointContent>
@@ -136,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/CheckOrderViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514650944.487893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "473"
-            endingLineNumber = "473"
+            startingLineNumber = "491"
+            endingLineNumber = "491"
             landmarkName = "-deleteMoreOrder:"
             landmarkType = "7">
          </BreakpointContent>
@@ -152,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/CheckOrderViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514650944.487893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
+            startingLineNumber = "497"
+            endingLineNumber = "497"
             landmarkName = "-deleteMoreOrder:"
             landmarkType = "7">
             <Locations>
@@ -168,11 +168,11 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/CheckOrderViewController.m"
-                  timestampString = "514630909.847655"
+                  timestampString = "514660840.385571"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "477"
-                  endingLineNumber = "477"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
                   offsetFromSymbolStart = "1260">
                </Location>
                <Location
@@ -183,11 +183,11 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/CheckOrderViewController.m"
-                  timestampString = "514630909.850779"
+                  timestampString = "514660840.388507"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "477"
-                  endingLineNumber = "477"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
                   offsetFromSymbolStart = "20">
                </Location>
             </Locations>
@@ -200,11 +200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/CheckOrderViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514656923.951868"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
+            startingLineNumber = "534"
+            endingLineNumber = "534"
             landmarkName = "-deleteMoreOrder:"
             landmarkType = "7">
          </BreakpointContent>
@@ -216,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514728357.598861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "656"
-            endingLineNumber = "656"
+            startingLineNumber = "716"
+            endingLineNumber = "716"
             landmarkName = "-topOrder:"
             landmarkType = "7">
             <Locations>
@@ -232,11 +232,11 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/HomeController/HomeViewController.m"
-                  timestampString = "514630909.861656"
+                  timestampString = "514660840.399704"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "664"
-                  endingLineNumber = "664"
+                  startingLineNumber = "699"
+                  endingLineNumber = "699"
                   offsetFromSymbolStart = "1140">
                </Location>
                <Location
@@ -247,11 +247,11 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/HomeController/HomeViewController.m"
-                  timestampString = "514630909.863967"
+                  timestampString = "514660840.402076"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "664"
-                  endingLineNumber = "664"
+                  startingLineNumber = "699"
+                  endingLineNumber = "699"
                   offsetFromSymbolStart = "1152">
                </Location>
             </Locations>
@@ -264,11 +264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514728357.598861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "632"
-            endingLineNumber = "632"
+            startingLineNumber = "692"
+            endingLineNumber = "692"
             landmarkName = "-topOrder:"
             landmarkType = "7">
          </BreakpointContent>
@@ -280,11 +280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514728357.598861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "-changLocation"
             landmarkType = "7">
          </BreakpointContent>
@@ -296,11 +296,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AppDelegate.m"
-            timestampString = "514631305.46551"
+            timestampString = "514657896.915577"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "-application:handleOpenURL:"
             landmarkType = "7">
          </BreakpointContent>
@@ -408,7 +408,7 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/CarOrderViewController.m"
-                  timestampString = "514630909.906734"
+                  timestampString = "514660840.446593"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "611"
@@ -423,7 +423,7 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/CarOrderViewController.m"
-                  timestampString = "514630909.910201"
+                  timestampString = "514660840.449714"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "612"
@@ -440,11 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514728357.598861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "480"
-            endingLineNumber = "480"
+            startingLineNumber = "543"
+            endingLineNumber = "543"
             landmarkName = "-showMore:"
             landmarkType = "7">
          </BreakpointContent>
@@ -456,11 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514728357.598861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "483"
-            endingLineNumber = "483"
+            startingLineNumber = "578"
+            endingLineNumber = "578"
             landmarkName = "-showMore:"
             landmarkType = "7">
          </BreakpointContent>
@@ -472,11 +472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514728357.598861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
+            startingLineNumber = "582"
+            endingLineNumber = "582"
             landmarkName = "-showMore:"
             landmarkType = "7">
          </BreakpointContent>
@@ -488,43 +488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514728357.598861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
-            landmarkName = "-showMore:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "522"
-            endingLineNumber = "522"
-            landmarkName = "-showMore:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "628"
-            endingLineNumber = "628"
+            startingLineNumber = "688"
+            endingLineNumber = "688"
             landmarkName = "-topOrder:"
             landmarkType = "7">
          </BreakpointContent>
@@ -536,11 +504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514728357.598861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "-getOrder"
             landmarkType = "7">
          </BreakpointContent>
@@ -552,11 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoxiAPP/HomeController/HomeViewController.m"
-            timestampString = "514631305.46551"
+            timestampString = "514728357.598861"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "242"
+            endingLineNumber = "242"
             landmarkName = "-getOrder"
             landmarkType = "7">
          </BreakpointContent>
@@ -584,22 +552,22 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514630909.955308"
+                  timestampString = "514660840.485374"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "601"
                   endingLineNumber = "601"
-                  offsetFromSymbolStart = "796">
+                  offsetFromSymbolStart = "896">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.432"
+                  symbolName = "__copy_helper_block_.436"
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514630909.957601"
+                  timestampString = "514660840.487872"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "601"
@@ -610,11 +578,11 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.433"
+                  symbolName = "__destroy_helper_block_.437"
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514630909.96109"
+                  timestampString = "514660840.489945"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "601"
@@ -625,11 +593,11 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__34-[HourseViewController commitSure]_block_invoke.436"
+                  symbolName = "__34-[HourseViewController commitSure]_block_invoke.440"
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514630909.964555"
+                  timestampString = "514660840.492018"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "602"
@@ -678,7 +646,7 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514630909.976311"
+                  timestampString = "514660840.50383"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "584"
@@ -693,7 +661,7 @@
                   moduleName = "MoxiAPP"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/havi/Desktop/%E9%A1%B9%E7%9B%AE/Moxi/%E5%BC%80%E5%8F%91%E7%BB%84/%E4%BB%A3%E7%A0%81/MoxiAPP/MoxiAPP/AllViewController/HourseViewController.m"
-                  timestampString = "514630909.979532"
+                  timestampString = "514660840.506402"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "585"
@@ -725,28 +693,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoxiAPP/AppDelegate.m"
-            timestampString = "514631305.46551"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "-onResp:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MoxiAPP/AllViewController/ChangeWXViewController.m"
-            timestampString = "514625074.118611"
+            timestampString = "514647967.140267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -757,13 +709,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoxiAPP/Vender/SureGuideView/SureGuideView.m"
-            timestampString = "514631305.46551"
+            filePath = "MoxiAPP/AppDelegate.m"
+            timestampString = "514657896.915577"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "-createUI"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "-onResp:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -773,13 +725,173 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoxiAPP/Vender/SureGuideView/SureGuideView.m"
-            timestampString = "514631305.46551"
+            filePath = "MoxiAPP/AppDelegate.m"
+            timestampString = "514657896.915577"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-touchImageView:"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
+            landmarkName = "-onResp:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/AllViewController/HourseViewController.m"
+            timestampString = "514648541.199408"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "462"
+            endingLineNumber = "462"
+            landmarkName = "-showCarTakeTime:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/HomeController/HomeViewController.m"
+            timestampString = "514728357.598861"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "781"
+            endingLineNumber = "781"
+            landmarkName = "-deleteSingleOrder:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/HomeController/HomeViewController.m"
+            timestampString = "514728357.598861"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "779"
+            endingLineNumber = "779"
+            landmarkName = "-deleteSingleOrder:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/Handler/NetWork/BaseNetworking.m"
+            timestampString = "514652021.051801"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-deleteOrderWith:success:fail:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/HomeController/HomeViewController.m"
+            timestampString = "514728357.598861"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "796"
+            endingLineNumber = "796"
+            landmarkName = "-deleteMoreOrder:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/AllViewController/CheckOrderViewController.m"
+            timestampString = "514656923.951868"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "509"
+            endingLineNumber = "509"
+            landmarkName = "-deleteMoreOrder:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/AllViewController/CheckOrderViewController.m"
+            timestampString = "514656923.951868"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "550"
+            endingLineNumber = "550"
+            landmarkName = "-deleteMoreOrder:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/Handler/Advertisment/NSObject+AdvertisementView.m"
+            timestampString = "514657828.188618"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-getAdvertisingImage"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/Handler/Advertisment/NSObject+AdvertisementView.m"
+            timestampString = "514659112.946686"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-getAdvertisingImage"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MoxiAPP/AppDelegate.m"
+            timestampString = "514726047.42383"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

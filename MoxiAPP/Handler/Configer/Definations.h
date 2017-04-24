@@ -27,7 +27,8 @@
 
 #define kHomeYINDAO @"kHomeYINDAO"
 #define kFaBuYINDAO @"kFaBuYINDAO"
-
+#define kNoShowMSOrders @"kNoShowMSOrders"
+#define kNoShowYCOrders @"kNoShowYCOrders"
 #define kWXAPPKey @"wx2ffd54537518d701"
 #define kWXAPPSecret @"6fc35955f83974f9c411e7acc28ca7ad"
 //#define kWXAPPKey @"wx7be2e0c9ebd9e161"
@@ -85,6 +86,7 @@
 
 #define ISIPHON4 [UIScreen mainScreen].bounds.size.height==480 ? YES:NO
 #define ISIPHON6 [UIScreen mainScreen].bounds.size.height>568 ? YES:NO
+#define RGB16(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define RGBA(R/*红*/, G/*绿*/, B/*蓝*/, A/*透明*/) \
 [UIColor colorWithRed:R/255.f green:G/255.f blue:B/255.f alpha:A]

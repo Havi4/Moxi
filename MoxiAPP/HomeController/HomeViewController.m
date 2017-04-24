@@ -17,6 +17,8 @@
 #import <AFHTTPSessionManager.h>
 #import "SetWXViewController.h"
 #import "SureGuideView.h"
+#import "AppDelegate.h"
+#import "RAlertView.h"
 typedef enum : NSUInteger {
     CarOrderType,
     HourseOrderType,
@@ -46,13 +48,49 @@ typedef enum : NSUInteger {
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setSubViews];
-    if ([SureGuideView shouldShowHomeGuider]) {
-        [SureGuideView sureGuideViewWithImageName:@"home_view" imageCount:3];
+    if ([[NSString stringWithFormat:@"%@",[[publicGet objectForKey:@"data"] objectForKey:@"vxhao"]] isEqualToString:@"<null>"]) {
+        SetWXViewController *wx = [[SetWXViewController alloc]init];
+        [self presentViewController:wx animated:YES completion:^{
+
+        }];
     }
+
+
+    if ([SureGuideView shouldShowHomeGuider]) {
+        SureGuideView *gide = [SureGuideView sureGuideViewWithImageName:@"home_view" imageCount:3 inView:self.cyl_tabBarController.view];
+        gide.lastTapBlock = ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                if ([[[[publicGet objectForKey:@"data"] objectForKey:@"notice"] objectForKey:@"title"] length]==0) {
+                    return ;
+                }
+                RAlertView *alert = [[RAlertView alloc] initWithStyle:ConfirmAlert width:(kScreenSize.width-30)/kScreenSize.width];
+                alert.headerTitleLabel.text = [NSString stringWithFormat:@"%@",[[[publicGet objectForKey:@"data"] objectForKey:@"notice"] objectForKey:@"title"]];
+                alert.contentTextLabel.attributedText = [TextHelper attributedStringForString:[NSString stringWithFormat:@"%@",[[[publicGet objectForKey:@"data"] objectForKey:@"notice"] objectForKey:@"content"]] lineSpacing:5];
+                alert.confirm = ^(){
+                    NSLog(@"Click on the Ok");
+                };
+            });
+        };
+    }else{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if ([[[[publicGet objectForKey:@"data"] objectForKey:@"notice"] objectForKey:@"title"] length]==0) {
+                return ;
+            }
+            RAlertView *alert = [[RAlertView alloc] initWithStyle:ConfirmAlert width:(kScreenSize.width-30)/kScreenSize.width];
+            alert.headerTitleLabel.text = [NSString stringWithFormat:@"%@",[[[publicGet objectForKey:@"data"] objectForKey:@"notice"] objectForKey:@"title"]];
+            alert.contentTextLabel.attributedText = [TextHelper attributedStringForString:[NSString stringWithFormat:@"%@",[[[publicGet objectForKey:@"data"] objectForKey:@"notice"] objectForKey:@"content"]] lineSpacing:5];
+            alert.confirm = ^(){
+                NSLog(@"Click on the Ok");
+            };
+        });
+
+    }
+
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
 //    self.navigationItem.titleView.alpha = 0;
 //    self.navigationItem.leftBarButtonItem.customView.alpha = 0;
 //    self.navigationItem.rightBarButtonItem.customView.alpha = 0;
@@ -172,6 +210,15 @@ typedef enum : NSUInteger {
             [self.orderView.mj_header endRefreshing];
             if ([[response objectForKey:@"code"] intValue]==200) {
                 [self.orderArr addObjectsFromArray:[response objectForKey:@"data"]];
+                NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                NSMutableArray *mutableArrayCopy = [[prefs objectForKey:kNoShowMSOrders] mutableCopy];
+                NSMutableArray *deleteArr = @[].mutableCopy;
+                [self.orderArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if (![mutableArrayCopy containsObject:[obj objectForKey:@"id"]]) {
+                        [deleteArr addObject:obj];
+                    }
+                }];
+                self.orderArr = deleteArr;
                 [self.orderArr sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                     NSInteger doorID1 = [[obj1 objectForKey:@"isTop"] integerValue];
                     NSInteger doorID2 = [[obj2 objectForKey:@"isTop"] integerValue];;
@@ -209,6 +256,15 @@ typedef enum : NSUInteger {
             [self.orderView.mj_header endRefreshing];
             if ([[response objectForKey:@"code"] intValue]==200) {
                 [self.orderArr addObjectsFromArray:[response objectForKey:@"data"]];
+                NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                NSMutableArray *mutableArrayCopy = [[prefs objectForKey:kNoShowYCOrders] mutableCopy];
+                NSMutableArray *deleteArr = @[].mutableCopy;
+                [self.orderArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if (![mutableArrayCopy containsObject:[obj objectForKey:@"id"]]) {
+                        [deleteArr addObject:obj];
+                    }
+                }];
+                self.orderArr = deleteArr;
                 [self.orderArr sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
                     NSInteger doorID1 = [[obj1 objectForKey:@"isTop"] integerValue];
                     NSInteger doorID2 = [[obj2 objectForKey:@"isTop"] integerValue];;
@@ -463,10 +519,14 @@ typedef enum : NSUInteger {
 {
     DeBugLog(@"copy订单是%ld",(long)indexPath.row);
     NSDictionary *dic = [self.orderArr objectAtIndex:indexPath.row];
-
-    UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string= [dic objectForKey:@"vxhao"];
-    [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号已复制到剪切板" inView:self.view];
+    NSString *vx = [NSString stringWithFormat:@"%@",[dic objectForKey:@"vxhao"]];
+    if (![vx isEqualToString:@"<null>"]) {
+        UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string= vx;
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号已复制到剪切板" inView:self.view];
+    }else{
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号为空" inView:self.view];
+    }
 }
 
 - (void)showMore:(NSIndexPath *)indexPath
@@ -478,7 +538,7 @@ typedef enum : NSUInteger {
         UIAlertAction *done = [UIAlertAction actionWithTitle:@"复制订单内容" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSString *orderContent = @"";
             if (self.orderType == HourseOrderType) {
-                orderContent = [NSString stringWithFormat:@"%@\n游客预算：%@%@\n入住时间：%@\n退房时间：%@共计%@晚，入住：%@人\n介绍人：%@\n要求：%@\n微信号：%@\n%@",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:2]],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"tuifang"] substringFromIndex:2]],[dic objectForKey:@"wan"],[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"yaoqiu"],[dic objectForKey:@"vxhao"],[[publicGet objectForKey:@"data"] objectForKey:@"copyEndMsg"]];
+                orderContent = [NSString stringWithFormat:@"%@\n游客预算：%@%@\n入住时间：%@\n退房时间：%@\n共计%@晚，入住：%@人\n介绍人：%@\n要求：%@\n微信号：%@\n%@",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:2]],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"tuifang"] substringFromIndex:2]],[dic objectForKey:@"wan"],[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"yaoqiu"],[dic objectForKey:@"vxhao"],[[publicGet objectForKey:@"data"] objectForKey:@"copyEndMsg"]];
             }else{
                 NSString * time = [NSString stringWithFormat:@"%@月%@日 %@",[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(0, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(3, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(6, 5)]];
 
@@ -497,7 +557,7 @@ typedef enum : NSUInteger {
         [cancel1 setValue:kFocusTextColor forKey:@"titleTextColor"];
         [alertView addAction:cancel1];
 
-        UIAlertAction *cancel2 = [UIAlertAction actionWithTitle:@"删除订单" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *cancel2 = [UIAlertAction actionWithTitle:@"不再显示该订单" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self deleteSingleOrder:indexPath];
         }];
         [cancel2 setValue:kFocusTextColor forKey:@"titleTextColor"];
@@ -515,7 +575,7 @@ typedef enum : NSUInteger {
         UIAlertAction *done = [UIAlertAction actionWithTitle:@"复制订单内容" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSString *orderContent = @"";
             if (self.orderType == HourseOrderType) {
-                orderContent = [NSString stringWithFormat:@"%@\n游客预算：%@%@\n入住时间：%@\n退房时间：%@共计%@晚，入住：%@人\n介绍人：%@\n要求：%@\n微信号：%@\n%@",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:2]],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"tuifang"] substringFromIndex:2]],[dic objectForKey:@"wan"],[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"yaoqiu"],[dic objectForKey:@"vxhao"],[[publicGet objectForKey:@"data"] objectForKey:@"copyEndMsg"]];
+                orderContent = [NSString stringWithFormat:@"%@\n游客预算：%@%@\n入住时间：%@\n退房时间：%@\n共计%@晚，入住：%@人\n介绍人：%@\n要求：%@\n微信号：%@\n%@",[dic objectForKey:@"title"],[dic objectForKey:@"priceType"],[dic objectForKey:@"price"],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"ruzhu"] substringFromIndex:2]],[NSString stringWithFormat:@"%@月%@日",[[dic objectForKey:@"ruzhu"] substringToIndex:2],[[dic objectForKey:@"tuifang"] substringFromIndex:2]],[dic objectForKey:@"wan"],[dic objectForKey:@"renshu"],[dic objectForKey:@"nickName"],[dic objectForKey:@"yaoqiu"],[dic objectForKey:@"vxhao"],[[publicGet objectForKey:@"data"] objectForKey:@"copyEndMsg"]];
             }else{
                 NSString * time = [NSString stringWithFormat:@"%@月%@日 %@",[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(0, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(3, 2)],[[dic objectForKey:@"time"]substringWithRange:NSMakeRange(6, 5)]];
 
@@ -698,132 +758,169 @@ typedef enum : NSUInteger {
 
 - (void)deleteSingleOrder:(NSIndexPath *)indexPath
 {
-    [[HIPregressHUD shartMBHUD]showLoadingWith:@"提交中..." inView:self.view];
+//    [[HIPregressHUD shartMBHUD]showLoadingWith:@"提交中..." inView:self.view];
     NSMutableDictionary *orderInfo = [NSMutableDictionary dictionaryWithDictionary:[self.orderArr objectAtIndex:indexPath.row]];
-    NSDictionary *para=nil;
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     if (self.orderType == HourseOrderType) {
-        para = @{@"ids":[orderInfo objectForKey:@"id"],@"type":@"ms"};
+//        para = @{@"ids":[orderInfo objectForKey:@"id"],@"type":@"ms"};
+        NSMutableArray *mutableArrayCopy = [[prefs objectForKey:kNoShowMSOrders] mutableCopy];
+        [mutableArrayCopy addObject:[orderInfo objectForKey:@"id"]];
+        [prefs setObject:mutableArrayCopy forKey:kNoShowMSOrders];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }else{
-        para = @{@"ids":[orderInfo objectForKey:@"id"],@"type":@"yc"};
+        NSMutableArray *mutableArrayCopy = [[prefs objectForKey:kNoShowYCOrders] mutableCopy];
+        [mutableArrayCopy addObject:[orderInfo objectForKey:@"id"]];
+        [prefs setObject:mutableArrayCopy forKey:kNoShowYCOrders];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    [[BaseNetworking sharedAPIManager] deleteOrderWith:para success:^(id response) {
-        DeBugLog(@"订单是%@",response);
-        [[HIPregressHUD shartMBHUD]hideLoading];
-        if ([[response objectForKey:@"code"] intValue]==200) {
-            [self.orderArr removeObjectAtIndex:indexPath.row];
-            [self.orderView reloadData];
-        }else {
-            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
-        }
-    } fail:^(NSError *error) {
 
-    }];
+    [self.orderArr removeObjectAtIndex:indexPath.row];
+    [self.orderView reloadData];
+//    [[BaseNetworking sharedAPIManager] deleteOrderWith:para success:^(id response) {
+//        DeBugLog(@"订单是%@",response);
+//        [[HIPregressHUD shartMBHUD]hideLoading];
+//        if ([[response objectForKey:@"code"] intValue]==200) {
+//            [self.orderArr removeObjectAtIndex:indexPath.row];
+//            [self.orderView reloadData];
+//        }else {
+//            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
+//        }
+//    } fail:^(NSError *error) {
+//
+//    }];
 }
 
 - (void)deleteMoreOrder:(NSIndexPath *)indexPath
 {
-    [[HIPregressHUD shartMBHUD]showLoadingWith:@"提交中..." inView:self.view];
-    NSString *msids = @"";
-    NSString *ycids = @"";
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     for (int i = 0; i< self.orderArr.count; i++) {
         NSDictionary *dic = [self.orderArr objectAtIndex:i];
         if ([[dic objectForKey:@"isComplete"] intValue]==1) {
-            if (self.orderType == CarOrderType) {
-                ycids = [NSString stringWithFormat:@"%@|",[dic objectForKey:@"id"]];
+            if (self.orderType == HourseOrderType) {
+                NSMutableArray *mutableArrayCopy = [[prefs objectForKey:kNoShowMSOrders] mutableCopy];
+                [mutableArrayCopy addObject:[dic objectForKey:@"id"]];
+                [prefs setObject:mutableArrayCopy forKey:kNoShowMSOrders];
+                [[NSUserDefaults standardUserDefaults] synchronize];
             }else{
-                msids = [NSString stringWithFormat:@"%@|",[dic objectForKey:@"id"]];
+                NSMutableArray *mutableArrayCopy = [[prefs objectForKey:kNoShowYCOrders] mutableCopy];
+                [mutableArrayCopy addObject:[dic objectForKey:@"id"]];
+                [prefs setObject:mutableArrayCopy forKey:kNoShowYCOrders];
+                [[NSUserDefaults standardUserDefaults] synchronize];
             }
         }
     }
-    if (ycids.length>0) {
-        ycids = [ycids substringToIndex:ycids.length-1];
-    }
-    if (msids.length>0) {
-        msids = [msids substringToIndex:msids.length-1];
-    }
-    __block BOOL ycBool = NO;
-    __block BOOL msBool = NO;
-        // 创建组
-    dispatch_group_t group = dispatch_group_create();
-        // 将第一个网络请求任务添加到组中
-    if (ycids.length>0) {
-
-        dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                // 创建信号量
-            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-                // 开始网络请求任务
-            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-            [manager GET:[NSString stringWithFormat:@"http://share-app.moxi.gg/yc/delete/?id=%@",ycids]
-              parameters:nil
-                progress:nil
-                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                     if ([[responseObject objectForKey:@"code"] intValue]==200) {
-                         ycBool = YES;
-                     }else {
-                         [[HIPregressHUD shartMBHUD]showAlertWith:[responseObject objectForKey:@"msg"] inView:self.view];
-                     }
-                     dispatch_semaphore_signal(semaphore);
-                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                     dispatch_semaphore_signal(semaphore);
-                 }];
-                // 在网络请求任务成功之前，信号量等待中
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        });
-    }
-        // 将第二个网络请求任务添加到组中
-    if (msids.length>0) {
-
-        dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                // 创建信号量
-            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-                // 开始网络请求任务
-            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-            [manager GET:[NSString stringWithFormat:@"http://share-app.moxi.gg/ms/delete/?id=%@",msids]
-              parameters:nil
-                progress:nil
-                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                     if ([[responseObject objectForKey:@"code"] intValue]==200) {
-                         msBool = YES;
-                     }else {
-                         [[HIPregressHUD shartMBHUD]showAlertWith:[responseObject objectForKey:@"msg"] inView:self.view];
-                     }
-
-                     dispatch_semaphore_signal(semaphore);
-                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                     dispatch_semaphore_signal(semaphore);
-                 }];
-                // 在网络请求任务成功之前，信号量等待中
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        });
-    }
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        [[HIPregressHUD shartMBHUD]hideLoading];
-        if (ycBool) {
-
-            for (int i = 0; i<self.orderArr.count; i++) {
-                NSDictionary *dic = [self.orderArr objectAtIndex:i];
-                if ([[dic objectForKey:@"isComplete"] intValue]==1 && [[dic objectForKey:@"type"] isEqualToString:@"yc"]) {
-                    [self.orderArr removeObjectAtIndex:i];
-                }
-            }
-            [self.orderView reloadData];
-        }else{
-            [[HIPregressHUD shartMBHUD]showAlertWith:@"批量删除用车订单失败" inView:self.view];
+    NSMutableArray *arr = @[].mutableCopy;
+    for (int i = 0; i<self.orderArr.count; i++) {
+        NSDictionary *dic = [self.orderArr objectAtIndex:i];
+        if (!([[dic objectForKey:@"isComplete"] intValue]==1)) {
+            [arr addObject:dic];
         }
+    }
+    self.orderArr = arr;
+    [self.orderView reloadData];
 
-        if (msBool) {
-            for (int i = 0; i<self.orderArr.count; i++) {
-                NSDictionary *dic = [self.orderArr objectAtIndex:i];
-                if ([[dic objectForKey:@"isComplete"] intValue]==1 && [[dic objectForKey:@"type"] isEqualToString:@"ms"]) {
-                    [self.orderArr removeObjectAtIndex:i];
-                }
-            }
-            [self.orderView reloadData];
-        }else{
-            [[HIPregressHUD shartMBHUD]showAlertWith:@"批量删除民宿订单失败" inView:self.view];
-            
-        }
-    });
+//    [[HIPregressHUD shartMBHUD]showLoadingWith:@"提交中..." inView:self.view];
+//    NSString *msids = @"";
+//    NSString *ycids = @"";
+//    for (int i = 0; i< self.orderArr.count; i++) {
+//        NSDictionary *dic = [self.orderArr objectAtIndex:i];
+//        if ([[dic objectForKey:@"isComplete"] intValue]==1) {
+//            if (self.orderType == CarOrderType) {
+//                ycids = [NSString stringWithFormat:@"%@|",[dic objectForKey:@"id"]];
+//            }else{
+//                msids = [NSString stringWithFormat:@"%@|",[dic objectForKey:@"id"]];
+//            }
+//        }
+//    }
+//    if (ycids.length>0) {
+//        ycids = [ycids substringToIndex:ycids.length-1];
+//    }
+//    if (msids.length>0) {
+//        msids = [msids substringToIndex:msids.length-1];
+//    }
+//    __block BOOL ycBool = NO;
+//    __block BOOL msBool = NO;
+//        // 创建组
+//    dispatch_group_t group = dispatch_group_create();
+//        // 将第一个网络请求任务添加到组中
+//    if (ycids.length>0) {
+//
+//        dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                // 创建信号量
+//            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+//                // 开始网络请求任务
+//            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//            [manager GET:[NSString stringWithFormat:@"http://share-app.moxi.gg/yc/delete/?id=%@",ycids]
+//              parameters:nil
+//                progress:nil
+//                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//                     if ([[responseObject objectForKey:@"code"] intValue]==200) {
+//                         ycBool = YES;
+//                     }else {
+//                         [[HIPregressHUD shartMBHUD]showAlertWith:[responseObject objectForKey:@"msg"] inView:self.view];
+//                     }
+//                     dispatch_semaphore_signal(semaphore);
+//                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//                     dispatch_semaphore_signal(semaphore);
+//                 }];
+//                // 在网络请求任务成功之前，信号量等待中
+//            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+//        });
+//    }
+//        // 将第二个网络请求任务添加到组中
+//    if (msids.length>0) {
+//
+//        dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                // 创建信号量
+//            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+//                // 开始网络请求任务
+//            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//            [manager GET:[NSString stringWithFormat:@"http://share-app.moxi.gg/ms/delete/?id=%@",msids]
+//              parameters:nil
+//                progress:nil
+//                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//                     if ([[responseObject objectForKey:@"code"] intValue]==200) {
+//                         msBool = YES;
+//                     }else {
+//                         [[HIPregressHUD shartMBHUD]showAlertWith:[responseObject objectForKey:@"msg"] inView:self.view];
+//                     }
+//
+//                     dispatch_semaphore_signal(semaphore);
+//                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//                     dispatch_semaphore_signal(semaphore);
+//                 }];
+//                // 在网络请求任务成功之前，信号量等待中
+//            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+//        });
+//    }
+//    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+//        [[HIPregressHUD shartMBHUD]hideLoading];
+//        if (ycBool) {
+//
+//            for (int i = 0; i<self.orderArr.count; i++) {
+//                NSDictionary *dic = [self.orderArr objectAtIndex:i];
+//                if ([[dic objectForKey:@"isComplete"] intValue]==1 && [[dic objectForKey:@"type"] isEqualToString:@"yc"]) {
+//                    [self.orderArr removeObjectAtIndex:i];
+//                }
+//            }
+//            [self.orderView reloadData];
+//        }else{
+//            [[HIPregressHUD shartMBHUD]showAlertWith:@"批量删除用车订单失败" inView:self.view];
+//        }
+//
+//        if (msBool) {
+//            for (int i = 0; i<self.orderArr.count; i++) {
+//                NSDictionary *dic = [self.orderArr objectAtIndex:i];
+//                if ([[dic objectForKey:@"isComplete"] intValue]==1 && [[dic objectForKey:@"type"] isEqualToString:@"ms"]) {
+//                    [self.orderArr removeObjectAtIndex:i];
+//                }
+//            }
+//            [self.orderView reloadData];
+//        }else{
+//            [[HIPregressHUD shartMBHUD]showAlertWith:@"批量删除民宿订单失败" inView:self.view];
+//            
+//        }
+//    });
 }
 
 - (void)didReceiveMemoryWarning {

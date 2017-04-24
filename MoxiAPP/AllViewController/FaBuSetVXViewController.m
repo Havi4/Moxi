@@ -154,6 +154,7 @@
         NSDictionary *dic = @{@"wxhao":self.wxTextfield.text};
         [[BaseNetworking sharedAPIManager] changeWXHAOWith:dic success:^(id response) {
             if ([[response objectForKey:@"code"] intValue]==200) {
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"vxchange" object:nil];
                 [self dismissViewControllerAnimated:YES completion:^{
                     [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号设置成功" inView:[[UIApplication sharedApplication] keyWindow]];
                     self.doneSave(1);

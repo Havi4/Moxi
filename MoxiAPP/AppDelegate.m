@@ -17,6 +17,7 @@
 #import "WeiXinAPI.h"
 #import "SetWXViewController.h"
 #import "SureGuideView.h"
+#import "AdvertisementView.h"
 
 @interface AppDelegate ()<WXApiDelegate>
 
@@ -45,17 +46,33 @@
     [self.window makeKeyAndVisible];
     [[NSUserDefaults standardUserDefaults]registerDefaults:@{kHomeYINDAO:@"YES"}];
     [[NSUserDefaults standardUserDefaults]registerDefaults:@{kHomeYINDAO:@"NO"}];
+    [[NSUserDefaults standardUserDefaults]registerDefaults:@{kNoShowMSOrders:@[].mutableCopy}];
+    [[NSUserDefaults standardUserDefaults]registerDefaults:@{kNoShowYCOrders:@[].mutableCopy}];
     if (!publicGet && [UserManager IsUserLogged]) {
+        NSString *filePath = [self getFilePathWithImageName:[kUserDefaults valueForKey:adImageName]];
+
+        BOOL isExist = [self isFileExistWithFilePath:filePath];
+        if (isExist) {// 图片存在
+
+            AdvertisementView *advertiseView = [[AdvertisementView alloc] initWithFrame:self.window.bounds];
+            advertiseView.filePath = filePath;
+            [advertiseView show];
+
+        }
         [[BaseNetworking sharedAPIManager]getPublicDicWith:nil success:^(id response) {
             if ([[response objectForKey:@"code"] intValue]==200) {
                 DeBugLog(@"公共%@",response);
                 publicGet = response;
+                #pragma mark 进行广告位
+                    // 1.判断沙盒中是否存在广告图片，如果存在，直接显示
+                    // 2.无论沙盒中是否存在广告图片，都需要重新调用广告接口，判断广告是否更新
+                [self getAdvertisingImage];
             }
         } fail:^(NSError *error) {
-            
+
         }];
     }
-    
+
     return YES;
 }
 
@@ -75,12 +92,6 @@
         //
     self.window.rootViewController = frostedViewController;
 
-    if ([[publicGet objectForKey:@"vxhao"] isEqualToString:@"null"]) {
-        SetWXViewController *wx = [[SetWXViewController alloc]init];
-        [self.window.rootViewController presentViewController:wx animated:YES completion:^{
-
-        }];
-    }
 }
 
 /**

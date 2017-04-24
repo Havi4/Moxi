@@ -129,6 +129,7 @@
         [[BaseNetworking sharedAPIManager] changeWXHAOWith:dic success:^(id response) {
             if ([[response objectForKey:@"code"] intValue]==200) {
                 [self dismissViewControllerAnimated:YES completion:^{
+                    [[NSNotificationCenter defaultCenter]postNotificationName:@"vxchange" object:nil];
                     [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号设置成功" inView:[[UIApplication sharedApplication] keyWindow]];
                 }];
             }else {

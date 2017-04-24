@@ -10,4 +10,6 @@
 
 @interface CarOrderViewController : BaseViewController
 
+@property (nonatomic, copy) void (^fabuDone)(NSInteger indexPath);
+
 @end

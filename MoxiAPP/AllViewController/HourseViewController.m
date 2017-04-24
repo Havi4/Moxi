@@ -459,7 +459,7 @@
 {
     DeBugLog(@"显示时间");
     ActionSheetDatePicker *datePicker = [[ActionSheetDatePicker alloc] initWithTitle:@"选择时间" datePickerMode:UIDatePickerModeDate selectedDate:[NSDate date]
-                                                                         minimumDate:[self.dateSelectDate dateByAddingHours:32]
+                                                                         minimumDate:[self.dateSelectDate dateByAddingHours:24]
                                                                          maximumDate:nil
                                                                               target:self action:@selector(timeWasSelected:element:) origin:button];
     datePicker.minuteInterval = 1;
@@ -586,7 +586,7 @@
         [[HIPregressHUD shartMBHUD]hideLoading];
         if ([[dic objectForKey:@"code"] intValue]==200) {
             [self dismissViewControllerAnimated:YES completion:^{
-
+                self.fabuDone(1);
                 [[HIPregressHUD shartMBHUD]showAlertWith:@"民宿订单发布成功" inView:[UIApplication sharedApplication].keyWindow];
             }];
         }else if ([[response objectForKey:@"code"] intValue]==56){

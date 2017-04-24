@@ -35,7 +35,8 @@
     _wxTextfield.backgroundColor = [UIColor whiteColor];
     _wxTextfield.clearButtonMode = UITextFieldViewModeNever;
     _wxTextfield.font = [UIFont systemFontOfSize:20];
-    _wxTextfield.placeholder = [[publicGet objectForKey:@"data"] objectForKey:@"vxhao"];
+    NSString *vx = [NSString stringWithFormat:@"%@",[[publicGet objectForKey:@"data"] objectForKey:@"vxhao"]];
+    _wxTextfield.placeholder = [vx isEqualToString:@"<null>"]?@"":vx;
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 15, 50)];
     _wxTextfield.leftViewMode = UITextFieldViewModeAlways;
     _wxTextfield.leftView = view;
@@ -84,7 +85,22 @@
 
 - (void)saveWxId
 {
-    DeBugLog(@"爆粗");
+    if (self.wxTextfield.text.length==0) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"输入微信号" inView:self.view];
+        return;
+    }
+    NSDictionary *dic = @{@"wxhao":self.wxTextfield.text};
+    [[BaseNetworking sharedAPIManager] changeWXHAOWith:dic success:^(id response) {
+        if ([[response objectForKey:@"code"] intValue]==200) {
+            [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号设置成功" inView:[[UIApplication sharedApplication] keyWindow]];
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"vxchange" object:nil];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else {
+            [[HIPregressHUD shartMBHUD]showAlertWith:[response objectForKey:@"msg"] inView:[[UIApplication sharedApplication] keyWindow]];
+        }
+    } fail:^(NSError *error) {
+
+    }];
 }
 
 - (void)showMenu

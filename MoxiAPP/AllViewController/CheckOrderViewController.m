@@ -164,10 +164,14 @@
 
 - (void)showMinsuOrder
 {
-    if (![[[publicGet objectForKey:@"data"] objectForKey:@"vxhao"] isEqualToString:@"null"]) {
+    NSString *vx = [NSString stringWithFormat:@"%@",[[publicGet objectForKey:@"data"] objectForKey:@"vxhao"]];
+    if ([vx isEqualToString:@"<null>"]) {
         FaBuSetVXViewController *wx = [[FaBuSetVXViewController alloc]init];
         wx.doneSave = ^(NSInteger index) {
             HourseViewController *hourse = [[HourseViewController alloc]init];
+            hourse.fabuDone = ^(NSInteger indexPath) {
+                [self loadNewData];
+            };
             [self presentViewController:hourse animated:YES completion:^{
 
             }];
@@ -177,6 +181,9 @@
         }];
     }else{
         HourseViewController *hourse = [[HourseViewController alloc]init];
+        hourse.fabuDone = ^(NSInteger indexPath) {
+            [self loadNewData];
+        };
         [self presentViewController:hourse animated:YES completion:^{
 
         }];
@@ -185,10 +192,14 @@
 
 - (void)showCarOrder
 {
-    if (![[[publicGet objectForKey:@"data"] objectForKey:@"vxhao"] isEqualToString:@"null"]) {
+    NSString *vx = [NSString stringWithFormat:@"%@",[[publicGet objectForKey:@"data"] objectForKey:@"vxhao"]];
+    if ([vx isEqualToString:@"<null>"]) {
         FaBuSetVXViewController *wx = [[FaBuSetVXViewController alloc]init];
         wx.doneSave = ^(NSInteger index) {
             CarOrderViewController *carOrder = [[CarOrderViewController alloc]init];
+            carOrder.fabuDone = ^(NSInteger indexPath) {
+                [self loadNewData];
+            };
             [self presentViewController:carOrder animated:YES completion:^{
 
             }];
@@ -198,6 +209,9 @@
         }];
     }else{
         CarOrderViewController *carOrder = [[CarOrderViewController alloc]init];
+        carOrder.fabuDone = ^(NSInteger indexPath) {
+            [self loadNewData];
+        };
         [self presentViewController:carOrder animated:YES completion:^{
 
         }];
@@ -353,10 +367,14 @@
 {
     DeBugLog(@"copy订单是%ld",(long)indexPath.row);
     NSDictionary *dic = [self.orderArr objectAtIndex:indexPath.row];
-
-    UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
-    pasteboard.string= [dic objectForKey:@"vxhao"];
-    [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号已复制到剪切板" inView:self.view];
+    NSString *vx = [NSString stringWithFormat:@"%@",[dic objectForKey:@"vxhao"]];
+    if (![vx isEqualToString:@"<null>"]) {
+        UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string= vx;
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号已复制到剪切板" inView:self.view];
+    }else{
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"微信号为空" inView:self.view];
+    }
 }
 
 - (void)showMore:(NSIndexPath *)indexPath
@@ -482,6 +500,7 @@
             dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
                 // 开始网络请求任务
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@|%@",thirdPartyAccess_Token,thirdPartyOpenID] forHTTPHeaderField:@"moxi-token"];
             [manager GET:[NSString stringWithFormat:@"http://share-app.moxi.gg/yc/delete/?id=%@",ycids]
               parameters:nil
                 progress:nil
@@ -507,6 +526,7 @@
             dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
                 // 开始网络请求任务
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@|%@",thirdPartyAccess_Token,thirdPartyOpenID] forHTTPHeaderField:@"moxi-token"];
             [manager GET:[NSString stringWithFormat:@"http://share-app.moxi.gg/ms/delete/?id=%@",msids]
               parameters:nil
                 progress:nil
