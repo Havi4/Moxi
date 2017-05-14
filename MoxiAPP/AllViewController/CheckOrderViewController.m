@@ -16,7 +16,7 @@
 #import <AFHTTPSessionManager.h>
 #import "FaBuSetVXViewController.h"
 #import "SureGuideView.h"
-
+#import "WXApi.h"
 @interface CheckOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *orderView;
@@ -419,6 +419,11 @@
 
 - (void)completeOrder:(NSIndexPath *)indexPath
 {
+    if (![WXApi isWXAppInstalled]) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"已完成" inView:self.view];
+        return;
+    }
+
     [[HIPregressHUD shartMBHUD]showLoadingWith:@"提交中..." inView:self.view];
     NSMutableDictionary *orderInfo = [NSMutableDictionary dictionaryWithDictionary:[self.orderArr objectAtIndex:indexPath.row]];
     NSDictionary *para=nil;
@@ -445,6 +450,11 @@
 
 - (void)deleteSingleOrder:(NSIndexPath *)indexPath
 {
+    if (![WXApi isWXAppInstalled]) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"已完成" inView:self.view];
+        return;
+    }
+
     [[HIPregressHUD shartMBHUD]showLoadingWith:@"提交中..." inView:self.view];
     NSMutableDictionary *orderInfo = [NSMutableDictionary dictionaryWithDictionary:[self.orderArr objectAtIndex:indexPath.row]];
     NSDictionary *para=nil;

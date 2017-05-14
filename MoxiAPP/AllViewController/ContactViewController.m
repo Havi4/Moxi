@@ -9,6 +9,7 @@
 #import "ContactViewController.h"
 
 @interface ContactViewController ()
+@property (nonatomic, strong) UIWebView *webView;
 
 @end
 
@@ -25,6 +26,14 @@
     self.navigationItem.title = @"联系客服";
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:17],NSForegroundColorAttributeName:kBarLightTextColor}];
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, kScreenSize.width, kScreenSize.height-64)];
+    [self.view addSubview:self.webView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[[publicGet objectForKey:@"data"] objectForKey:@"contactPage"]]]]];
 }
 
 - (void)showMenu

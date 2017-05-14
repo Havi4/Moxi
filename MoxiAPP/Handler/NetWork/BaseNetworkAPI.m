@@ -8,6 +8,7 @@
 
 #import "BaseNetworkAPI.h"
 #import "NSObject+Common.h"
+#import "WXApi.h"
 
 //for debug test request method
 #define kNetworkMethodName @[@"Get", @"Post", @"Put", @"Delete"]
@@ -65,6 +66,7 @@ static BaseNetworkAPI *_BaseNetworkAPI = nil;
     [[UIApplication sharedApplication]incrementNetworkActivityCount];
     DeBugLog(@"\n网络请求log========request=========\n%@\n%@:\n%@", kNetworkMethodName[method], aPath, params);
     aPath = [aPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     switch (method) {
         case Get:{
             //所有的get请求添加缓存机制

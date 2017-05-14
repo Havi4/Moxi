@@ -138,7 +138,7 @@
     
     [window addSubview:self];
     [self addSubview:self.mainView];
-    [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+    [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.5]];
     [self.mainView insertSubview:self.closedButton atIndex:999];
     self.closedButton.hidden = YES;
     [self.mainView addSubview:self.headerTitleLabel];
@@ -254,7 +254,7 @@
  */
 -(void)animate{
     
-    [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0]];
+    [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]];
     [UIView animateWithDuration:0.12 animations:^{
         [self setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3]];
     }];

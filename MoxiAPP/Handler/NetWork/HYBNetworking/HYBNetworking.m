@@ -12,6 +12,7 @@
 #import "AFHTTPSessionManager.h"
 
 #import <CommonCrypto/CommonDigest.h>
+#import "WXApi.h"
 
 @interface NSString (md5)
 
@@ -291,9 +292,19 @@ static inline NSString *cachePath() {
     url = [self encodeUrl:url];
   }
 
+    if (![WXApi isWXAppInstalled]){
+        NSString *arrPath = [[NSBundle mainBundle]pathForResource:@"testData" ofType:@"plist"];
+        NSArray *arrData = [NSArray arrayWithContentsOfFile:arrPath];
+        NSDictionary *dic = @{
+                            @"code":@"200",
+                            @"data":arrData
+        };
+        success(dic);
+        return nil;
+    }
   AFHTTPSessionManager *manager = [self manager];
   NSString *absolute = [self absoluteUrlWithPath:url];
-  
+
   if ([self baseUrl] == nil) {
     if ([NSURL URLWithString:url] == nil) {
       HYBAppLog(@"URLString无效，无法生成URL。可能是URL中有中文，请尝试Encode URL");

@@ -19,6 +19,7 @@
 #import "SureGuideView.h"
 #import "AppDelegate.h"
 #import "RAlertView.h"
+#import "WXApi.h"
 typedef enum : NSUInteger {
     CarOrderType,
     HourseOrderType,
@@ -59,7 +60,10 @@ typedef enum : NSUInteger {
     if ([SureGuideView shouldShowHomeGuider]) {
         SureGuideView *gide = [SureGuideView sureGuideViewWithImageName:@"home_view" imageCount:3 inView:self.cyl_tabBarController.view];
         gide.lastTapBlock = ^{
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (![WXApi isWXAppInstalled]) {
+                return;
+            }
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 if ([[[[publicGet objectForKey:@"data"] objectForKey:@"notice"] objectForKey:@"title"] length]==0) {
                     return ;
                 }
@@ -72,7 +76,10 @@ typedef enum : NSUInteger {
             });
         };
     }else{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (![WXApi isWXAppInstalled]) {
+            return;
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if ([[[[publicGet objectForKey:@"data"] objectForKey:@"notice"] objectForKey:@"title"] length]==0) {
                 return ;
             }
@@ -296,6 +303,10 @@ typedef enum : NSUInteger {
 
 - (void)changLocation
 {
+    if (![WXApi isWXAppInstalled]) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"暂无用车订单" inView:self.view];
+        return;
+    }
     if (self.rightButton.tag == 101) {
         self.rightButton.tag = 102;
         [self.rightButton setImage:[UIImage imageNamed:@"house_order_icon"] forState:UIControlStateNormal];
@@ -659,6 +670,10 @@ typedef enum : NSUInteger {
 
 - (void)completeOrder:(NSIndexPath *)indexPath
 {
+    if (![WXApi isWXAppInstalled]) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"已完成" inView:self.view];
+        return;
+    }
     [[HIPregressHUD shartMBHUD]showLoadingWith:@"提交中..." inView:self.view];
     NSMutableDictionary *orderInfo = [NSMutableDictionary dictionaryWithDictionary:[self.orderArr objectAtIndex:indexPath.row]];
     NSDictionary *para=nil;
@@ -686,6 +701,11 @@ typedef enum : NSUInteger {
 - (void)topOrder:(NSIndexPath *)indexPath
 {
     NSMutableDictionary *orderInfo = [NSMutableDictionary dictionaryWithDictionary:[self.orderArr objectAtIndex:indexPath.row]];
+    if (![WXApi isWXAppInstalled]) {
+        [[HIPregressHUD shartMBHUD]showAlertWith:@"已置顶" inView:self.view];
+        return;
+    }
+
     if (self.orderType == HourseOrderType) {
         [orderInfo setObject:@"1" forKey:@"isTop"];
         NSString *topids = [[NSUserDefaults standardUserDefaults]objectForKey:kHourseTopIds];

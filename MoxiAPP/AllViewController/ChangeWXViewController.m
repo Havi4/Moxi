@@ -7,7 +7,7 @@
 //
 
 #import "ChangeWXViewController.h"
-
+#import "WXApi.h"
 @interface ChangeWXViewController ()
 
 @property (nonatomic, strong) UITextField *wxTextfield;
@@ -37,6 +37,10 @@
     _wxTextfield.font = [UIFont systemFontOfSize:20];
     NSString *vx = [NSString stringWithFormat:@"%@",[[publicGet objectForKey:@"data"] objectForKey:@"vxhao"]];
     _wxTextfield.placeholder = [vx isEqualToString:@"<null>"]?@"":vx;
+    if (![WXApi isWXAppInstalled]) {
+        _wxTextfield.placeholder = @"";
+    }
+
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 15, 50)];
     _wxTextfield.leftViewMode = UITextFieldViewModeAlways;
     _wxTextfield.leftView = view;

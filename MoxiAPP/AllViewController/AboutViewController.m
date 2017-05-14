@@ -10,6 +10,8 @@
 
 @interface AboutViewController ()
 
+@property (nonatomic, strong) UIWebView *webView;
+
 @end
 
 @implementation AboutViewController
@@ -24,12 +26,23 @@
                                                                             action:@selector(showMenu)];
     self.navigationItem.title = @"关于我们";
     [self.navigationController.navigationBar setTitleTextAttributes:
-     @{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:17],NSForegroundColorAttributeName:kBarLightTextColor}];}
+     @{NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue" size:17],NSForegroundColorAttributeName:kBarLightTextColor}];
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, kScreenSize.width, kScreenSize.height-64)];
+    [self.view addSubview:self.webView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[[publicGet objectForKey:@"data"] objectForKey:@"aboutPage"]]]]];
+}
 
 - (void)showMenu
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

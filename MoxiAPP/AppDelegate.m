@@ -33,13 +33,24 @@
         // Create content and menu controllers
         //
     [WXApi registerApp:kWXAPPKey];
-    if ([UserManager IsUserLogged]) {
-        [UserManager GetUserObj];
+    if ([WXApi isWXAppInstalled]) {
+
+        if ([UserManager IsUserLogged]) {
+            [UserManager GetUserObj];
+            [HYBNetworking configCommonHttpHeaders:@{@"moxi-token":[NSString stringWithFormat:@"%@|%@",thirdPartyAccess_Token,thirdPartyOpenID]}];
+            [self setRootViewController];
+        }else{
+            LoginViewController* login = [[LoginViewController alloc]init];
+            self.window.rootViewController = login;
+        }
+    }else{
+        thirdPartyAccess_Token = @"9XRFG1KsMHLzaBrW1th9v3cFCJrfGL1J-HH1Ipb4vyY91niO66EjpG8NvrpqqzvO_s8U45hDpkhooUna1oNmayhyuTPOoFZT1SZTxe3VvHI";
+        thirdPartyOpenID = @"oJcDEwrUW8e2sua8LeOzzIq6wzjs";
+        thirdPartyLoginUserId = @"";
+        thirdPartyUseIcon = @"http://wx.qlogo.cn/mmopen/lendsTBRd1V0oYakYBtichO8c10GsI63ugAOm44ibFFTx01txzffSnq30Gn0pJOL8O0zibLcmBlKCMxib0VEqXGIkdVnibzgNSowy/0";
+        thirdPartyNickName = @"Lee";
         [HYBNetworking configCommonHttpHeaders:@{@"moxi-token":[NSString stringWithFormat:@"%@|%@",thirdPartyAccess_Token,thirdPartyOpenID]}];
         [self setRootViewController];
-    }else{
-        LoginViewController* login = [[LoginViewController alloc]init];
-        self.window.rootViewController = login;
     }
     self.window.backgroundColor = [UIColor whiteColor];
     [self setUpNavigationBarAppearance];

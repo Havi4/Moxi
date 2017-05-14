@@ -16,7 +16,7 @@
 #import "UIViewController+REFrostedViewController.h"
 #import "AppDelegate.h"
 #import <UIImage+AFNetworking.h>
-
+#import "WXApi.h"
 @interface LeftMenuViewController ()
 
 @end
@@ -71,6 +71,11 @@
     UIButton *logoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
     logoutButton.frame = CGRectMake((self.view.frame.size.width-100-150)/2+30, self.view.frame.size.height, 150, 49);
     [self.view addSubview:logoutButton];
+    logoutButton.hidden = YES;
+    if ([WXApi isWXAppInstalled]) {
+        logoutButton.hidden = NO;
+    }
+
     [logoutButton setImage:[UIImage imageNamed:@"login_out"] forState:UIControlStateNormal];
     logoutButton.titleLabel.font = [UIFont systemFontOfSize:16];
     [logoutButton setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, logoutButton.titleLabel.intrinsicContentSize.width)];
@@ -173,6 +178,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
+    if (![WXApi isWXAppInstalled]) {
+        return 1;
+    }
     return 3;
 }
 
